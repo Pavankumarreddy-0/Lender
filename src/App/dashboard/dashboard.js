@@ -34,7 +34,9 @@ export default function Dashboard() {
                     <Sidebar></Sidebar>
                 </div>
                 <div className={dashboardStyles['dashboardOutlet']}>
-                    <Outlet></Outlet>
+                    <div className={dashboardStyles['dashboardOutletInner']}>
+                        <Outlet></Outlet>
+                    </div>
                 </div>
             </div>
         </div>
