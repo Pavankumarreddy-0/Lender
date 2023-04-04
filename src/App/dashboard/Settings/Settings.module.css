@@ -1,0 +1,28 @@
+:root{
+    --search-border:rgba(17 71 152);
+}
+
+.settingsContainer{
+    
+}
+
+.searchHeader{
+    display:flex;
+    justify-content: center;
+    height: 90px;
+    align-items: center;
+}
+
+.searchHeader input{
+    width:40%;
+    height: 30px;
+    outline:none;
+    border:2px solid var(--search-border);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.roles_grids{
+    display:grid;
+    grid-template-columns: repeat(auto-fill,400px);
+}
