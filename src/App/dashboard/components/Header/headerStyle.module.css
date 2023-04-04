@@ -1,0 +1,43 @@
+.headerOuter{
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+}
+.headerToggleMenu{
+    flex-shrink: 0;
+    min-width: 40px;
+}
+.headerSerachRegion{
+    flex-grow: 1;
+}
+.headerRightRegion{
+    flex-shrink: 0;
+    min-width: 200px;
+   justify-self: end;
+}
+.headerRightIconsList{
+    list-style-type: none;
+    margin: 0;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.headerRightUserImage{
+    max-width: 35px;
+}
+.headerRightSubList{
+    position: absolute;
+    top: 100%;
+    right: 0px;
+    list-style: none;
+    margin: 0px;
+    background: #fff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.1), -2px -2px 5px rgba(0,0,0,.1);
+    padding: 5px 10px;
+    min-width: 180px;
+    z-index: 99;
+}
+.headerRightProfileItem{
+    position: relative;
+}
