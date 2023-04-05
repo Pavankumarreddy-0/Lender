@@ -56,24 +56,35 @@ export default function Settings() {
   return (
     <>
     <div className='settingsContainer'>
-        <div className={SettingsStyles['settingsContainer']}>
-          <div className={SettingsStyles['searchHeader']}>
+      <div className={SettingsStyles['settingsHeaderContainer']}>
+        <div className={SettingsStyles['settingsTitleRegion']}>
+          <Link className={SettingsStyles['settingsBackLink']} to="/dashboard"><i class="bi bi-arrow-left"></i> Home</Link>
+          <p className={SettingsStyles['settingsTitleName']}>Settings</p>
+        </div>
+        <div className={SettingsStyles['searchHeader']}>
+          <div className={SettingsStyles['searchHeaderInner']}>
+            <i class="bi bi-search"></i>
             <input onChange={(e)=>{SetTiles({...Tiles, inputSearch: e.target.value})}} type="search" id="SettingsSearch" placeholder='Search Settings Options' />
           </div>
+        </div>
       </div>
       <section className={SettingsStyles["settings_Cards"]}>
         <div className={SettingsStyles['roles_grids']}>
           {getTiles(Tiles.cards, Tiles.inputSearch).map((e)=>{
-            return   <div className={SettingsStyles['settings']}>
+            return   <>
+            <Link to={e.cardLink} className={SettingsStyles['settingRolesLink']}>
+            <div className={SettingsStyles['settings']}>
                 <div className={SettingsStyles['settingsIcon']}>
                 <i class={e.cardIcon}  aria-hidden="true"></i>
                 </div>
                   <div className={SettingsStyles['settingContent']}>
                     <div className={SettingsStyles['settingsTitle']}>{e.cardName}</div>
                     <div className={SettingsStyles['settingsDescription']}>{e.cardDesc}</div>
-                    {/* <Link to={e.cardLink} className={SettingsStyles['settingRolesLink']}>Go to Roles</Link> */}
+                    {/* Go to Roles</Link> */}
                   </div>
               </div>
+              </Link>
+              </>
           })}
         </div>
       </section>
