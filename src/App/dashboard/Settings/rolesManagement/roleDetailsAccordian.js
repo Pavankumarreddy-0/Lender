@@ -2,13 +2,17 @@ import React, { useEffect, useState } from 'react'
 import Accordion from 'react-bootstrap/Accordion';
 import { set, get, isEqual } from "lodash";
 import accordianStyles from './accordianStyles.module.css'
+import axios from 'axios';
 
 export default function RoleDetailsAccordian(props) {
 
-    const originalPropState = {...props.roledata}; 
+    //creating a new memory instance
+    const [originalPropState,setNewPropState] = useState(JSON.parse(JSON.stringify(props.roledata))); 
+
     const [permissions, setPermissions] = useState(props.roledata);
     const [saveState, setSaveState] = useState({
-        enableSave: false
+        enableSave: false,
+        savingProgress: false
     })
 
     const generateAccess = (roles) => {
@@ -20,9 +24,34 @@ export default function RoleDetailsAccordian(props) {
         return items
     }
 
-    useEffect(()=>{
+    // useEffect(()=>{
 
-    },[permissions])
+    // },[permissions])
+
+    const saveUpdatedData = async () => {
+
+        setSaveState({...saveState, savingProgress: true});
+
+        if(saveState.savingProgress){
+            alert("Please wait the request is already going on.")
+            return;
+        }
+
+        await axios.put('/api/update-role',{
+            ...permissions
+        },{
+            headers: { authorization: `Bearer ${ localStorage.getItem("token") }` }
+        }).then(response=>{
+
+            console.log(response)
+            setSaveState({...saveState, savingProgress: false, enableSave: false});
+            setNewPropState(JSON.parse(JSON.stringify({...permissions})));
+
+        }).catch(err => {
+            alert("Unable to save, please try again.");
+            setSaveState({...saveState, savingProgress: false, enableSave: true});
+        })
+    }
 
 
     const updatePermission = (e) =>{
@@ -43,7 +72,7 @@ export default function RoleDetailsAccordian(props) {
   <Accordion.Item eventKey={props.roledata._id}>
   <Accordion.Header>{props.roledata.roleName}</Accordion.Header>
   <Accordion.Body>
-    <form>
+   
         <div className={accordianStyles['accordionPermissionCheckboxParent']}>
     { 
     generateAccess(permissions.roleAccess).map((e,i)=>{
@@ -57,9 +86,10 @@ export default function RoleDetailsAccordian(props) {
     }
     </div>
     <div className={accordianStyles['accordionPermissionSaveBox']}>
-       { (saveState.enableSave) && <button className={accordianStyles['accordionPermissionSaveBtn']}> <i className="fa fa-floppy-o"></i>Update Permissions</button>}
+       { (saveState.enableSave) && <button onClick={()=>saveUpdatedData()} className={accordianStyles['accordionPermissionSaveBtn']}> { (saveState.savingProgress) ? <><div class="spinner-border spinner-border-sm" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div> Updating...</> : <><i className="fa fa-floppy-o"></i>Update Permissions</>}</button>}
     </div>
-    </form>
   </Accordion.Body>
 </Accordion.Item>
 
