@@ -1,0 +1,26 @@
+.iconsDiv li {
+    list-style-type: none;
+    width: 68px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 6px 3px;
+}
+.iconsList:hover {
+    background-color: #fafafa;
+    color: #242424;
+    cursor: pointer;
+}
+.iconsList:hover i{
+    color: var(--link-color);
+}
+.iconsDiv li i {
+    display: block;
+    font-size: 20px;
+    color: #616161;
+}
+.iconsDiv span {
+    font-size: 10px;
+    line-break: anywhere;
+    text-align: center;
+}

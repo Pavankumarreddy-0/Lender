@@ -16,7 +16,6 @@
 .dashboardSidebar{
     flex-shrink: 0;
     min-width: 68px;
-    padding-top:10px;
 }
 .dashboardOutlet{
     flex-grow: 1;
