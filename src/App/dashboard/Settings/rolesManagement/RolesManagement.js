@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios';
+import rolesStyles from './rolesManagement.module.css';
+
 
 export default function RolesManagement() {
 
@@ -27,12 +29,24 @@ export default function RolesManagement() {
   }
 
   return (
+    <>
+    <div className={rolesStyles['headerDiv']}>
+
+    <i class="fa fa-arrow-left"></i>
     <div>
-      {
-        roleManagement.map(e=>{
-          return <li>{e.roleName}</li>
-        })
-      }
+    <h1 className={rolesStyles['heading']}>Manager Role</h1>
+    <button className={rolesStyles['createButton']}><i class="fa fa-plus"></i>Create</button>
     </div>
+    <div className={rolesStyles['cardDiv']}>
+      <h1>Investor Role</h1>
+      <i class="fa fa-arrow-right"></i>
+
+    </div>
+    </div>
+
+
+    
+   </>
+
   )
 }
