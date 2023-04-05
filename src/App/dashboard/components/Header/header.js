@@ -21,21 +21,27 @@ export default function Header() {
   return (
     <div className={headerStyles['headerOuter']}>
         <div className={headerStyles['headerToggleMenu']}>
-          <i class="fa fa-th" aria-hidden="true"></i>
+          <i class="bi bi-grid-3x3-gap-fill"></i>
+        </div>
+        <div className={headerStyles['headerIconRegion']}>
+           <img className={headerStyles['headerLogoImage']} src='/assets/logo.gif'/>
         </div>
         <div className={headerStyles['headerSerachRegion']}>
-          <input type='text' value={headerData.headerSearchText} onChange={(e)=>{ setHeaderData({...headerData, headerSearchText: e.target.value}) }}></input>
+          <div className={headerStyles['headerSearchRegionInner']}>
+            <i className='fa fa-search'></i>
+            <input className={headerStyles['headerSerachRegionInput']} type='text' value={headerData.headerSearchText} onChange={(e)=>{ setHeaderData({...headerData, headerSearchText: e.target.value}) }}></input>
+          </div>
         </div>
         <div className={headerStyles['headerRightRegion']}>
           <ul className={headerStyles['headerRightIconsList']}>
             <li className={headerStyles['headerRightIconsItem']}>
               <Link to="/dashboard/settings">
-              <i class="fa fa-cog" aria-hidden="true"></i>
+                <i class="bi bi-gear"></i>
               </Link>
             </li>
             <li className={headerStyles['headerRightIconsItem']}>
               <Link to="/dashboard/faq">
-                <i className="fa fa-question" aria-hidden="true"></i>
+                <i class="bi bi-question"></i>
               </Link>
             </li>
             <li className={headerStyles['headerRightProfileItem']}>
