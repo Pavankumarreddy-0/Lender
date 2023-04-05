@@ -36,9 +36,9 @@
 .roles_grids{
     display:grid;
     grid-template-columns: repeat(auto-fill, 300px);
-    gap:20px;
-
+    gap: 10px 15px;
 }
+
 
 .settings{
     display: flex;
@@ -98,6 +98,7 @@
     background: #f7f7f7;
     padding: 10px 20px;
     display: flex;
+    border-bottom: 1px solid #e7e7e7;
 }
 .settingsBackLink{
     font-size: 12px;

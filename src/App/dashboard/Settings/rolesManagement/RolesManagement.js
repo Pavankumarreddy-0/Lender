@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios';
 import rolesStyles from './rolesManagement.module.css';
-
+import {Link} from 'react-router-dom';
+import RoleDetailsAccordian from './roleDetailsAccordian';
+import Accordion from 'react-bootstrap/Accordion';
 
 export default function RolesManagement() {
 
@@ -30,22 +32,29 @@ export default function RolesManagement() {
 
   return (
     <>
-    <div className={rolesStyles['headerDiv']}>
-
-    <i class="fa fa-arrow-left"></i>
-    <div>
-    <h1 className={rolesStyles['heading']}>Manager Role</h1>
-    <button className={rolesStyles['createButton']}><i class="fa fa-plus"></i>Create</button>
+    <div className={rolesStyles['rolesManageMentHeader']}>
+      <div className={rolesStyles['rolesHeaderContainer']}>
+        <div className={rolesStyles['rolesTitleRegion']}>
+          <Link className={rolesStyles['rolesBackLink']} to="/dashboard/settings"><i class="bi bi-arrow-left"></i> Settings</Link>
+          <p className={rolesStyles['rolesTitleName']}>Roles Management</p>
+        </div>
+        <div className={rolesStyles['roleManageHeader']}>
+            <Link className={rolesStyles['createNewRoleButton']} to="/dashboard/settings/create-role"><i class="bi bi-plus-square"></i>Create New Role</Link>
+          
+        </div>
+      </div>
+      <div className={rolesStyles['roleManagementList']}>
+        <div className={rolesStyles['roleManagementListInner']}>
+        <Accordion defaultActiveKey={['0']} alwaysOpen>
+          {
+            roleManagement.map((e)=>{
+              return <RoleDetailsAccordian roledata={e} key={e._id}/>
+            })
+          }
+          </Accordion>
+        </div>
+      </div>
     </div>
-    <div className={rolesStyles['cardDiv']}>
-      <h1>Investor Role</h1>
-      <i class="fa fa-arrow-right"></i>
-
-    </div>
-    </div>
-
-
-    
    </>
 
   )

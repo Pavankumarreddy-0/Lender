@@ -28,7 +28,7 @@ export default function Header() {
         </div>
         <div className={headerStyles['headerSerachRegion']}>
           <div className={headerStyles['headerSearchRegionInner']}>
-            <i className='fa fa-search'></i>
+            <i class="bi bi-search"></i>
             <input className={headerStyles['headerSerachRegionInput']} type='text' value={headerData.headerSearchText} onChange={(e)=>{ setHeaderData({...headerData, headerSearchText: e.target.value}) }}></input>
           </div>
         </div>

@@ -80,7 +80,6 @@ export default function Settings() {
                   <div className={SettingsStyles['settingContent']}>
                     <div className={SettingsStyles['settingsTitle']}>{e.cardName}</div>
                     <div className={SettingsStyles['settingsDescription']}>{e.cardDesc}</div>
-                    {/* Go to Roles</Link> */}
                   </div>
               </div>
               </Link>

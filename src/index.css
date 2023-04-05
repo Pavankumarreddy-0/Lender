@@ -28,3 +28,7 @@ html {
 a{
   color: var(--link-color)
 }
+
+.accordion-item {
+  border-radius: 0px !important;
+}

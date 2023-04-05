@@ -84,7 +84,7 @@
 }
 .headerSearchRegionInner i{
     position: absolute;
-    top: 6px;
+    top: 3px;
     left: 10px;
 }
 .headerRightIconsItem{
@@ -104,7 +104,7 @@
     justify-content: center;
     padding: 0px 15px;
 }
-.headerRightIconsItem:hover, .headerRightProfileItem:hover{
+.headerRightIconsItem:hover, .headerRightProfileItem > a:hover{
     background-color: #FAFAFA;
     cursor: pointer;
     color: #242424;

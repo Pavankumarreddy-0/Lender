@@ -1,38 +1,43 @@
-.headerDiv {
-    background-color: #fff;
-    display:flex;
-    height:100%;
-}
-.createButton {
-    background-color: cornflowerblue;
-    color: #f1f1f1;
-    border: 1px solid #ccc;
-    padding: 4px;
-    border-radius: 6px;
 
-}
-.heading {
-    font-size: 25px;
-    font-family: roboto;
-
-}
-.cardDiv {
+.rolesHeaderContainer{
+    background: #f7f7f7;
+    padding: 10px 20px;
     display: flex;
-    position: relative;
-    background-color: #ccc;
-    height: 14%;
-    width: 27%;
-    margin-top: 14px;
-    margin-left: 10px;
-    border-radius: 4px;
-    box-shadow: 0px 0px 9px rgb(0,0,.1);
+    border-bottom: 1px solid #e7e7e7;
+}
+.rolesTitleRegion{    
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    flex-grow: 1;
+}
+.rolesBackLink{
+    font-size: 12px;
+    text-decoration: none;
+}
+.rolesTitleName{    
+    margin: 0px;
+    font-size: 20px;
+}
+.roleManageHeader{
+    flex-shrink: 0;
+    min-width: 150px;
+    display: flex;
+    align-items: center;
+}
+.createNewRoleButton{
+    text-decoration: none;
+    display: flex;
+    gap: 5px;
+    background: var(--link-color);
+    color: #fff;
+    padding: 5px 7px;
+    font-size: 12px;
+    box-shadow: -1px 1px 5px rgba(0,0,0,.1);
+}
+.createNewRoleButton:hover{
+    color: #fff;
+    background-color: #0859d1;
+}
 
-}
-.cardDiv i {
-    position: absolute;
-    right: 0;
-}
-.cardDiv h1 {
-    font-size:20px;
-    font-family: roboto;
-}
