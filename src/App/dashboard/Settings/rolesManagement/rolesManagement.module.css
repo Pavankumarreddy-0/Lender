@@ -41,3 +41,10 @@
     background-color: #0859d1;
 }
 
+.roleManagementListInner button.accordion-button{
+    color: var(--link-color);
+    background: var(--accordBg);
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}

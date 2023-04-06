@@ -8,33 +8,51 @@ export default function Settings() {
     const Settingstate = {
         cards: [
           {
-            cardName: "Manage Roles",
+            cardName: "Roles & Permissions",
             cardDesc: "create, edit new role",
-            cardIcon: "fa fa-user-circle",
+            cardIcon: "bi bi-briefcase",
             cardLink: "/dashboard/settings/roles"
           },
           {
-            cardName: "Manage Roles 2",
+            cardName: "User Accounts",
             cardDesc: "create, edit new role",
-            cardIcon: "fa fa-user-circle",
+            cardIcon: "bi bi-people",
             cardLink: "/dashboard/setting/roles"
           },
           {
-            cardName: "Manage Roles 3",
+            cardName: "Database Security",
             cardDesc: "create, edit new role",
-            cardIcon: "fa fa-user-circle",
+            cardIcon: "bi bi-database-lock",
             cardLink: "/dashboard/setting/roles"
           },
           {
-            cardName: "Manage Roles 4",
+            cardName: "Search Engine Optimization",
             cardDesc: "create, edit new role",
-            cardIcon: "fa fa-user-circle",
+            cardIcon: "bi bi-google",
             cardLink: "/dashboard/setting/roles"
           },
           {
-            cardName: "Manage Roles 5",
+            cardName: "Themes",
             cardDesc: "create, edit new role",
-            cardIcon: "fa fa-user-circle",
+            cardIcon: "bi bi-palette",
+            cardLink: "/dashboard/setting/roles"
+          },
+          {
+            cardName: "Comments",
+            cardDesc: "create, edit new role",
+            cardIcon: "bi bi-chat-square-heart",
+            cardLink: "/dashboard/setting/roles"
+          },
+          {
+            cardName: "API",
+            cardDesc: "create, edit new role",
+            cardIcon: "bi bi-code-square",
+            cardLink: "/dashboard/setting/roles"
+          },
+          {
+            cardName: "Webapp Menu",
+            cardDesc: "create, edit new role",
+            cardIcon: "bi bi-card-checklist",
             cardLink: "/dashboard/setting/roles"
           }
         ],

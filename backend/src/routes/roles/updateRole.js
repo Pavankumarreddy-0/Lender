@@ -12,7 +12,7 @@ export const updateRole = {
         const { authorization } = req.headers;
         const { _id,roleName,roleAccess } = req.body;
 
-        console.log(req.body);
+        // console.log(req.body);
 
         if (!authorization) {
             return res.status(401).json({ message: "No Authorization header sent." })

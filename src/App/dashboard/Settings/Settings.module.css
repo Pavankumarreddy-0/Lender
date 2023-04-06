@@ -36,7 +36,8 @@
 .roles_grids{
     display:grid;
     grid-template-columns: repeat(auto-fill, 300px);
-    gap: 10px 15px;
+    gap: 10px 10px;
+    justify-content: space-evenly;
 }
 
 
@@ -76,10 +77,12 @@
 .settingsTitle{
     color: #000;
     font-size: 14px;
+    font-weight: 600;
 }
 .settingsDescription{
-    color:#c2c2c2;
-    font-size:12px;
+    color: #000000;
+    font-size: 12px;
+    font-weight: 500;
 }
 
 .settings_Cards{

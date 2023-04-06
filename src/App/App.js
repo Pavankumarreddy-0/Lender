@@ -22,6 +22,16 @@ function App() {
             <Route path="/dashboard/" element={<DashboardHome />} exact></Route>
               <Route path="/dashboard/settings" element={<Settings />} exact>
               </Route>
+              <Route path="/dashboard/platform" element={<h1>Platform</h1>} exact>
+              </Route>
+              <Route path="/dashboard/crowdfunding" element={<h1>crowdfunding</h1>} exact>
+              </Route>
+              <Route path="/dashboard/community" element={<h1>community</h1>} exact>
+              </Route>
+              <Route path="/dashboard/everything" element={<h1>everything</h1>} exact>
+              </Route>
+              <Route path="/dashboard/investments" element={<h1>investments</h1>} exact>
+              </Route>
               <Route path="/dashboard/settings/roles" element={<RolesManagement />}>
                 </Route>
               <Route path="/dashboard/settings/create-role" element={<CreateRole />}>

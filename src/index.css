@@ -4,7 +4,10 @@
   --colorNeutralShadowKey: rgba(0,0,0,0.14);
   --search-border:#f1f1f1;
   --settings-box-shdw: rgba(0, 0, 0, 0.1) 0px 0px 6px;
-  --link-color: #0b4a99
+  --link-color: #0b4a99;
+  --accordBg: #0b4a9920;
+  --checkedBg: #0b4a99;
+  --accordTitleText: #0b4a99;
 }
 
 body,
@@ -31,4 +34,16 @@ a{
 
 .accordion-item {
   border-radius: 0px !important;
+}
+
+.form-check-input:checked {
+  background-color: var(--checkedBg);
+  border-color: var(--checkedBg);
+}
+.accordion-button:not(.collapsed){
+  background-color: var(--accordBg);
+  color:var(--accordTitleText);
+}
+.accordion-button:focus{
+  box-shadow: none;
 }

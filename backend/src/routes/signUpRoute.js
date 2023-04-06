@@ -31,7 +31,7 @@ export const signUpRoute = {
 
         const { insertedId } = result;
 
-        console.log(insertedId, process.env.JWT_SECRET);
+        // console.log(insertedId, process.env.JWT_SECRET);
 
         jwt.sign(
             {

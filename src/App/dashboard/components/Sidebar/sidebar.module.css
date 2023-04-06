@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 6px 3px;
+    padding: 0px 3px;
 }
 .iconsList:hover {
     background-color: #fafafa;
@@ -14,13 +14,49 @@
 .iconsList:hover i{
     color: var(--link-color);
 }
+
 .iconsDiv li i {
     display: block;
     font-size: 20px;
     color: #616161;
 }
 .iconsDiv span {
-    font-size: 10px;
-    line-break: anywhere;
+    font-size: 9px;
+    font-weight: 600;
+    line-break: normal;
     text-align: center;
+}
+.iconsListActive{
+    color: var(--link-color);
+    position: relative;
+    cursor: pointer;
+}
+.iconsListActive i{
+    color: var(--link-color) !important;
+}
+.iconsListActive:before{
+    content: "";
+    width: 2px;
+    height: calc(100% - 10px);
+    left: 1px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--link-color);
+    display: block;
+    position: absolute;
+}
+.iconsListActive:hover {
+    background-color: #fafafa;
+    color: #242424;
+    cursor: pointer;
+}
+.menuItemLink{
+    list-style-type: none;
+    width: 68px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 6px 3px;
+    text-decoration: none;
+    color: inherit;
 }
