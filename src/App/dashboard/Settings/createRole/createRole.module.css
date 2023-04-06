@@ -1,3 +1,120 @@
+
+
+.CreateRolesHeaderContainer{
+    background: #f7f7f7;
+    padding: 10px 20px;
+    display: flex;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.CreateRolesHeaderContainerRegion{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    flex-grow: 1;
+}
+
+.CreateRolesHeaderContainerLink{
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.CreateRolesHeaderContainerName{
+    margin: 0px;
+    font-size: 20px;
+}
+
+
+
+
 .createRoleModule{
+    /* border: 1px solid black; */
+    height: 500px;
+}
+
+.roleName__section{
+    /* border: 1px solid black; */
+    padding-left: 28px;
+    margin-top: 5px;
+}
+
+.roleName__label{
+    display: block;
+    font-weight: 500;
     
+}
+
+.roleName__input:focus{
+outline: none;
+}
+
+.roleName__input{
+    width: 20%;
+    padding: 3px;
+    border-radius: 5px;
+    outline: none;
+    border:1px solid #bbb;
+}
+
+.role__permission{
+    /* border: 2px solid black; */
+    height: 400px;
+    margin: 20px;
+}
+
+.role__permission__label{
+    display: block;
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.checkbox__permission{
+    border: 1px solid #ccc;
+    background: #f1f4f8;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+}
+
+.checkbox__style{
+    /* border: 1px solid black; */
+    display: flex;
+    flex-grow: 1;
+    min-height: 24px;
+    padding-left: 24px;
+    margin-bottom: 2px;
+    
+
+
+}
+
+.checkbox__button{
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: end;
+    margin: 20px 0px;
+    padding-right:7px ;
+}
+
+.style__button{
+    text-decoration: none;
+    display: flex;
+    gap: 5px;
+    background: var(--link-color);
+    color: #fff;
+    padding: 5px 7px;
+    font-size: 12px;
+    box-shadow: -1px 1px 5px rgba(0,0,0,.1);
+    border: none;
+    align-items: center;
+}
+
+.checkbox__label{
+    margin-left: 6px;
+    font-size: 14px;
 }
