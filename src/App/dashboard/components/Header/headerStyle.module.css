@@ -54,7 +54,7 @@
     box-shadow: 2px 2px 5px rgba(0,0,0,.1), -2px -2px 5px rgba(0,0,0,.1);
     padding: 10px 15px;
     min-width: 180px;
-    z-index: 99;
+    z-index: 999;
 }
 .headerRightProfileItem{
     position: relative;
