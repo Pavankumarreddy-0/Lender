@@ -49,12 +49,25 @@ export default function Header() {
                 <img className={headerStyles['headerRightUserImage']} src="/assets/img/user.png"></img>
               </a>
               {(headerData.profileDetailsMenu) ? <ul className={headerStyles['headerRightSubList']}>
-                <li className={headerStyles['headerRightProfileSubItem']}>
-                  <Link to="/dashboard/settings/profile">Manage Profile</Link>
-                </li>
-                <li className={headerStyles['headerRightProfileSubItem']}>
-                  <a onClick={()=>logoutUser()}>Logout</a>
-                </li>
+                <div className={headerStyles['headerSubProfileSection']} >
+                   
+                    <div className={headerStyles['headerSubProfileSectionBody']}>
+                      <div className={headerStyles['headerSubProfileImage']}>
+                        <img className={headerStyles['headerSubProfileImageLarge']} src="/assets/img/user.png"></img>
+                      </div>
+                      <div className={headerStyles['headerSubProfileListRight']}>
+                        <div className={headerStyles['headerSubProfileMeta']}>
+                            <p className={headerStyles['headerSubProfileMetaName']}>Abhishek</p>
+                        </div>
+                        <div className={headerStyles['headerRightProfileSubItem']}>
+                          <Link  className={headerStyles['headerRightProfileManageLink']} to="/dashboard/settings/profile">Manage Profile</Link>
+                        </div>
+                        <div className={headerStyles['headerRightProfileSubItem']}>
+                          <a onClick={()=>logoutUser()}  className={headerStyles['headerRightProfileManageLink']} >Logout</a>
+                        </div>
+                      </div>
+                    </div>
+                </div>
               </ul> : ""}
             </li>
           </ul>
