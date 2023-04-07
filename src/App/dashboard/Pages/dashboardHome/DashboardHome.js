@@ -6,16 +6,22 @@ import dashHomeStyle from './dashboardHome.module.css'
 export default function DashboardHome() {
 
 
+
   const options = {
     chart: {
         type: 'areaspline',
         margin: [0, 0, 0, 0],
         padding: [0, 0, 0, 0],
-        spacing:[10,0,0,0],
+        spacing:[0,0,0,0],
+        height: "300px",
+        style: {
+          maxHeight: "500px",
+          minHeight: "300px"
+        },
         backgroundColor: {
           linearGradient: [0, 0, 0, 500],
           stops: [
-              [0, 'rgb(234, 234, 238)'],
+              [0, 'rgb(255, 255, 255)'],
               [1, 'rgb(255, 255, 255)']
           ]
       },
@@ -24,11 +30,11 @@ export default function DashboardHome() {
         text: 'Investment Performance',
         align: 'left',
         x: 20,
-        y: 20,
+        y: 30,
         style: {
           fontFamily: "Montserrat",
           fontWeight: 700,
-          fontSize: "20px",
+          fontSize: "13px",
           margin: "10px",
           padding: "10px"
       }
@@ -41,19 +47,15 @@ export default function DashboardHome() {
       }
     },
     xAxis: {
-      plotBands: [{ // Highlight the two last years
-        from: 2019,
-        to: 2020,
-        color: 'rgba(68, 170, 213, .2)'
-      }],
-      title:{
-        text: "abc",
-        
-      },
-      tickWidth: 0,
-      minPadding: 0,
-      maxPadding: 0,
-      
+      type: '',
+      spacing: [0,0,0,0],
+      padding: [0,0,0,0],
+      margin: [0,0,0,0],
+      style:{
+        margin: "0px",
+        padding: "0px",
+        display: "none"
+      }
     },
     yAxis: {
       title: {
@@ -109,31 +111,32 @@ export default function DashboardHome() {
         marker: {
           enabled: true,
           symbol: "circle",
-          radius: 1
+          radius: 2
+        },
+        style:{
+          margin: [0, 0, 0, 0],
+          padding: [0, 0, 0, 0],
+          spacing:[10,0,0,0]
         },
         data:
             [
-                22534,
-                23599,
-                24533,
-                25195,
-                25896,
-                27635,
-                29173,
-                32646,
-                35686,
-                37709,
-                39143,
-                36829,
-                35031,
-                36202,
-                35140,
-                33718,
-                37773,
-                42556,
-                43820,
-                46445,
-                50048
+                ["06-03-2023",19534],
+                ["07-03-2023",22534],
+                ["08-03-2023",20534],
+                ["09-03-2023",21534],
+                ["10-03-2023",23534],
+                ["11-03-2023",24534],
+                ["12-03-2023",25534],
+                ["13-03-2023",26534],
+                ["14-03-2023",25534],
+                ["15-03-2023",27534],
+                ["16-03-2023",24534],
+                ["17-03-2023",23534],
+                ["18-03-2023",26534],
+                ["19-03-2023",27534],
+                ["20-03-2023",28534],
+                ["21-03-2023",31534],
+                ["22-03-2023",33534],
             ]
     }]
   }
@@ -202,8 +205,6 @@ export default function DashboardHome() {
         data: [{
             name: 'Retail',
             y: 70.67,
-            sliced: true,
-            selected: true
         }, {
             name: 'Hight Net Worth Individuals',
             y: 14.77
@@ -223,9 +224,12 @@ export default function DashboardHome() {
 const investorRegistrations = {
   chart: {
       type: 'areaspline',
-      margin: [0, 0, 30, 0],
+      margin: [0, 0, 60, 0],
       padding: [0, 0, 0, 0],
       spacing:[10,0,10,0],
+      style:{
+        borderRadius: "5px"
+      }
   },
   title: {
       text: 'Investor Registrations',
@@ -248,19 +252,8 @@ const investorRegistrations = {
     }
   },
   xAxis: {
-    
-    title:{
-      text: "abc",
-      plotBands: [{ // Highlight the two last years
-        from: 2019,
-        to: 2020,
-        color: 'rgba(68, 170, 213, .2)'
-      }]
-    },
-    tickWidth: 0,
-    minPadding: 0,
-    maxPadding: 0,
-    
+      // type: 'datetime',
+      type: 'category',
   },
   yAxis: {
     title: {
@@ -314,29 +307,14 @@ const investorRegistrations = {
         radius: 1
       },
       data:
-          [
-              22534,
-              23599,
-              24533,
-              25195,
-              25896,
-              27635,
-              29173,
-              32646,
-              35686,
-              37709,
-              39143,
-              36829,
-              35031,
-              36202,
-              35140,
-              33718,
-              37773,
-              42556,
-              43820,
-              46445,
-              50048
-          ]
+      [
+        ["22/22/22", 29.9],
+        ["70/22/22", 71.5],
+        ["80/22/22", 106.4],
+        ["90/22/22", 129.2]
+      ],
+      pointStart: Date.UTC(2010, 0, 1),
+      pointInterval: 3600 * 1000 // one hour
   }]
 }
 
@@ -356,6 +334,7 @@ const investorRegistrations = {
           highcharts={Highcharts}
           options={dashboardState.incomeInvestment }
         />
+        <div className={dashHomeStyle['dashHomeInvestAmountGreen']}>3000 GBP <i className="bi bi-arrow-up-circle"></i></div>
         <button className={dashHomeStyle['refreshDataButton']}><i class="bi bi-arrow-clockwise"></i> Refresh</button>
       </div>
       <div className={dashHomeStyle['dashHomeInvestmentCards']}>
@@ -374,18 +353,21 @@ const investorRegistrations = {
         }
       </div>
       <div className={dashHomeStyle['dashHomeDoubleChartSection']}>
+
         <div className={dashHomeStyle['dashHomeInvestorByCategory']}>
           <HighchartsReact
             highcharts={Highcharts}
             options={dashboardState.investorByCategory }
           />
         </div>
+
         <div className={dashHomeStyle['dashHomeInvestorRegistration']}>
         <HighchartsReact
           highcharts={Highcharts}
           options={dashboardState.investorRegistrations }
         />
         </div>
+
       </div>
     </div>
   )

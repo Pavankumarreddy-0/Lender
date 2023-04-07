@@ -3,7 +3,7 @@
     grid-template-columns: repeat(auto-fill, 300px);
     justify-content: space-evenly;
     gap: 10px 0px;
-    background: linear-gradient(to bottom, rgba(11,74,153,0.2), transparent);
+    background: linear-gradient(to bottom, var(--dashtint), transparent);
 }
 .dashHomeInvestmentCardSingle{
     border: 1px solid #ccc;
@@ -51,9 +51,13 @@
 }
 .dashHomeDoubleChartSection{
     display: flex;
-    padding: 10px 0px;
-    margin-top:20px;
-    /* padding-left: 20px; */
+    padding: 15px 15px;
+    margin-top: 20px;
+    background: #e7e6e6;
+    gap: 15px;
+    /* box-shadow: inset 0px 5px 3px rgba(0,0,0,.1); */
+    box-sizing: border-box;
+    align-items: stretch;
 }
 .dashHomeInvestorByCategory{
     flex-shrink:0;
@@ -69,6 +73,17 @@
     flex-grow: 1;   
 }
 .dashHomeInvestorByCategory > div{
-    box-shadow: 2px 2px 5px rgba(0,0,0,.1), 0px -2px 5px rgba(0,0,0,.1);
-    border-radius: 0px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #FFF;
+    display: flex;
+    align-items: center;
+}
+.dashHomeInvestAmountGreen{
+    position: absolute;
+    top: 40px;
+    left: 21px;
+    font-weight: 800;
+    font-size: 20px;
+    color: #0cbb4d;
 }

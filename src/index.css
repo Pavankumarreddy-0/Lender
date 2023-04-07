@@ -8,7 +8,24 @@
   --accordBg: #0b4a9920;
   --checkedBg: #0b4a99;
   --accordTitleText: #0b4a99;
+  --headerBg: #f7f7f7;
+  --dashtint: rgba(11,74,153,0.2);
 }
+
+/* :root{
+  
+  --body-background: #fff;
+  --shadow4: 0 0 2px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.14);
+  --colorNeutralShadowKey: rgba(0,0,0,0.14);
+  --search-border:#f1f1f1;
+  --settings-box-shdw: rgba(0, 0, 0, 0.1) 0px 0px 6px;
+  --link-color: rgb(67,143,254);
+  --accordBg: rgba(67,143,254,.20);
+  --checkedBg: rgb(67,143,254);
+  --accordTitleText: rgb(67,143,254);
+  --headerBg: rgba(67,143,254,.10);
+  --dashtint: rgb(67,143,254,.1);
+} */
 
 body,
 html {
