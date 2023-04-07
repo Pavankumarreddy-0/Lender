@@ -4,6 +4,7 @@
     justify-content: space-evenly;
     gap: 10px 0px;
     background: linear-gradient(to bottom, var(--dashtint), transparent);
+    margin-bottom: 20px;
 }
 .dashHomeInvestmentCardSingle{
     border: 1px solid #ccc;
@@ -52,13 +53,14 @@
 .dashHomeDoubleChartSection{
     display: flex;
     padding: 15px 15px;
-    margin-top: 20px;
     background: #e7e6e6;
     gap: 15px;
     /* box-shadow: inset 0px 5px 3px rgba(0,0,0,.1); */
     box-sizing: border-box;
     align-items: stretch;
 }
+
+
 .dashHomeInvestorByCategory{
     flex-shrink:0;
     max-width: 400px;
@@ -71,10 +73,11 @@
 }
 .dashHomeInvestorRegistration{
     flex-grow: 1;   
+    background: #fff;
+    border-radius: 5px;
 }
 .dashHomeInvestorByCategory > div{
     border-radius: 5px;
-    padding: 10px;
     background-color: #FFF;
     display: flex;
     align-items: center;
@@ -86,4 +89,66 @@
     font-weight: 800;
     font-size: 20px;
     color: #0cbb4d;
+}
+.dashHomeCustomerStats{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    align-items: stretch;
+}
+.dashHomeCustomerStats > div, .dashHomeDoubleOfferingChartSection > div, .dashHomeDoubleInvestmentSection > div{
+    flex: 1;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.dashHomeInvestmentChartZoomOutButton{
+    position: absolute;
+    top: 10px;
+    right: 100px;
+    border: none;
+    background: var(--link-color);
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    box-shadow: var(--shadow4);
+    z-index: 99;
+    cursor: pointer;
+}
+
+.dashHomeDoubleOfferingChartSection{
+    display: flex;
+    padding: 15px 20px;
+    padding-top: 0px;
+    background: #fff;
+    gap: 20px;
+    /* box-shadow: inset 0px 5px 3px rgba(0,0,0,.1); */
+    box-sizing: border-box;
+    align-items: stretch;
+}
+
+.dashHomeDoubleOfferingChartSection > .dashHomeOfferingByStatusPerformance{
+    flex: 2
+}
+
+.dashHomeDoubleOfferingChartSection > .dashHomOfferingByStaus{
+    flex: 2
+}
+
+.dashHomeDoubleInvestmentSection{
+    display: flex;
+    padding: 15px 20px;
+    padding-top: 0px;
+    background: #fff;
+    gap: 20px;
+    /* box-shadow: inset 0px 5px 3px rgba(0,0,0,.1); */
+    box-sizing: border-box;
+    align-items: stretch;
+}
+
+.dashHomeDoubleOfferingChartSection > .dashHomeAvgInvestment{
+    flex: 2
+}
+
+.dashHomeDoubleOfferingChartSection > .dashHomNumInvestment{
+    flex: 2
 }
