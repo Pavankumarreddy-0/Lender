@@ -1,11 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import headerStyles from './headerStyle.module.css';
 import { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
-
+import SideDrawer from '../SideDrawer/SideDrawer';
+import { webAppContext } from '../../../contexts/contexts';
 export default function Header() {
 
   const navigate = useNavigate();
+  const {__webAppSettings, __updateWebAppSettings} = useContext(webAppContext);
 
   const [headerData, setHeaderData] = useState({
     headerSearchText: "",
@@ -19,8 +21,10 @@ export default function Header() {
   }
 
   return (
+    <>
+    <SideDrawer webAppSettings={__webAppSettings} setWebSettings={__updateWebAppSettings}/> 
     <div className={headerStyles['headerOuter']}>
-        <div className={headerStyles['headerToggleMenu']}>
+        <div onClick={()=>__updateWebAppSettings({...__webAppSettings, enlargedMenu: true})} className={headerStyles['headerToggleMenu']}>
           <i class="bi bi-grid-3x3-gap-fill"></i>
         </div>
         <div className={headerStyles['headerIconRegion']}>
@@ -50,7 +54,7 @@ export default function Header() {
               </a>
               {(headerData.profileDetailsMenu) ? <ul className={headerStyles['headerRightSubList']}>
                 <div className={headerStyles['headerSubProfileSection']} >
-                   
+                  
                     <div className={headerStyles['headerSubProfileSectionBody']}>
                       <div className={headerStyles['headerSubProfileImage']}>
                         <img className={headerStyles['headerSubProfileImageLarge']} src="/assets/img/user.png"></img>
@@ -73,5 +77,6 @@ export default function Header() {
           </ul>
         </div>
     </div>
+    </>
   )
 }

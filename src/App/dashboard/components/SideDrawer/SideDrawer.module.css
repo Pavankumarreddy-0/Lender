@@ -1,0 +1,74 @@
+.SideDrawerContainer{
+    position: fixed;
+    z-index: 1028;
+    background-color: #fff;
+    max-width:320px;
+    width:300px;
+    height: 100%;
+    box-shadow: var(--shadow4);
+}
+
+.sideheaderIcon{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding:10px;
+}
+.SideDrawerLogo{
+    top: 15px;
+    width: 44px;
+    position: absolute;
+    right: 25px;
+}
+.sideheaderIcon i{
+    flex-grow:2;
+    font-size:15px;
+}
+.sideheaderIcon a{
+    flex:1;
+   
+}
+.threedots{
+    position: absolute;
+    left: 26px;
+    top: 10px;
+}
+
+.SideDrawerInner{
+    display: flex;
+    flex-direction: column;
+}
+
+.sideDrawerApps{
+
+}
+
+.SideDrawerAppHeader{
+
+}
+
+.SideDrawerAppssection{
+    display:grid;
+    grid-template-columns:auto auto;
+    gap:10px;
+    padding:10px;
+}
+
+.SideDrawerSubMenu{
+    font-size:12px;
+    font-weight: 500;
+}
+
+.SideDrawerSubMenu:hover{
+    background-color: #c2c2c2;
+    color:#024C9D;
+    box-shadow: var(--shadow4);
+}
+
+
+
+.sidetext{
+    font-weight: 600;
+    border-bottom: 1px solid #f1f1f1;
+    color: #024C9D;
+}
