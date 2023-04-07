@@ -5,7 +5,7 @@
     max-width:320px;
     width:300px;
     height: 100%;
-    box-shadow: var(--shadow4);
+    box-shadow: rgba(0, 0, 0, 0.22) 0px 25.6px 57.6px 0px, rgba(0, 0, 0, 0.18) 0px 4.8px 14.4px 0px;
     overflow-y: auto;
 }
 
@@ -66,9 +66,9 @@
 
 .SideDrawerAppssection{
     display: grid;
-    grid-template-columns: repeat(auto-fill, 120px);
+    grid-template-columns: repeat(auto-fill, 125px);
     gap: 5px 2px;
-    padding: 10px 5px;
+    padding: 10px;
     justify-content: start;
     align-items: center;
 }
@@ -97,4 +97,21 @@
     padding: 5px 15px;
     display: block;
     text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+}
+.SideDrawerMenuName{
+
+}
+
+.SideDrawerMenuForwardLink{
+    margin-right: 10px;
+    margin-left: 5px;
+    transition: .2s all ease-in-out;
+}
+
+.sidetext:hover .SideDrawerMenuForwardLink{
+    margin-right: 0px;
+    margin-left: 15px;
+    transition: .2s all ease-in-out;
 }

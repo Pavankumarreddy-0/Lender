@@ -8,6 +8,7 @@ export default function SideDrawer(props) {
     const SideD = [
         {
             menuName:"Platform",
+            menuIcon: "bi bi-columns",
             menuLink:"/",
             children:[
             {
@@ -38,7 +39,8 @@ export default function SideDrawer(props) {
            ]
         },
         {
-            menuName:"CrowdFunding",
+            menuName:"Crowd Funding",
+            menuIcon: "bi bi-stack",
             menuLink:"/",
             children:[
                 {
@@ -70,6 +72,7 @@ export default function SideDrawer(props) {
         },
         {
             menuName:"Community",
+            menuIcon: "bi bi-people",
             menuLink:"",
             children:[
                 {
@@ -101,7 +104,8 @@ export default function SideDrawer(props) {
             ]
         },
         {
-            menuName:"AutoInvesments",
+            menuName:"Auto Invesments",
+            menuIcon: "bi bi-cpu-fill",
             menuLink:"",
             children:[
                 {
@@ -129,6 +133,7 @@ export default function SideDrawer(props) {
         },
         {
             menuName:"Everything",
+            menuIcon: "bi bi-cpu-fill",
             menuLink:"/",
             children:[
                 {
@@ -181,6 +186,7 @@ export default function SideDrawer(props) {
         {
 
             menuName:"GDPR",
+            menuIcon: "bi bi-cpu-fill",
             menuLink:"/",
             children:[
                 {
@@ -213,7 +219,7 @@ export default function SideDrawer(props) {
             <div className={SideDrawerStyles["sideDrawerApps"]}>
                     {SideDrawerTxt.map((e) =>{
                         return  <div className={SideDrawerStyles['SideDrawerAppHeader']}>
-                                    <Link className={SideDrawerStyles['sidetext']} to={e.menuLink}>{e.menuName}</Link>
+                                    <Link className={SideDrawerStyles['sidetext']} to={e.menuLink}><div className={SideDrawerStyles["SideDrawerMenuName"]}><i className={e.menuIcon}></i> {e.menuName}</div> <div className={SideDrawerStyles["SideDrawerMenuForwardLink"]}><i class="bi bi-arrow-right"></i></div></Link>
                                     <div className={SideDrawerStyles['SideDrawerAppssection']}>
                                     { e.children.map((e) => {
                                             return <Link to={e.menuLink} className={SideDrawerStyles["SideDrawerSubMenu"]}>{e.submenu}</Link>
