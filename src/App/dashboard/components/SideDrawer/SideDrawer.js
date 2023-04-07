@@ -13,22 +13,27 @@ export default function SideDrawer(props) {
             {
                 submenu:"Finance",
                 subIcon:"",
+                menuLink:"/",
             },
             {
                 submenu:"System",
                 subIcon:"",
+                menuLink:"/",
             },
             {
                 submenu:"Logs",
                 subIcon:"",
+                menuLink:"/",
             },
             {
                 submenu:"Platfrom agreements",
                 subIcon:"",
+                menuLink:"/",
             },
             {
                 submenu:"Site request",
                 subIcon:"",
+                menuLink:"/",
             }
            ]
         },
@@ -38,23 +43,28 @@ export default function SideDrawer(props) {
             children:[
                 {
                     submenu:"Equity",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Donation",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Debt",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Allocated Intrest",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Offering agreements",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 }
             ]
         },
@@ -65,22 +75,27 @@ export default function SideDrawer(props) {
                 {
                     submenu:"Investors",
                     subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Fundraisers",
                     subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Referrals",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Registration request",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Authorized auditors",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 }
                 
             ]
@@ -91,19 +106,23 @@ export default function SideDrawer(props) {
             children:[
                 {
                     submenu:"Suggestions",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Assignments",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Auto investments",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Auto investment settings",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 }
                 
             ]
@@ -114,39 +133,48 @@ export default function SideDrawer(props) {
             children:[
                 {
                     submenu:"Users",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Secondary market",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Organization",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Offerings",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Investments",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Transactions",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Wallets",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Comments",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Annual limit excess",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 }
             ]
         },
@@ -157,11 +185,13 @@ export default function SideDrawer(props) {
             children:[
                 {
                     submenu:"Erasure request",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
                 {
                     submenu:"Settings",
-                    subIcon:""
+                    subIcon:"",
+                    menuLink:"/",
                 },
             ]
         }
@@ -177,16 +207,16 @@ export default function SideDrawer(props) {
     (webAppSettings.enlargedMenu) && <div className={SideDrawerStyles["SideDrawerContainer"]}>
         <div className={SideDrawerStyles["SideDrawerInner"]}>
             <div className={SideDrawerStyles["sideheaderIcon"]}>
-            <a href="javascript:void(0)" className={SideDrawerStyles['threedots']} onClick={()=>setWebSettings({...webAppSettings, enlargedMenu: false})} ><i class="bi bi-grid-3x3-gap"></i></a>
-            <Link><img src="assets/logo.gif" alt="PiLog Logo" className={SideDrawerStyles["SideDrawerLogo"]} /></Link>
+            <a href="javascript:void(0)" className={SideDrawerStyles['threedots']} onClick={()=>setWebSettings({...webAppSettings, enlargedMenu: false})} ><i class="bi bi-grid-3x3-gap-fill"></i></a>
+            <Link to="/"><img src="assets/logo.gif" alt="PiLog Logo" className={SideDrawerStyles["SideDrawerLogo"]} /></Link>
             </div>
             <div className={SideDrawerStyles["sideDrawerApps"]}>
                     {SideDrawerTxt.map((e) =>{
                         return  <div className={SideDrawerStyles['SideDrawerAppHeader']}>
-                                    <div className={SideDrawerStyles['sidetext']}>{e.menuName}</div>
+                                    <Link className={SideDrawerStyles['sidetext']} to={e.menuLink}>{e.menuName}</Link>
                                     <div className={SideDrawerStyles['SideDrawerAppssection']}>
                                     { e.children.map((e) => {
-                                            return <div className={SideDrawerStyles["SideDrawerSubMenu"]}>{e.submenu}</div>
+                                            return <Link to={e.menuLink} className={SideDrawerStyles["SideDrawerSubMenu"]}>{e.submenu}</Link>
                                     })}
                                     </div>
                                     </div>
