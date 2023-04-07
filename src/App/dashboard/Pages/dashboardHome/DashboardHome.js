@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import dashHomeStyle from './dashboardHome.module.css'
 
 export default function DashboardHome() {
 
-
+  
 
   const options = {
     chart: {
@@ -24,9 +24,7 @@ export default function DashboardHome() {
               fill: '#0b4a99',
               stroke: '#0b4a99',
               style:{
-                color: "white",
-                padding: "0px",
-                marginLeft: "-50px"
+                display: "none"
               },
               r: 0,
               states: {
@@ -951,6 +949,8 @@ const numbersOfInvestments =  {
   }]
 }
 
+  const chartComponent = useRef(null);
+
   const [dashboardState, setDashboardState] = useState({
     incomeInvestment: options,
     headerCards,
@@ -965,18 +965,25 @@ const numbersOfInvestments =  {
     numbersOfInvestments
   })
 
+  const resetZoom = () => {
+    if (chartComponent.current) {
+      chartComponent.current.chart.xAxis[0].setExtremes();
+      chartComponent.current.chart.yAxis[0].setExtremes();
+    }
+  };
+
 
 
   return (
     <div className={dashHomeStyle['dashHomeModule']}>
       <div className={dashHomeStyle['dashHomeInvestmentChart']}>
         <HighchartsReact
+          ref={chartComponent}
           highcharts={Highcharts}
           options={dashboardState.incomeInvestment }
         />
         <div className={dashHomeStyle['dashHomeInvestAmountGreen']}>3000 GBP <i className="bi bi-arrow-up-circle"></i></div>
-        <button className={dashHomeStyle['dashHomeInvestmentChartZoomOutButton']}> Zoom Out</button>
-        <button className={dashHomeStyle['refreshDataButton']}><i class="bi bi-arrow-clockwise"></i> Refresh</button>
+        <button onClick={()=>resetZoom()} className={dashHomeStyle['refreshDataButton']}><i class="bi bi-arrow-clockwise"></i> Reset</button>
       </div>
       <div className={dashHomeStyle['dashHomeInvestmentCards']}>
         {

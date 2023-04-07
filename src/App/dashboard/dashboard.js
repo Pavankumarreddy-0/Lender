@@ -22,9 +22,6 @@ export default function Dashboard() {
         
     }, [])
 
-    
-
-
 
     return (
         <div className={dashboardStyles['dashboard']}>
