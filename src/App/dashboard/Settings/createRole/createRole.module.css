@@ -118,3 +118,20 @@ outline: none;
     margin-left: 6px;
     font-size: 14px;
 }
+.roleManagementAccordian{
+
+}
+.role_privilage_section{
+
+}
+.role_privilage_sectionTitle{
+
+}
+.roleManagementAccordianBody{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 380px);
+    gap: 5px 10px;
+}
+.role_privilage_input{
+
+}

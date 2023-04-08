@@ -68,9 +68,6 @@ export default function DashboardHome() {
     },
     xAxis: {
       type: '',
-      spacing: [0,0,0,0],
-      padding: [0,0,0,0],
-      margin: [0,0,0,0],
       style:{
         display: "none"
       }

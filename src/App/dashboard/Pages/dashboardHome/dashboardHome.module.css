@@ -6,6 +6,9 @@
     background: linear-gradient(to bottom, var(--dashtint), transparent);
     margin-bottom: 20px;
 }
+.dashHomeInvestmentChart{
+    position: relative;
+}
 .dashHomeInvestmentCardSingle{
     border: 1px solid #ccc;
     padding: 10px 20px;
@@ -47,7 +50,7 @@
     padding: 5px 10px;
     font-size: 12px;
     box-shadow: var(--shadow4);
-    z-index: 99;
+    z-index: 50;
     cursor: pointer;
 }
 .dashHomeDoubleChartSection{

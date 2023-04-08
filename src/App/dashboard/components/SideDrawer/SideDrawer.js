@@ -210,11 +210,15 @@ export default function SideDrawer(props) {
     },[webAppSettings.enlargedMenu])
 
   return (
-    (webAppSettings.enlargedMenu) && <div className={SideDrawerStyles["SideDrawerContainer"]}>
+    <>
+    {(webAppSettings.enlargedMenu) && 
+    <>
+    <div className={SideDrawerStyles["SideDrawerBackdrop"]} onClick={()=>setWebSettings({...webAppSettings, enlargedMenu: false})} ></div>
+    <div className={SideDrawerStyles["SideDrawerContainer"]}>
         <div className={SideDrawerStyles["SideDrawerInner"]}>
             <div className={SideDrawerStyles["sideheaderIcon"]}>
             <a href="javascript:void(0)" className={SideDrawerStyles['threedots']} onClick={()=>setWebSettings({...webAppSettings, enlargedMenu: false})} ><i class="bi bi-grid-3x3-gap-fill"></i></a>
-            <Link to="/"><img src="assets/logo.gif" alt="PiLog Logo" className={SideDrawerStyles["SideDrawerLogo"]} /></Link>
+            <Link to="/"><img src="/assets/logo.gif" alt="PiLog Logo" className={SideDrawerStyles["SideDrawerLogo"]} /></Link>
             </div>
             <div className={SideDrawerStyles["sideDrawerApps"]}>
                     {SideDrawerTxt.map((e) =>{
@@ -230,5 +234,8 @@ export default function SideDrawer(props) {
             </div>
         </div>
     </div>
+    </>}
+
+    </>
   )
 }

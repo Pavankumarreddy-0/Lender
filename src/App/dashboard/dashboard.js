@@ -7,6 +7,7 @@ import { Outlet } from 'react-router';
 import dashboardStyles from './dashboard.module.css';
 import Header from './components/Header/header';
 import Sidebar from './components/Sidebar/Sidebar';
+import DashboardNotification from './components/dashboardNotification/DashboardNotification';
 
 export default function Dashboard() {
 
@@ -19,7 +20,7 @@ export default function Dashboard() {
     })
 
     useEffect(() => {
-        
+        console.log(user);
     }, [])
 
 
@@ -34,6 +35,16 @@ export default function Dashboard() {
                 </div>
                 <div className={dashboardStyles['dashboardOutlet']}>
                     <div className={dashboardStyles['dashboardOutletInner']}>
+                        {
+                            ( ! user.isEmailVerified ) &&
+                            <>
+                                <DashboardNotification 
+                                    notiText="Your account email is not verified. Please verify your account."
+                                    notiType="Error"
+                                    notiIcon="bi bi-envelope-exclamation"
+                                ></DashboardNotification>
+                            </>
+                        }
                         <Outlet></Outlet>
                     </div>
                 </div>
