@@ -38,7 +38,7 @@ export default function Sidebar() {
       {
         url: "/dashboard/everything",
         icon:"bi bi-cpu-fill",
-        name: "Everything"
+        name: "Everything2"
       },
       
     ]
@@ -59,17 +59,9 @@ export default function Sidebar() {
           menuitems.menuitems.map((e)=>{
 
             return (e.url == "/dashboard")?
-            <>
-
-                 <li className={ ( window.location.href.replace(window.location.host,"").replace("http://","").replace("https://","")== e.url) ? sidebarStyles['iconsListActive'] : sidebarStyles['iconsList']}><Link className={sidebarStyles['menuItemLink']} to={e.url}> <i className={e.icon}></i><span>{e.name}</span> </Link></li>
-            </>
+              <li key={e.name} className={ ( window.location.href.replace(window.location.host,"").replace("http://","").replace("https://","")== e.url) ? sidebarStyles['iconsListActive'] : sidebarStyles['iconsList']}><Link className={sidebarStyles['menuItemLink']} to={e.url}> <i className={e.icon}></i><span>{e.name}</span> </Link></li>
             :
-            <>
-                 <li className={ (window.location.href.indexOf(e.url) != -1) ? sidebarStyles['iconsListActive'] : sidebarStyles['iconsList']}><Link className={sidebarStyles['menuItemLink']} to={e.url}> <i className={e.icon}></i><span>{e.name}</span> </Link></li>
-            </>
-
-            
-              
+              <li key={e.name} className={ (window.location.href.indexOf(e.url) != -1) ? sidebarStyles['iconsListActive'] : sidebarStyles['iconsList']}><Link className={sidebarStyles['menuItemLink']} to={e.url}> <i className={e.icon}></i><span>{e.name}</span> </Link></li>    
           })
         }
       </div>

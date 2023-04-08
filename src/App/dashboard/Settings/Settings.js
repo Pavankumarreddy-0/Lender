@@ -76,12 +76,12 @@ export default function Settings() {
     <div className='settingsContainer'>
       <div className={SettingsStyles['settingsHeaderContainer']}>
         <div className={SettingsStyles['settingsTitleRegion']}>
-          <Link className={SettingsStyles['settingsBackLink']} to="/dashboard"><i class="bi bi-arrow-left"></i> Home</Link>
+          <Link className={SettingsStyles['settingsBackLink']} to="/dashboard"><i className="bi bi-arrow-left"></i> Home</Link>
           <p className={SettingsStyles['settingsTitleName']}>Settings</p>
         </div>
         <div className={SettingsStyles['searchHeader']}>
           <div className={SettingsStyles['searchHeaderInner']}>
-            <i class="bi bi-search"></i>
+            <i className="bi bi-search"></i>
             <input onChange={(e)=>{SetTiles({...Tiles, inputSearch: e.target.value})}} type="search" id="SettingsSearch" placeholder='Search Settings Options' />
           </div>
         </div>
@@ -93,7 +93,7 @@ export default function Settings() {
             <Link to={e.cardLink} className={SettingsStyles['settingRolesLink']}>
             <div className={SettingsStyles['settings']}>
                 <div className={SettingsStyles['settingsIcon']}>
-                <i class={e.cardIcon}  aria-hidden="true"></i>
+                <i className={e.cardIcon}  aria-hidden="true"></i>
                 </div>
                   <div className={SettingsStyles['settingContent']}>
                     <div className={SettingsStyles['settingsTitle']}>{e.cardName}</div>

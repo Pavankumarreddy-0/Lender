@@ -37,7 +37,7 @@ export default function DashboardNotification(props) {
         {notiState.message}
       </div>
       <div className={dashNotiStyle["notificationCloseBtn"]}>
-        <a href='javascript:void(0);' onClick={()=>hideNotification()}><i class="bi bi-x-circle-fill"></i></a>
+        <a href='javascript:void(0);' onClick={()=>hideNotification()}><i className="bi bi-x-circle-fill"></i></a>
       </div>
     </div>
   )

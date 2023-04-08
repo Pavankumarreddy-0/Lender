@@ -25,14 +25,14 @@ export default function Header() {
     <SideDrawer webAppSettings={__webAppSettings} setWebSettings={__updateWebAppSettings}/> 
     <div className={headerStyles['headerOuter']}>
         <div onClick={()=>__updateWebAppSettings({...__webAppSettings, enlargedMenu: true})} className={headerStyles['headerToggleMenu']}>
-          <i class="bi bi-grid-3x3-gap-fill"></i>
+          <i className="bi bi-grid-3x3-gap-fill"></i>
         </div>
         <div className={headerStyles['headerIconRegion']}>
            <img className={headerStyles['headerLogoImage']} src='/assets/logo.gif'/>
         </div>
         <div className={headerStyles['headerSerachRegion']}>
           <div className={headerStyles['headerSearchRegionInner']}>
-            <i class="bi bi-search"></i>
+            <i className="bi bi-search"></i>
             <input className={headerStyles['headerSerachRegionInput']} type='text' value={headerData.headerSearchText} onChange={(e)=>{ setHeaderData({...headerData, headerSearchText: e.target.value}) }}></input>
           </div>
         </div>
@@ -40,12 +40,12 @@ export default function Header() {
           <ul className={headerStyles['headerRightIconsList']}>
             <li className={headerStyles['headerRightIconsItem']}>
               <Link to="/dashboard/settings">
-                <i class="bi bi-gear"></i>
+                <i className="bi bi-gear"></i>
               </Link>
             </li>
             <li className={headerStyles['headerRightIconsItem']}>
               <Link to="/dashboard/faq">
-                <i class="bi bi-question"></i>
+                <i className="bi bi-question"></i>
               </Link>
             </li>
             <li className={headerStyles['headerRightProfileItem']}>

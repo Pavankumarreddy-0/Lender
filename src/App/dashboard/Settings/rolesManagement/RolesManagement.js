@@ -35,11 +35,11 @@ export default function RolesManagement() {
     <div className={rolesStyles['rolesManageMentHeader']}>
       <div className={rolesStyles['rolesHeaderContainer']}>
         <div className={rolesStyles['rolesTitleRegion']}>
-          <Link className={rolesStyles['rolesBackLink']} to="/dashboard/settings"><i class="bi bi-arrow-left"></i> Settings</Link>
+          <Link className={rolesStyles['rolesBackLink']} to="/dashboard/settings"><i className="bi bi-arrow-left"></i> Settings</Link>
           <p className={rolesStyles['rolesTitleName']}>Roles Management</p>
         </div>
         <div className={rolesStyles['roleManageHeader']}>
-            <Link className={rolesStyles['createNewRoleButton']} to="/dashboard/settings/create-role"><i class="bi bi-plus-square"></i>Create New Role</Link>
+            <Link className={rolesStyles['createNewRoleButton']} to="/dashboard/settings/create-role"><i className="bi bi-plus-square"></i>Create New Role</Link>
           
         </div>
       </div>

@@ -980,12 +980,12 @@ const numbersOfInvestments =  {
           options={dashboardState.incomeInvestment }
         />
         <div className={dashHomeStyle['dashHomeInvestAmountGreen']}>3000 GBP <i className="bi bi-arrow-up-circle"></i></div>
-        <button onClick={()=>resetZoom()} className={dashHomeStyle['refreshDataButton']}><i class="bi bi-arrow-clockwise"></i> Reset</button>
+        <button onClick={()=>resetZoom()} className={dashHomeStyle['refreshDataButton']}><i className="bi bi-arrow-clockwise"></i> Reset</button>
       </div>
       <div className={dashHomeStyle['dashHomeInvestmentCards']}>
         {
           dashboardState.headerCards.map((e)=>{
-            return <div className={dashHomeStyle['dashHomeInvestmentCardSingle']}>
+            return <div key={e.title} className={dashHomeStyle['dashHomeInvestmentCardSingle']}>
               <div className={dashHomeStyle['dashHomeCardIcon']}>
                   <i className={e.icon}></i>
               </div>
