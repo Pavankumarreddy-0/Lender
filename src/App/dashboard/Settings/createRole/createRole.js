@@ -1447,9 +1447,9 @@ export default function CreateRole() {
           Page accessibility:
         </label>
         <div className={createRoleStyle["checkbox__permission"]}>
-          {generateAccess(createRole.pages).map((e) => {
+          {generateAccess(createRole.pages).map((e,i) => {
             return (
-              <div className={createRoleStyle["checkbox__style"]}>
+              <div key={e[0] + "-" + i} className={createRoleStyle["checkbox__style"]}>
                 <input
                   id={e[0]}
                   data-privilage={e[0]}
@@ -1457,6 +1457,7 @@ export default function CreateRole() {
                   onClick={(e) => {
                     updateRole(e);
                   }}
+                  onChange={()=>{}}
                   value="createRole"
                   type="checkbox"
                   name={e[0]}
@@ -1464,7 +1465,7 @@ export default function CreateRole() {
                 />
                 <label
                   className={createRoleStyle["checkbox__label"]}
-                  for={e[0]}
+                  htmlFor={e[0]}
                 >
                   {e[0]}
                 </label>
@@ -1474,14 +1475,13 @@ export default function CreateRole() {
         </div>
         <div className={createRoleStyle["role_privilages"]}>
           <label className={createRoleStyle["role__permission__label"]}>
-            {" "}
             Permissions:
           </label>
           <div className={createRoleStyle["role_privilages_inner"]}>
-          <Accordion defaultActiveKey="0">
+          
             {generateAccess(createRole.privilages).map((e) => {
               return (
-                
+                <Accordion key={e[0]} defaultActiveKey={e[0]}>
                   <Accordion.Item
                     className={createRoleStyle["role_privilage_section"]}
                     eventKey={e[0].sectionName}
@@ -1494,10 +1494,10 @@ export default function CreateRole() {
                     <Accordion.Body
                       className={createRoleStyle["roleManagementAccordianBody"]}
                     >
-                      {e[1].childrens.map((es) => {
+                      {e[1].childrens.map((es,i) => {
                         return (
                           <div
-                            key={es.privilageComparator}
+                            key={e[0] + "-" + es.privilageComparator + "-" + i}
                             className={createRoleStyle["role_privilage_input"]}
                           >
                             <div className={createRoleStyle["checkbox__style"]}>
@@ -1515,13 +1515,13 @@ export default function CreateRole() {
                                     ? "checked"
                                     : ""
                                 }
+                                onChange={()=>{}}
                                 onClick={(e) => updatePrivilage(e)}
                               />
                               <label
                                 className={createRoleStyle["checkbox__label"]}
-                                for={e[0] + "-" + es.privilageName}
+                                htmlFor={e[0] + "-" + es.privilageName}
                               >
-                                {" "}
                                 {es.privilageName}
                               </label>
                             </div>
@@ -1530,10 +1530,10 @@ export default function CreateRole() {
                       })}
                     </Accordion.Body>
                   </Accordion.Item>
-                
+                </Accordion>
               );
             })}
-            </Accordion>
+            
           </div>
         </div>
         <div className={createRoleStyle["checkbox__button"]}>
