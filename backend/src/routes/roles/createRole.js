@@ -4,12 +4,12 @@ import jwt from 'jsonwebtoken';
 
 export const createRoles = {
     path: '/api/create-role/',
-    method: 'post',
+    method: 'put',
     handler: async (req, res) => {
 
         //get auth header from client
         const { authorization } = req.headers;
-        const { roleName,roleAccess } = req.body;
+        const { roleName,roleAccess, rolePermission } = req.body;
 
         if (!authorization) {
             return res.status(401).json({ message: "No Authorization header sent." })
@@ -28,7 +28,8 @@ export const createRoles = {
                 // const result = await db.collection("roles").find({}).toArray();
                 const result = await db.collection('roles').insertOne({
                     roleName,
-                    roleAccess
+                    roleAccess,
+                    rolePermission
                 })
 
                 res.status(200).json({ message: "Role Created", result })

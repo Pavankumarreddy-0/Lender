@@ -3,10 +3,12 @@ import { set, get, isEqual, create } from "lodash";
 import { Link } from "react-router-dom";
 import createRoleStyle from "./createRole.module.css";
 import Accordion from "react-bootstrap/Accordion";
+import axios from 'axios';
 
 export default function CreateRole() {
   const [createRole, setCreateRole] = useState({
     roleName: "",
+    savingProgress: false,
     pages: {
       dashboard: true,
       platform: true,
@@ -1378,6 +1380,7 @@ export default function CreateRole() {
         ],
       },
     },
+    errors: []
   });
 
   const generateAccess = (roles) => {
@@ -1410,6 +1413,38 @@ export default function CreateRole() {
     let newPropState = set({ ...createRole }, formattingString, newPrivilage);
     setCreateRole(newPropState);
   };
+
+  const crateNewRole = async () => {
+
+    setCreateRole({...createRole, savingProgress: true, errors: []});
+
+      if(createRole.savingProgress){
+          alert("Please wait the request is already going on.")
+          return;
+      }
+
+      // if()
+      // setSaveState({...saveState,  errors: [...saveState.errors, "Please Select at least one option"]});
+
+      await axios.put('/api/create-role',{
+        roleName: createRole.roleName,
+        roleAccess: createRole.pages,
+        rolePermission: createRole.permissions
+      },{
+          headers: { authorization: `Bearer ${ localStorage.getItem("token") }` }
+      }).then(response=>{
+
+          console.log(response)
+          setCreateRole({...createRole, savingProgress: false, errors: []});
+
+      }).catch(err => {
+          alert("Unable to create, please try again.");
+          setCreateRole({...createRole, savingProgress: false, errors: [...createRole.errors, err.messgae]});
+
+      })
+  
+  }
+
 
   return (
     <div className={createRoleStyle["createRoleModule"]}>
@@ -1478,13 +1513,14 @@ export default function CreateRole() {
             Permissions:
           </label>
           <div className={createRoleStyle["role_privilages_inner"]}>
-          
-            {generateAccess(createRole.privilages).map((e) => {
+          <Accordion defaultActiveKey="0">
+            {generateAccess(createRole.privilages).map((e,i) => {
               return (
-                <Accordion key={e[0]} defaultActiveKey={e[0]}>
+                
                   <Accordion.Item
                     className={createRoleStyle["role_privilage_section"]}
-                    eventKey={e[0].sectionName}
+                    eventKey={i}
+                    key={e[0]} 
                   >
                     <Accordion.Header
                       className={createRoleStyle["role_privilage_sectionTitle"]}
@@ -1530,14 +1566,14 @@ export default function CreateRole() {
                       })}
                     </Accordion.Body>
                   </Accordion.Item>
-                </Accordion>
+                
               );
             })}
-            
+            </Accordion>
           </div>
         </div>
         <div className={createRoleStyle["checkbox__button"]}>
-          <button className={createRoleStyle["style__button"]}>
+          <button onClick={()=>crateNewRole()} className={createRoleStyle["style__button"]}>
             <i className="bi bi-plus-circle"></i>Create Role
           </button>
         </div>
