@@ -64,3 +64,15 @@ a{
 .accordion-button:focus{
   box-shadow: none;
 }
+
+.placeholder-glow .placeholder{
+  animation: placeholder-glow 2s ease-in-out infinite;
+  background: #c2bfbf;
+  cursor: wait;
+}
+
+@keyframes placeholder-glow {
+  50% {
+    opacity: .2;
+  }
+}

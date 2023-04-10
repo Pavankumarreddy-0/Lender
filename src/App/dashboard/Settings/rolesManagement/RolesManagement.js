@@ -45,13 +45,52 @@ export default function RolesManagement() {
       </div>
       <div className={rolesStyles['roleManagementList']}>
         <div className={rolesStyles['roleManagementListInner']}>
-        <Accordion defaultActiveKey={['0']} alwaysOpen>
           {
-            roleManagement.map((e)=>{
-              return <RoleDetailsAccordian roledata={e} key={e._id}/>
-            })
+          (roleManagement.length > 0) ?
+            <Accordion defaultActiveKey={['0']} alwaysOpen>
+            {
+              roleManagement.map((e)=>{
+                return <RoleDetailsAccordian roledata={e} key={e._id}/>
+              })
+            }
+            </Accordion>
+            :
+            <>
+              <div className='accordian placeholder-glow'>
+                <div className='accordion-item'>
+                  <h2 className='accordion-header'>
+                    <button type="button" aria-expanded="false" class="accordion-button collapsed "><span class="placeholder col-4">&nbsp;</span></button>
+                  </h2>
+                </div>
+                <div className='accordion-item'>
+                  <h2 className='accordion-header'>
+                    <button type="button" aria-expanded="false" class="accordion-button collapsed "><span class="placeholder col-4">&nbsp;</span></button>
+                  </h2>
+                </div>
+                <div className='accordion-item'>
+                  <h2 className='accordion-header'>
+                    <button type="button" aria-expanded="false" class="accordion-button collapsed "><span class="placeholder col-4">&nbsp;</span></button>
+                  </h2>
+                </div>
+                <div className='accordion-item'>
+                  <h2 className='accordion-header'>
+                    <button type="button" aria-expanded="false" class="accordion-button collapsed "><span class="placeholder col-4">&nbsp;</span></button>
+                  </h2>
+                </div>
+                <div className='accordion-item'>
+                  <h2 className='accordion-header'>
+                    <button type="button" aria-expanded="false" class="accordion-button collapsed "><span class="placeholder col-4">&nbsp;</span></button>
+                  </h2>
+                </div>
+                <div className='accordion-item'>
+                  <h2 className='accordion-header'>
+                    <button type="button" aria-expanded="false" class="accordion-button collapsed "><span class="placeholder col-4">&nbsp;</span></button>
+                  </h2>
+                </div>
+              </div>
+            </>
           }
-          </Accordion>
+          
         </div>
       </div>
     </div>

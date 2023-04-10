@@ -10,12 +10,12 @@ export default function CreateRole() {
     roleName: "",
     savingProgress: false,
     pages: {
-      dashboard: true,
-      platform: true,
-      crowdFunding: true,
-      community: true,
-      everything: true,
-      investment: true,
+      "Dashboard": true,
+      "Platform": true,
+      "Crowd Funding": true,
+      "Community": true,
+      "Everything": true,
+      "Investment": true,
     },
     permissions: {
       ActivityLogs: 0,
@@ -1452,12 +1452,12 @@ export default function CreateRole() {
         <div className={createRoleStyle["CreateRolesHeaderContainerRegion"]}>
           <Link
             className={createRoleStyle["CreateRolesHeaderContainerLink"]}
-            to="/dashboard/settings"
+            to="/dashboard/settings/roles"
           >
-            <i className="bi bi-arrow-left"></i> Settings
+            <i className="bi bi-arrow-left"></i> Roles Management
           </Link>
           <p className={createRoleStyle["CreateRolesHeaderContainerName"]}>
-            Roles Management
+            Create New Role
           </p>
         </div>
       </div>

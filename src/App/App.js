@@ -9,6 +9,8 @@ import Settings from './dashboard/Settings/Settings';
 import RolesManagement from './dashboard/Settings/rolesManagement/RolesManagement';
 import DashboardHome from './dashboard/Pages/dashboardHome/DashboardHome';
 import CreateRole from './dashboard/Settings/createRole/createRole';
+import CreateOrganisation from './dashboard/Pages/Organisations/CreateOrganisation/createOrganisation';
+import OrganizationHomepage from './dashboard/Pages/Organisations/organizationHomepage/organizationHomepage';
 function App() {
   return (
     <div className="App">
@@ -27,6 +29,10 @@ function App() {
               <Route path="/dashboard/crowdfunding" element={<h1>crowdfunding</h1>} exact>
               </Route>
               <Route path="/dashboard/community" element={<h1>community</h1>} exact>
+              </Route>
+              <Route path="/dashboard/community/organizations/" element={<OrganizationHomepage/>} exact>
+              </Route>
+              <Route path="/dashboard/community/organizations/create" element={<CreateOrganisation/>} exact>
               </Route>
               <Route path="/dashboard/everything" element={<h1>everything</h1>} exact>
               </Route>

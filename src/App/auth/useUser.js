@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useToken } from "./useToken";
+import { useNavigate } from "react-router-dom";
 
 export const useUser = () => {
     const [token] = useToken();
+    const navigate = useNavigate();
 
 
     const getPayloadFromToken = token => {
@@ -22,6 +24,13 @@ export const useUser = () => {
             setUser(null)
         } else {
             let __userData = getPayloadFromToken(token);
+
+            if (Date.now() >= __userData.exp * 1000) {
+                localStorage.removeItem("token");
+                navigate('/dashboard');
+                return;
+            }
+
             setUser(__userData);
         }
     }, [token]);
