@@ -29,20 +29,20 @@ export const createOrganization = {
                 // const result = await db.collection("roles").find({}).toArray();
                 const result = await db.collection('person').insertOne({
                     ...contactPoint,
-                    createdBy: _id
+                    createdBy: ObjectId(_id)
                 })
 
                 const result2 = await db.collection('organization').insertOne({
                     ...organizationDetails,
-                    createdBy: _id,
-                    contactPoint: result.insertedId.toString()
+                    createdBy: ObjectId(_id),
+                    contactPoint: result.insertedId
                 })
 
                 const result3 = await db.collection("person").findOneAndUpdate(
                     {
                         "_id": ObjectId(result.insertedId)
                     },
-                    { $set: { organization: result2.insertedId.toString() } },
+                    { $set: { organization: result2.insertedId } },
                     { returnOriginal: true }
                 );
 
