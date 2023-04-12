@@ -4,6 +4,8 @@ import { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import SideDrawer from '../SideDrawer/SideDrawer';
 import { webAppContext } from '../../../contexts/contexts';
+
+
 export default function Header() {
 
   const navigate = useNavigate();
@@ -26,7 +28,7 @@ export default function Header() {
     <div className={headerStyles['headerOuter']}>
         <div onClick={()=>__updateWebAppSettings({...__webAppSettings, enlargedMenu: true})} className={headerStyles['headerToggleMenu']}>
           <i className="bi bi-grid-3x3-gap-fill"></i>
-        </div>
+        </d  iv>
         <div className={headerStyles['headerIconRegion']}>
            <img className={headerStyles['headerLogoImage']} src='/assets/logo.gif'/>
         </div>
