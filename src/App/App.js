@@ -11,6 +11,7 @@ import DashboardHome from './dashboard/Pages/dashboardHome/DashboardHome';
 import CreateRole from './dashboard/Settings/createRole/createRole';
 import CreateOrganisation from './dashboard/Pages/Organisations/CreateOrganisation/createOrganisation';
 import OrganizationHomepage from './dashboard/Pages/Organisations/organizationHomepage/organizationHomepage';
+import RobotsTxt from './dashboard/Settings/seo/Robots_txt/RobotsTxt';
 import ViewPage from './dashboard/components/OrganizationViews/ViewPage/ViewPage';
 import BasicInfo from './dashboard/components/OrganizationViews/BasicInfo';
 
@@ -68,6 +69,9 @@ function App() {
               <Route path="/dashboard/settings/roles" element={<RolesManagement />}>
                 </Route>
               <Route path="/dashboard/settings/create-role" element={<CreateRole />}>
+              </Route>
+
+              <Route path="/dashboard/settings/seo/robots-txt" element={<RobotsTxt />}>
               </Route>
             </Route>
           </Route>
