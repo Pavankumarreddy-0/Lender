@@ -82,6 +82,16 @@ a{
   display: none !important;
 }
 
+td.columnResizer {
+  border: none;
+  padding: 0px 3px !important;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+thead .columnResizer{
+  border-bottom: 0px solid transparent !important;
+}
+
 @keyframes placeholder-glow {
   50% {
     opacity: .2;
