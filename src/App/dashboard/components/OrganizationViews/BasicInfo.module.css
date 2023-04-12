@@ -1,0 +1,91 @@
+.card-Binfo{
+    flex-grow:1;
+}
+.BasicCardMain{
+    padding:10px;
+    overflow-y:auto;
+}
+
+.headingSection_info{
+    border-bottom:1px solid #e7e7e7;
+}
+.headingSection_info span{
+    font-size:20px;
+    font-weight:600;
+}
+.basic_info-inner{
+    margin-top:10px;
+}
+
+.basic-info_inputs{
+    display:grid;
+    grid-template-columns:auto auto;
+    gap:10px;
+}
+
+.basic-info_innerHeading{
+    margin-top:10px;
+    margin-bottom:8px;
+    border-bottom:1px solid #e7e7e7;
+}
+.basic-info_innerHeading span{
+    font-weight:500;
+
+}
+
+.Inputs_basic-info{
+    width: 100%;
+    height: 38px;
+    outline:none;
+    border:1px solid #000;
+    background-color: var();
+    /* border-radius: px; */
+    padding:10px;
+}
+.basic-info-btn{
+    border: 2px solid var(--btn-color);
+    padding: 4px 5px;
+    border-radius: 7px;
+    background: var(--btn-color);
+    color: white;
+}
+
+
+.basic-info-btn:is(:focus,:hover){
+    background-color: red;
+}
+
+.basic_info-button{
+    display:flex;
+    justify-content: end;
+    margin-top:10px;
+}
+.basic-info_name{
+
+}
+
+.basic-info_companyName{
+
+}
+
+.basic-info_OrganisationI{
+
+}
+
+
+.basic-info_OrganisationE{
+
+}
+
+.basic-info_OrganisationP{
+
+}
+
+.basic-info_OrganisationWeb{
+
+}
+
+.LabelClass{
+    display:block;
+    font-weight: 500;
+}
