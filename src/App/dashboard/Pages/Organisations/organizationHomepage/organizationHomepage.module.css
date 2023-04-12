@@ -294,18 +294,30 @@
 .dataModuleFilterInputGroupFlexEnd{
     padding: 5px 0px;
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
+    flex-direction: row-reverse;
 }
 .dataModuleNoResults{
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    color: #457db9;
-    background-color: #cce5ff;
+    color: #777;
+    background-color: #f7f7f7;
     padding: 10px 20px;
-    border: 1px solid #b8daff;
-
+    border: 1px solid #e7e7e7;
+    font-size: 12px;
+}
+.dataModuleFilterResetButton{
+    text-decoration: none;
+    display: flex;
+    gap: 5px;
+    background: #e7e7e7;
+    color: black;
+    padding: 5px 7px;
+    font-size: 12px;
+    box-shadow: -1px 1px 5px rgba(0,0,0,.1);
+    border: none;
 }
 @keyframes slideInLeft{
     0% {

@@ -21,7 +21,8 @@ export default function OrganizationHomepage() {
         typeOption: "",
         kybStaus: "",
         customRange: false,
-        filterOn: false
+        filterOn: false,
+        loadData: true
     }) 
 
     const sortTableDirection = (e) => {
@@ -75,16 +76,12 @@ export default function OrganizationHomepage() {
     const generateFilterMatchesSchema = async () => {
         // if(dataTable.filterOn){
             let matches = {};
-            let dateFilter = {}
+            let dateFilter = {};
+            let searchQuery = "";
 
-            //TODO solve the date end issue
             if(dataTable.customRange){
                 let newTime = dateRange[0].startDate;
                 newTime.setTime(dateRange[0].startDate.getTime());
-                // matches.createdAt = {
-                //     $lt: dateRange[0].endDate ,
-                //     $gte: newTime
-                // }
                 dateFilter.lt = dateRange[0].endDate;
                 dateFilter.gte = newTime
                 console.log("updated date", newTime)
@@ -100,22 +97,21 @@ export default function OrganizationHomepage() {
             }
 
            
-            // if(dataTable.filterSearch.length > 0){
-
-            // }
-            console.log(matches);
-            return {matches, dateFilter};
+            if(dataTable.filterSearch.length > 0){
+                searchQuery = dataTable.filterSearch;
+            }
+            return {matches, dateFilter, searchQuery};
         // }else{
-        //     return {};
+        //     return {matches: {}, dateFilter: {}, searchQuery: ""};
         // }
     }
 
     const loadTableData = async (pageNum) => {
 
-        let {matches, dateFilter} = await generateFilterMatchesSchema();
+        let {matches, dateFilter, searchQuery} = await generateFilterMatchesSchema();
         
 
-        await axios.post('/api/organizations/', { pageNum , matches, dateFilter , perPage: dataTable.perPage},{
+        await axios.post('/api/organizations/', { pageNum , matches, dateFilter , searchQuery , perPage: dataTable.perPage},{
             headers: { authorization: `Bearer ${ localStorage.getItem("token") }` }
         }).then(response => {
   
@@ -151,6 +147,23 @@ export default function OrganizationHomepage() {
         setDataTable({...dataTable, filterOn: true})
         loadTableData(dataTable.currentPage);
     }
+
+    const resetFilterResults = async () => {
+         setDataTable({...dataTable,  
+            showRangeSelector: false,
+            filterSearch:"",
+            typeOption: "",
+            kybStaus: "",
+            customRange: false,
+            filterOn: false,
+            loadData: !dataTable.loadData
+        })
+        // await ;
+    }
+
+    useEffect(()=>{
+        loadTableData(dataTable.currentPage)
+    },[dataTable.loadData]);
 
     useEffect(()=>{
 
@@ -232,8 +245,8 @@ export default function OrganizationHomepage() {
                                 </select>
                             </div>
                             <div className={orgHomeStyle["dataModuleFilterInputGroupFlexEnd"]}>
-                               { (!dataTable.filterOn) && <button className={orgHomeStyle["dataModuleFilterResultButton"]} onClick={()=>{showFilteredResults()}}>Filter Results</button>}
-                               { (dataTable.filterOn) && <button className={orgHomeStyle["dataModuleFilterResultButton"]} onClick={()=>{showFilteredResults()}}>RemoveFilter</button>}
+                               <button className={orgHomeStyle["dataModuleFilterResultButton"]} onClick={()=>{showFilteredResults()}}>Filter Results</button>
+                               <button className={orgHomeStyle["dataModuleFilterResetButton"]} onClick={()=>{resetFilterResults()}}>RemoveFilter</button>
                             </div>
                         </div>
                        {(dataTable.showRangeSelector) && <div className={orgHomeStyle["dataModuleDateRange"]}>  
@@ -321,7 +334,7 @@ export default function OrganizationHomepage() {
                                     return <tr className={orgHomeStyle["dataModuleTbodyrow"]}>
                                     
                                     <td className={orgHomeStyle["dataModuleTd"]}>{ e._id }</td>
-                                        <td className={orgHomeStyle["dataModuleTd"]}><Link to={"/dashboard/organization/view/" + e._id }>{ e.name }</Link></td>
+                                        <td className={orgHomeStyle["dataModuleTd"]}><Link to={"/dashboard/community/organizations/view/" + e._id }>{ e.name }</Link></td>
                                         <td className={orgHomeStyle["dataModuleTd"]}>{ e.companyNumber }</td>
                                         <td className={orgHomeStyle["dataModuleTd"]}>{ e.kybStatus }</td>
                                         <td className={orgHomeStyle["dataModuleTd"]}>{ e.organizationInterest }</td>

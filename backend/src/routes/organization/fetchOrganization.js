@@ -9,20 +9,27 @@ export const fetchOrganization = {
 
         //get auth header from client
         const { authorization } = req.headers;
-        const { pageNum, perPage, matches, dateFilter } = req.body;
+        const { pageNum, perPage, matches,searchQuery, dateFilter } = req.body;
 
         let skipNum = (pageNum - 1) * perPage;
         let dateMatch = {};
+        let searchMatch = {};
         
         if(Object.keys(dateFilter).length > 0){
             dateMatch = {
                 createdAt: {
-                    $gte:"",
-                    $lt:""
+                    $gte:new Date(dateFilter.gte),
+                    $lt:new Date(dateFilter.lt)
                 }
             }
-            dateMatch["createdAt"]["$gte"] = new Date(dateFilter.gte)
-            dateMatch["createdAt"]["$lt"] = new Date(dateFilter.lt)
+        }
+
+        if(searchQuery.length > 0){
+            searchMatch = {
+                $or:[
+                    {"name":{ $regex:`.*${ searchQuery }.*`,$options: 'ims' } },
+                ]
+            }
         }
         
         // console.log(dateMatch, dateFilter.length, pageNum, perPage, matches, dateFilter)
@@ -46,6 +53,7 @@ export const fetchOrganization = {
                 const result = await db.collection("organization").aggregate([
                     {
                         $match: {
+                            ...searchMatch,
                             ...dateMatch,
                             ...matches
                         }

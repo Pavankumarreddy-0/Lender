@@ -28,7 +28,7 @@ export default function Header() {
     <div className={headerStyles['headerOuter']}>
         <div onClick={()=>__updateWebAppSettings({...__webAppSettings, enlargedMenu: true})} className={headerStyles['headerToggleMenu']}>
           <i className="bi bi-grid-3x3-gap-fill"></i>
-        </d  iv>
+        </div>
         <div className={headerStyles['headerIconRegion']}>
            <img className={headerStyles['headerLogoImage']} src='/assets/logo.gif'/>
         </div>
