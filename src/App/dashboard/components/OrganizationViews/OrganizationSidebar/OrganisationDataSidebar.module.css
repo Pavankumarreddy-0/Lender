@@ -1,0 +1,44 @@
+.orgSideBarMain{
+    min-width:265px;
+    width: 265px;
+    padding:10px;
+    background-color: #f7f7f7;
+    border-right:1px solid #e7e7e7;
+}
+
+.orgSideBarInner{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+.orgSideBarInner a{
+    text-decoration: none;
+    color:#000;
+}
+
+
+.orgsideContent{
+    display:flex;
+    gap:10px;
+    padding: 5px;
+}
+
+.orgsideContent:hover{
+    background-color: #c7c7c7;
+}
+
+.orgIcons{
+
+}
+
+.orgText{
+
+}
+
+.isOrgactv{
+
+}
+
+.isOrgnone{
+
+}
