@@ -76,8 +76,13 @@ a{
   height: 20px;
 }
 
+.rdrInputRanges{
+  display: none !important;
+}
+
 @keyframes placeholder-glow {
   50% {
     opacity: .2;
   }
 }
+

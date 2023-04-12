@@ -1,31 +1,17 @@
 import { getDbConnection } from '../../db.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { ObjectId } from 'mongodb';
 
-export const fetchOrganization = {
-    path: '/api/organizations/',
+export const getOrganization = {
+    path: '/api/organization/',
     method: 'post',
     handler: async (req, res) => {
 
         //get auth header from client
         const { authorization } = req.headers;
-        const { pageNum, perPage, matches, dateFilter } = req.body;
-
-        let skipNum = (pageNum - 1) * perPage;
-        let dateMatch = {};
-        
-        if(Object.keys(dateFilter).length > 0){
-            dateMatch = {
-                createdAt: {
-                    $gte:"",
-                    $lt:""
-                }
-            }
-            dateMatch["createdAt"]["$gte"] = new Date(dateFilter.gte)
-            dateMatch["createdAt"]["$lt"] = new Date(dateFilter.lt)
-        }
-        
-        // console.log(dateMatch, dateFilter.length, pageNum, perPage, matches, dateFilter)
+        const { orgId } = req.body;
+         // console.log(dateMatch, dateFilter.length, pageNum, perPage, matches, dateFilter)
 
         if (!authorization) {
             return res.status(401).json({ message: "No Authorization header sent." })
@@ -45,10 +31,11 @@ export const fetchOrganization = {
 
                 const result = await db.collection("organization").aggregate([
                     {
-                        $match: {
-                            ...dateMatch,
-                            ...matches
+                        $match: 
+                        {
+                            _id: ObjectId(orgId)
                         }
+                        
                     },
                     {
                         $lookup:
@@ -92,20 +79,10 @@ export const fetchOrganization = {
                             creatorUsername: "$createdCol.username"
                         }
                         
-                    },
-                    {
-                        $facet: {
-                            paginatedResults: [{ $skip: skipNum }, { $limit: perPage }],
-                            totalCount: [
-                            {
-                                $count: 'count'
-                            }
-                            ]
-                        }
                     }
                 ]).toArray();
 
-                res.status(200).json({ message: "Organization Fetched", currentPage: pageNum, result })
+                res.status(200).json({ message: "Organization Fetched",  result })
 
             }
         )

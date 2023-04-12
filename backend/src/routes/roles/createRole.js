@@ -29,7 +29,8 @@ export const createRoles = {
                 const result = await db.collection('roles').insertOne({
                     roleName,
                     roleAccess,
-                    rolePermission
+                    rolePermission,
+                    createdAt: new Date()
                 })
 
                 res.status(200).json({ message: "Role Created", result })

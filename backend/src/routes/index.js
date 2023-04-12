@@ -5,6 +5,7 @@ import { createRoles } from "./roles/createRole.js"
 import { updateRole } from "./roles/updateRole.js"
 import { createOrganization } from "./organization/createOrganization.js"
 import { fetchOrganization } from "./organization/fetchOrganization.js"
+import { getOrganization } from "./organization/getorganization.js"
 export const routes = [
     loginRoute,
     signUpRoute,
@@ -12,5 +13,6 @@ export const routes = [
     createRoles,
     updateRole,
     createOrganization,
-    fetchOrganization
+    fetchOrganization,
+    getOrganization
 ]

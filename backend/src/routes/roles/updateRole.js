@@ -30,7 +30,7 @@ export const updateRole = {
                     {
                         "_id": ObjectId(_id)
                     },
-                    { $set: { roleName, roleAccess } },
+                    { $set: { roleName, roleAccess, updatedAt: new Date() } },
                     { returnOriginal: false }
                 );
 
