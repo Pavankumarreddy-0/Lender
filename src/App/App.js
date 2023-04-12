@@ -12,6 +12,9 @@ import CreateRole from './dashboard/Settings/createRole/createRole';
 import CreateOrganisation from './dashboard/Pages/Organisations/CreateOrganisation/createOrganisation';
 import OrganizationHomepage from './dashboard/Pages/Organisations/organizationHomepage/organizationHomepage';
 import RobotsTxt from './dashboard/Settings/seo/Robots_txt/RobotsTxt';
+import ViewPage from './dashboard/components/OrganizationViews/ViewPage/ViewPage';
+import BasicInfo from './dashboard/components/OrganizationViews/BasicInfo';
+
 function App() {
   return (
     <div className="App">
@@ -35,6 +38,30 @@ function App() {
               </Route>
               <Route path="/dashboard/community/organizations/create" element={<CreateOrganisation/>} exact>
               </Route>
+              <Route path="/dashboard/community/organizations/view/:organizationId" element={<ViewPage/>} exact>
+                <Route path="/dashboard/community/organizations/view/:organizationId/" element={<BasicInfo/>} exact>
+                </Route> 
+                <Route path="/dashboard/community/organizations/view/:organizationId/basic-info" element={<BasicInfo/>} exact>
+                </Route> 
+                <Route path="/dashboard/community/organizations/view/:organizationId/details" element={<h1>Details</h1>} exact>
+                </Route> 
+                <Route path="/dashboard/community/organizations/view/:organizationId/address" element={<h1>address</h1>} exact>
+                </Route> 
+                <Route path="/dashboard/community/organizations/view/:organizationId/payments" element={<h1>payment</h1>} exact>
+                </Route>
+                <Route path="/dashboard/community/organizations/view/:organizationId/repayments" element={<h1>repayment</h1>} exact>
+                </Route>
+                <Route path="/dashboard/community/organizations/view/:organizationId/documents" element={<h1>docs</h1>} exact>
+                </Route>
+                <Route path="/dashboard/community/organizations/view/:organizationId/investments" element={<h1>Investment</h1>} exact>
+                </Route> 
+                <Route path="/dashboard/community/organizations/view/:organizationId/deals" element={<h1>deals</h1>} exact>
+                </Route>
+                <Route path="/dashboard/community/organizations/view/:organizationId/customfeilds" element={<h1>customfeilds</h1>} exact>
+                </Route>
+                <Route path="/dashboard/community/organizations/view/:organizationId/history" element={<h1>history</h1>} exact>
+                </Route>
+              </Route>  {/** views page */}
               <Route path="/dashboard/everything" element={<h1>everything</h1>} exact>
               </Route>
               <Route path="/dashboard/investments" element={<h1>investments</h1>} exact>

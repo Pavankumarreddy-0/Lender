@@ -22,8 +22,6 @@ export default function Dashboard() {
     useEffect(() => {
         console.log(user);
     }, [])
-
-
     return (
         <div className={dashboardStyles['dashboard']}>
             <div className={dashboardStyles['dashboardHeader']}>

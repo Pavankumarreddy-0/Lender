@@ -10,6 +10,8 @@
   --accordTitleText: #0b4a99;
   --headerBg: #f7f7f7;
   --dashtint: rgba(11,74,153,0.1);
+  --btn-color: #0b4a99;
+  --gray-border:#f1f1f1;
 }
 
 /* :root{
@@ -70,9 +72,19 @@ a{
   background: #c2bfbf;
   cursor: wait;
 }
+.data-table-placeholder{
+  display: inline-block;
+  min-width: 70%;
+  height: 20px;
+}
+
+.rdrInputRanges{
+  display: none !important;
+}
 
 @keyframes placeholder-glow {
   50% {
     opacity: .2;
   }
 }
+

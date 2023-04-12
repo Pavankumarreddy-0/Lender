@@ -78,7 +78,7 @@ export default function SideDrawer(props) {
                 {
                     submenu:"Investors",
                     subIcon:"",
-                    menuLink:"/",
+                    menuLink:"/dashboard/community/organizations/view",
                 },
                 {
                     submenu:"Fundraisers",

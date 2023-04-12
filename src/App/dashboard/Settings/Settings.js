@@ -59,10 +59,11 @@ export default function Settings() {
         inputSearch: ""
       }
       const [Tiles,SetTiles] = useState(Settingstate);
-      console.log(Tiles)
+
       useEffect(()=>{
 
       },[Tiles.inputField])
+
       function getTiles(cards,inputField){
         if(inputField.length === 0){
           return cards;
