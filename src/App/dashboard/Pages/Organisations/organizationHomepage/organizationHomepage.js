@@ -22,7 +22,21 @@ export default function OrganizationHomepage() {
         kybStaus: "",
         customRange: false,
         filterOn: false,
-        loadData: true
+        loadData: true,
+        showColumn: false,
+        columnFilter: {
+            orgID: true,
+            createdAt: true,
+            organizationName: true,
+            type: true,
+            contactPoint: true,
+            kybStatus: true,
+            companyNumber: true,
+            website: true,
+            email: true,
+            phone: true,
+            createdBy: true
+        }
     }) 
 
     const sortTableDirection = (e) => {
@@ -116,7 +130,6 @@ export default function OrganizationHomepage() {
         }).then(response => {
   
             const { result, currentPage } = response.data;
-            console.log(result,currentPage, 'loaded data');
             (result[0].paginatedResults.length > 0 && result[0].totalCount.length > 0) ?
                 setDataTable({...dataTable, table: result[0].paginatedResults, totalRows: result[0].totalCount[0].count, currentPage: currentPage})
             :
@@ -169,6 +182,10 @@ export default function OrganizationHomepage() {
 
     },[dateRange])
 
+    const selectAllOptions = () => {
+
+    }
+
   return (
     <div className={orgHomeStyle["orgHomeModule"]}>
       <div className={orgHomeStyle["orgHomenHeaderContainer"]}>
@@ -189,10 +206,16 @@ export default function OrganizationHomepage() {
         </div>
       </div>
       <div className={orgHomeStyle["orgHomeFilterRowContainer"]}>
+        <div className={orgHomeStyle["orgHomeActionContainer"]}>
         <button 
-            onClick={()=>{  setDataTable({...dataTable, showFilter: !dataTable.showFilter}) }} 
+            onClick={()=>{  setDataTable({...dataTable, showFilter: !dataTable.showFilter, showColumn: false}) }} 
             className={orgHomeStyle["orgHomeFilterButton"]}
         ><i className="bi bi-funnel"></i> Filter</button>
+        <button 
+            onClick={()=>{  setDataTable({...dataTable, showFilter: false, showColumn: !dataTable.showColumn}) }} 
+            className={orgHomeStyle["orgHomeFilterButton"]}
+        ><i class="bi bi-layout-three-columns"></i> Columns</button>
+        </div>
         <CsvDownloadButton data={dataTable.table} filename='organizationList' delimiter="," className={orgHomeStyle["orgHomeExportButton"]}><i className="bi bi-file-earmark-arrow-down"></i> Export</CsvDownloadButton>
       </div>
       <div className={orgHomeStyle["orgHomeOrgTable"]}>
@@ -270,7 +293,100 @@ export default function OrganizationHomepage() {
                         </div>}
                     </div>
                 </div>}
-                <div className={orgHomeStyle["dataModuleDataPrev"]} style={(dataTable.showFilter) ? {width: "calc(100% - 250px)"} : { width: "100%" }}>
+                {(dataTable.showColumn) && 
+                <div className={orgHomeStyle["dataModuleFilterArea"]}>
+                    <div className={orgHomeStyle["dataModuleFilterAreaInner"]}>    
+                        <div className={orgHomeStyle["dataModuleFilterAreaForm"]}>  
+
+                        <div className={orgHomeStyle["dataModuleColumnOuterGroup"]}>  
+
+                            <div className={orgHomeStyle["dataModuleColumnGroup"]}>
+                                <input id="showOrgId"  className={orgHomeStyle["dataModuleColumnInput"]} type='checkbox' checked={(dataTable.columnFilter.orgID) && "checked"} onChange={(e)=>{setDataTable({...dataTable, columnFilter: { ...dataTable.columnFilter, orgID: !dataTable.columnFilter.orgID}})}}></input>
+                                <label htmlFor='showOrgId' className={orgHomeStyle["dataModuleColumnLabel"]} >Org ID</label>
+                            </div>
+                            <div className={orgHomeStyle["dataModuleColumnGroup"]}>
+                                <input id="createdAt"  className={orgHomeStyle["dataModuleColumnInput"]} type='checkbox' checked={(dataTable.columnFilter.createdAt) && "checked"} onChange={(e)=>{setDataTable({...dataTable, columnFilter: { ...dataTable.columnFilter, createdAt: !dataTable.columnFilter.createdAt}})}}></input>
+                                <label htmlFor='createdAt' className={orgHomeStyle["dataModuleColumnLabel"]} >Created At</label>
+                            </div>
+                            <div className={orgHomeStyle["dataModuleColumnGroup"]}>
+                                <input id="organizationName"  className={orgHomeStyle["dataModuleColumnInput"]} type='checkbox' checked={(dataTable.columnFilter.organizationName) && "checked"} onChange={(e)=>{setDataTable({...dataTable, columnFilter: { ...dataTable.columnFilter, organizationName: !dataTable.columnFilter.organizationName}})}}></input>
+                                <label htmlFor='organizationName' className={orgHomeStyle["dataModuleColumnLabel"]} >Organization Name</label>
+                            </div>
+                            <div className={orgHomeStyle["dataModuleColumnGroup"]}>
+                                <input id="organizationtype"  className={orgHomeStyle["dataModuleColumnInput"]} type='checkbox' checked={(dataTable.columnFilter.type) && "checked"} onChange={(e)=>{setDataTable({...dataTable, columnFilter: { ...dataTable.columnFilter, type: !dataTable.columnFilter.type}})}}></input>
+                                <label htmlFor='organizationtype' className={orgHomeStyle["dataModuleColumnLabel"]} >Organization Type</label>
+                            </div>
+                            <div className={orgHomeStyle["dataModuleColumnGroup"]}>
+                                <input id="contactPoint"  className={orgHomeStyle["dataModuleColumnInput"]} type='checkbox' checked={(dataTable.columnFilter.contactPoint) && "checked"} onChange={(e)=>{setDataTable({...dataTable, columnFilter: { ...dataTable.columnFilter, contactPoint: !dataTable.columnFilter.contactPoint}})}}></input>
+                                <label htmlFor='contactPoint' className={orgHomeStyle["dataModuleColumnLabel"]} >Contact Point</label>
+                            </div>
+                            <div className={orgHomeStyle["dataModuleColumnGroup"]}>
+                                <input id="kybStatus"  className={orgHomeStyle["dataModuleColumnInput"]} type='checkbox' checked={(dataTable.columnFilter.kybStatus) && "checked"} onChange={(e)=>{setDataTable({...dataTable, columnFilter: { ...dataTable.columnFilter, kybStatus: !dataTable.columnFilter.kybStatus}})}}></input>
+                                <label htmlFor='kybStatus' className={orgHomeStyle["dataModuleColumnLabel"]} >KYB Status</label>
+                            </div>
+                            <div className={orgHomeStyle["dataModuleColumnGroup"]}>
+                                <input id="companyNumber"  className={orgHomeStyle["dataModuleColumnInput"]} type='checkbox' checked={(dataTable.columnFilter.companyNumber) && "checked"} onChange={(e)=>{setDataTable({...dataTable, columnFilter: { ...dataTable.columnFilter, companyNumber: !dataTable.columnFilter.companyNumber}})}}></input>
+                                <label htmlFor='companyNumber' className={orgHomeStyle["dataModuleColumnLabel"]} >Company Number</label>
+                            </div>
+                            <div className={orgHomeStyle["dataModuleColumnGroup"]}>
+                                <input id="companywebsite"  className={orgHomeStyle["dataModuleColumnInput"]} type='checkbox' checked={(dataTable.columnFilter.website) && "checked"} onChange={(e)=>{setDataTable({...dataTable, columnFilter: { ...dataTable.columnFilter, website: !dataTable.columnFilter.website}})}}></input>
+                                <label htmlFor='companywebsite' className={orgHomeStyle["dataModuleColumnLabel"]} >Website</label>
+                            </div>
+                            <div className={orgHomeStyle["dataModuleColumnGroup"]}>
+                                <input id="companyemail"  className={orgHomeStyle["dataModuleColumnInput"]} type='checkbox' checked={(dataTable.columnFilter.email) && "checked"} onChange={(e)=>{setDataTable({...dataTable, columnFilter: { ...dataTable.columnFilter, email: !dataTable.columnFilter.email}})}}></input>
+                                <label htmlFor='companyemail' className={orgHomeStyle["dataModuleColumnLabel"]} >Email</label>
+                            </div>
+                            <div className={orgHomeStyle["dataModuleColumnGroup"]}>
+                                <input id="companyphone"  className={orgHomeStyle["dataModuleColumnInput"]} type='checkbox' checked={(dataTable.columnFilter.phone) && "checked"} onChange={(e)=>{setDataTable({...dataTable, columnFilter: { ...dataTable.columnFilter, phone: !dataTable.columnFilter.phone}})}}></input>
+                                <label htmlFor='companyphone' className={orgHomeStyle["dataModuleColumnLabel"]} >Phone</label>
+                            </div>
+                            <div className={orgHomeStyle["dataModuleColumnGroup"]}>
+                                <input id="createdBy"  className={orgHomeStyle["dataModuleColumnInput"]} type='checkbox' checked={(dataTable.columnFilter.createdBy) && "checked"} onChange={(e)=>{setDataTable({...dataTable, columnFilter: { ...dataTable.columnFilter, createdBy: !dataTable.columnFilter.createdBy}})}}></input>
+                                <label htmlFor='createdBy' className={orgHomeStyle["dataModuleColumnLabel"]} >Created By</label>
+                            </div>
+                            
+                        </div>
+                            
+                            <div className={orgHomeStyle["dataModuleFilterInputGroupFlexEnd"]}>
+                               <button className={orgHomeStyle["dataModuleFilterResultButton"]} onClick={()=>{ 
+                                setDataTable({...dataTable, columnFilter: {
+                                    orgID: true,
+                                    createdAt: true,
+                                    organizationName: true,
+                                    type: true,
+                                    contactPoint: true,
+                                    kybStatus: true,
+                                    companyNumber: true,
+                                    website: true,
+                                    email: true,
+                                    phone: true,
+                                    createdBy: true
+                                }}) 
+                                }}>Select All</button>
+                            </div>
+                        </div>
+                       {(dataTable.showRangeSelector) && <div className={orgHomeStyle["dataModuleDateRange"]}>  
+                       <div 
+                            className={orgHomeStyle["dataModuleDateRangeBackdrop"]} 
+                            onClick={()=>{setDataTable({...dataTable, showRangeSelector: false})}}
+                        ></div>
+                        <div className={orgHomeStyle["rdrCalendarWrapper"]}>
+                                <button  className={orgHomeStyle["rdrCalendarWrapperCloseBtn"]} onClick={()=>setDataTable({...dataTable, showRangeSelector: false})}>
+                                    <i className="bi bi-x-lg"></i>
+                                </button>
+                                <DateRangePicker
+                                editableDateInputs={true}
+                                displayMode="dateRange"
+                                onChange={item => {setDateRange([item.selection]); console.log(item.selection)}}
+                                maxDate={new Date()}
+                                rangeColors={["rgb(11,74,153)"]}
+                                ranges={dateRange}
+                                />
+                            </div>
+                        </div>}
+                    </div>
+                </div>}
+                <div className={orgHomeStyle["dataModuleDataPrev"]} style={(dataTable.showFilter || dataTable.showColumn) ? {width: "calc(100% - 250px)"} : { width: "100%" }}>
                     <div className={orgHomeStyle["dataModuleStyleInner"]}>
                         {
                             (dataTable.totalRows == 0) && <div className={orgHomeStyle["dataModuleNoResults"]}>
@@ -281,46 +397,67 @@ export default function OrganizationHomepage() {
                         <thead className={orgHomeStyle["dataModuleThead"]}>
                             <tr className={orgHomeStyle["dataModuleTheadrow"]}>
                         
-                                <th className={orgHomeStyle["dataModuleTh"]}  > 
+                                {(dataTable.columnFilter.orgID) && <th className={orgHomeStyle["dataModuleTh"]}  > 
                                     <div onClick={(e)=>{ sortTableDirection(e) }} data-sortColumn="_id" data-sortDirection="none" className={orgHomeStyle["dataModuleThOverlay"]}></div>
                                     <div className={orgHomeStyle["dataModuleThInner"]}><span>Org ID</span>  <span><i class="bi bi-arrow-up-short"></i><i class="bi bi-arrow-down-short"></i></span>
                                     </div>
-                                </th>
-                                <th className={orgHomeStyle["dataModuleTh"]}  >
+                                </th>}
+                                
+                                {(dataTable.columnFilter.createdAt) && <th className={orgHomeStyle["dataModuleTh"]}  >
+                                    <div onClick={(e)=>{ sortTableDirection(e) }} data-sortColumn="createdAt" data-sortDirection="none" className={orgHomeStyle["dataModuleThOverlay"]}></div>
+                                    <div className={orgHomeStyle["dataModuleThInner"]}><span>Created At</span>  <span><i class="bi bi-arrow-up-short"></i><i class="bi bi-arrow-down-short"></i></span>
+                                    </div>
+                                </th>}
+
+                                {(dataTable.columnFilter.organizationName) && <th className={orgHomeStyle["dataModuleTh"]}  >
                                     <div onClick={(e)=>{ sortTableDirection(e) }} data-sortColumn="name" data-sortDirection="none" className={orgHomeStyle["dataModuleThOverlay"]}></div>
                                     <div className={orgHomeStyle["dataModuleThInner"]}><span>Organization Name</span>  <span><i class="bi bi-arrow-up-short"></i><i class="bi bi-arrow-down-short"></i></span>
                                     </div>
-                                </th>
-                                <th className={orgHomeStyle["dataModuleTh"]}  >
-                                    <div onClick={(e)=>{ sortTableDirection(e) }} data-sortColumn="companyNumber" data-sortDirection="none" className={orgHomeStyle["dataModuleThOverlay"]}></div>
-                                    <div data-sortDirection="none" className={orgHomeStyle["dataModuleThInner"]}><span>Company Number</span>  <span><i class="bi bi-arrow-up-short"></i><i class="bi bi-arrow-down-short"></i></span>
-                                    </div>
-                                </th>
-                                <th className={orgHomeStyle["dataModuleTh"]}  >
-                                    <div onClick={(e)=>{ sortTableDirection(e) }} data-sortColumn="kybStatus" data-sortDirection="none" className={orgHomeStyle["dataModuleThOverlay"]}></div>
-                                    <div data-sortDirection="none" className={orgHomeStyle["dataModuleThInner"]}><span>Kyb Status</span>  <span><i class="bi bi-arrow-up-short"></i><i class="bi bi-arrow-down-short"></i></span>
-                                    </div>
-                                </th>
-                                <th className={orgHomeStyle["dataModuleTh"]}  >
+                                </th>}
+
+                                {
+                                (dataTable.columnFilter.type) && <th className={orgHomeStyle["dataModuleTh"]}  >
                                     <div onClick={(e)=>{ sortTableDirection(e) }} data-sortColumn="organizationInterest" data-sortDirection="none" className={orgHomeStyle["dataModuleThOverlay"]}></div>
                                     <div className={orgHomeStyle["dataModuleThInner"]}><span>Type</span>  <span><i class="bi bi-arrow-up-short"></i><i class="bi bi-arrow-down-short"></i></span>
                                     </div>
                                 </th>
-                                <th className={orgHomeStyle["dataModuleTh"]}  >
+                                }
+
+                                {(dataTable.columnFilter.contactPoint) && <th className={orgHomeStyle["dataModuleTh"]}  >
                                     <div onClick={(e)=>{ sortTableDirection(e) }} data-sortColumn="firstName" data-sortDirection="none" className={orgHomeStyle["dataModuleThOverlay"]}></div>
                                     <div className={orgHomeStyle["dataModuleThInner"]}><span>Contact Point</span>  <span><i class="bi bi-arrow-up-short"></i><i class="bi bi-arrow-down-short"></i></span>
                                     </div>
-                                </th>
-                                <th className={orgHomeStyle["dataModuleTh"]}  >
+                                </th>}
+                                {(dataTable.columnFilter.kybStatus) && <th className={orgHomeStyle["dataModuleTh"]}  >
+                                    <div onClick={(e)=>{ sortTableDirection(e) }} data-sortColumn="kybStatus" data-sortDirection="none" className={orgHomeStyle["dataModuleThOverlay"]}></div>
+                                    <div data-sortDirection="none" className={orgHomeStyle["dataModuleThInner"]}><span>Kyb Status</span>  <span><i class="bi bi-arrow-up-short"></i><i class="bi bi-arrow-down-short"></i></span>
+                                    </div>
+                                </th>}
+                                {(dataTable.columnFilter.companyNumber) && <th className={orgHomeStyle["dataModuleTh"]}  >
+                                    <div onClick={(e)=>{ sortTableDirection(e) }} data-sortColumn="companyNumber" data-sortDirection="none" className={orgHomeStyle["dataModuleThOverlay"]}></div>
+                                    <div data-sortDirection="none" className={orgHomeStyle["dataModuleThInner"]}><span>Company Number</span>  <span><i class="bi bi-arrow-up-short"></i><i class="bi bi-arrow-down-short"></i></span>
+                                    </div>
+                                </th>}
+                                {(dataTable.columnFilter.website) && <th className={orgHomeStyle["dataModuleTh"]}  >
+                                    <div onClick={(e)=>{ sortTableDirection(e) }} data-sortColumn="website" data-sortDirection="none" className={orgHomeStyle["dataModuleThOverlay"]}></div>
+                                    <div data-sortDirection="none" className={orgHomeStyle["dataModuleThInner"]}><span>Website</span>  <span><i class="bi bi-arrow-up-short"></i><i class="bi bi-arrow-down-short"></i></span>
+                                    </div>
+                                </th>}
+                                {(dataTable.columnFilter.email) && <th className={orgHomeStyle["dataModuleTh"]}  >
+                                    <div onClick={(e)=>{ sortTableDirection(e) }} data-sortColumn="email" data-sortDirection="none" className={orgHomeStyle["dataModuleThOverlay"]}></div>
+                                    <div data-sortDirection="none" className={orgHomeStyle["dataModuleThInner"]}><span>Email</span>  <span><i class="bi bi-arrow-up-short"></i><i class="bi bi-arrow-down-short"></i></span>
+                                    </div>
+                                </th>}
+                                {(dataTable.columnFilter.phone) && <th className={orgHomeStyle["dataModuleTh"]}  >
+                                    <div onClick={(e)=>{ sortTableDirection(e) }} data-sortColumn="phone" data-sortDirection="none" className={orgHomeStyle["dataModuleThOverlay"]}></div>
+                                    <div data-sortDirection="none" className={orgHomeStyle["dataModuleThInner"]}><span>Phone</span>  <span><i class="bi bi-arrow-up-short"></i><i class="bi bi-arrow-down-short"></i></span>
+                                    </div>
+                                </th>}
+                                {(dataTable.columnFilter.createdBy) && <th className={orgHomeStyle["dataModuleTh"]}  >
                                     <div onClick={(e)=>{ sortTableDirection(e) }} data-sortColumn="creatorUsername" data-sortDirection="none" className={orgHomeStyle["dataModuleThOverlay"]}></div>
                                     <div className={orgHomeStyle["dataModuleThInner"]}><span>Created By</span>  <span><i class="bi bi-arrow-up-short"></i><i class="bi bi-arrow-down-short"></i></span>
                                     </div>
-                                </th>
-                                <th className={orgHomeStyle["dataModuleTh"]}  >
-                                    <div onClick={(e)=>{ sortTableDirection(e) }} data-sortColumn="createdAt" data-sortDirection="none" className={orgHomeStyle["dataModuleThOverlay"]}></div>
-                                    <div className={orgHomeStyle["dataModuleThInner"]}><span>Created At</span>  <span><i class="bi bi-arrow-up-short"></i><i class="bi bi-arrow-down-short"></i></span>
-                                    </div>
-                                </th>
+                                </th>}
                                 <th className={orgHomeStyle["dataModuleTh"]}  >
                                     <div className={orgHomeStyle["dataModuleThInner"]}><span>Action</span>  
                                     </div>
@@ -333,14 +470,17 @@ export default function OrganizationHomepage() {
                                 dataTable.table.map(e => {
                                     return <tr className={orgHomeStyle["dataModuleTbodyrow"]}>
                                     
-                                    <td className={orgHomeStyle["dataModuleTd"]}>{ e._id }</td>
-                                        <td className={orgHomeStyle["dataModuleTd"]}><Link to={"/dashboard/community/organizations/view/" + e._id }>{ e.name }</Link></td>
-                                        <td className={orgHomeStyle["dataModuleTd"]}>{ e.companyNumber }</td>
-                                        <td className={orgHomeStyle["dataModuleTd"]}>{ e.kybStatus }</td>
-                                        <td className={orgHomeStyle["dataModuleTd"]}>{ e.organizationInterest }</td>
-                                        <td className={orgHomeStyle["dataModuleTd"]}><Link to={"/dashboard/users/view/" + e.contactPoint }>{ e.firstName + " " + e.lastName }</Link></td>
-                                        <td className={orgHomeStyle["dataModuleTd"]}><Link to={"/dashboard/admin/view/" + e.createdBy}>{ e.creatorUsername }</Link></td>
-                                        <td className={orgHomeStyle["dataModuleTd"]}>{ new Date(e.createdAt).toLocaleDateString() }</td>
+                                        {(dataTable.columnFilter.orgID) && <td className={orgHomeStyle["dataModuleTd"]}>{ e._id }</td>}
+                                        {(dataTable.columnFilter.createdAt) && <td className={orgHomeStyle["dataModuleTd"]}>{ new Date(e.createdAt).toLocaleDateString() }</td>}                               
+                                        {(dataTable.columnFilter.organizationName) && <td className={orgHomeStyle["dataModuleTd"]}><Link to={"/dashboard/community/organizations/view/" + e._id }>{ e.name }</Link></td>}
+                                        {(dataTable.columnFilter.type) && <td className={orgHomeStyle["dataModuleTd"]}>{ e.organizationInterest }</td>}
+                                        {(dataTable.columnFilter.contactPoint) && <td className={orgHomeStyle["dataModuleTd"]}><Link to={"/dashboard/users/view/" + e.contactPoint }>{ e.firstName + " " + e.lastName }</Link></td>}
+                                        {(dataTable.columnFilter.kybStatus) && <td className={orgHomeStyle["dataModuleTd"]}>{ e.kybStatus }</td>}
+                                        {(dataTable.columnFilter.companyNumber) && <td className={orgHomeStyle["dataModuleTd"]}>{ e.companyNumber }</td>}
+                                        {(dataTable.columnFilter.website) && <td className={orgHomeStyle["dataModuleTd"]}>{ e.website }</td>}
+                                        {(dataTable.columnFilter.email) && <td className={orgHomeStyle["dataModuleTd"]}>{ e.email }</td>}
+                                        {(dataTable.columnFilter.phone) && <td className={orgHomeStyle["dataModuleTd"]}>{ e.phone }</td>}
+                                        {(dataTable.columnFilter.createdBy) && <td className={orgHomeStyle["dataModuleTd"]}><Link to={"/dashboard/admin/view/" + e.createdBy}>{ e.creatorUsername }</Link></td>}
                                         <td className={orgHomeStyle["dataModuleTd"]}>
 
                                             {

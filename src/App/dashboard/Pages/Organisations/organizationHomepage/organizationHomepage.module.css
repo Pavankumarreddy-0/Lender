@@ -291,6 +291,8 @@
     box-shadow: -1px 1px 5px rgba(0,0,0,.1);
     border: none;
 }
+
+
 .dataModuleFilterInputGroupFlexEnd{
     padding: 5px 0px;
     display: flex;
@@ -318,6 +320,31 @@
     font-size: 12px;
     box-shadow: -1px 1px 5px rgba(0,0,0,.1);
     border: none;
+}
+.orgHomeActionContainer{
+    display: flex;
+    gap: 10px;
+}
+.dataModuleColumnGroup{
+    display: flex;
+    gap: 10px;
+    padding: 4px 10px;
+}
+.dataModuleColumnInput{
+    accent-color: var(--link-color);
+    width: 15px;
+}
+.dataModuleColumnLabel{
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.dataModuleColumnOuterGroup{
+    border: 1px solid #e7e7e7;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #f7f7f7;
+    padding: 5px;
 }
 @keyframes slideInLeft{
     0% {
