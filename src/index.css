@@ -72,9 +72,19 @@ a{
   background: #c2bfbf;
   cursor: wait;
 }
+.data-table-placeholder{
+  display: inline-block;
+  min-width: 70%;
+  height: 20px;
+}
+
+.rdrInputRanges{
+  display: none !important;
+}
 
 @keyframes placeholder-glow {
   50% {
     opacity: .2;
   }
 }
+

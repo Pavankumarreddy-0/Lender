@@ -1457,7 +1457,7 @@ export default function CreateRole() {
             <i className="bi bi-arrow-left"></i> Roles Management
           </Link>
           <p className={createRoleStyle["CreateRolesHeaderContainerName"]}>
-            Create New Role
+            Configure Role
           </p>
         </div>
       </div>
