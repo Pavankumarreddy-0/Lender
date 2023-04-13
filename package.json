@@ -22,6 +22,7 @@
     "react-date-range": "^1.4.0",
     "react-dom": "^18.2.0",
     "react-excel-exports": "^1.1.6",
+    "react-flags-select": "^2.2.3",
     "react-json-to-csv": "^1.2.0",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",

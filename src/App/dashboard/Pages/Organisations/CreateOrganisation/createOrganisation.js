@@ -11,7 +11,8 @@ export default function CreateOrganisation() {
 
     const [createOrg, setCreateOrg] = useState({
         currentStep: 1,
-        stepNames: ["Contact Point", "Organizational Details", "Organization Interest"],
+        createdDocId: "",
+        stepNames: ["Contact Point", "Organizational Details", "Organization Interest","Organization Created"],
         contactPoint: {
             firstName: "",
             lastName: "",
@@ -75,8 +76,8 @@ export default function CreateOrganisation() {
       }).then(response=>{
 
           console.log(response)
+          setCreateOrg({...createOrg, currentStep: 5, createdDocId: response.data.organization.insertedId});
           
-
       }).catch(err => {
           alert("Unable to create, please try again.");
           setCreateOrg({...createOrg, currentStep: 3});
@@ -254,7 +255,7 @@ export default function CreateOrganisation() {
                   </div>
                   <div className={corgStyle["formModuleFooterSpaceApart"]}>
                     {/* { ( createOrg.currentStep > 1 ) && <button><i className="bi bi-arrow-left"></i> Previous</button>} */}
-                    { ( createOrg.currentStep == createOrg.stepNames.length) && <button><i className="bi bi-plus-square"></i> Create</button>}
+                    {  <button><i className="bi bi-plus-square"></i> Create</button>}
                   </div>
                   </form>
                 </div>
@@ -270,6 +271,36 @@ export default function CreateOrganisation() {
               <div className={corgStyle["createOrganisationFormSecondStep"]}>
                 <div class="spinner-border" style={{"color": "var(--link-color)"}} role="status">
                   <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+          }
+
+          {
+            /**
+             * Step 5
+             * Completed
+             */
+            ( createOrg.currentStep == 5) &&
+              <div className={corgStyle["createOrganisationFormSecondStep"]}>
+                <div className={corgStyle["createIndCheck"]}>
+                  <div className="animation-ctn">
+                      <div className="icon icon--order-success svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="154px" height="154px">  
+                            <g fill="none" stroke="#22AE73" stroke-width="2"> 
+                            <circle cx="77" cy="77" r="72" style={{"stroke-dasharray":"480px, 480px", "stroke-dashoffset": "960px"}}></circle>
+                            <circle id="colored" fill="#22AE73" cx="77" cy="77" r="72" style={{"stroke-dasharray":"480px, 480px", "stroke-dashoffset": "960px"}}></circle>
+                            <polyline class="st0" stroke="#fff" stroke-width="10" points="43.5,77.8 63.7,97.9 112.2,49.4 " style={{"stroke-dasharray":"100px, 100px", "stroke-dashoffset": "200px"}}/>   
+                            </g> 
+                        </svg>
+                      </div>
+                  </div>
+                </div>
+                <div className={corgStyle["createIndCheckMessage"]}>
+                    Organization Created
+                </div>
+                <div className={corgStyle["createIndCheckOptions"]}>
+                    <Link  className={corgStyle["createIndCheckOptionsBtn"]} to={`/dashboard/community/organizations/view/${ createOrg.createdDocId }/`}>View Created Organization</Link>
+                    <Link  className={corgStyle["createIndCheckOptionsBtn"]} to={`/dashboard/community/organizations/`}>View All Organization</Link>
                 </div>
               </div>
           }

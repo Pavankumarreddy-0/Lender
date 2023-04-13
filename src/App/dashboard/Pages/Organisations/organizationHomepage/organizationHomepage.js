@@ -220,7 +220,7 @@ export default function OrganizationHomepage() {
             className={orgHomeStyle["orgHomeFilterButton"]}
         ><i class="bi bi-layout-three-columns"></i> Columns</button>
         </div>
-        <ExportExcel data={dataTable.table} filename='organizationList' delimiter="," className={orgHomeStyle["orgHomeExportButton"]}><i className="bi bi-file-earmark-arrow-down"></i> Export</ExportExcel>
+        <ExportExcel data={dataTable.table} filename='organizationList' delimiter="," className={orgHomeStyle["orgHomeExportButton"]}><i className="bi bi-file-earmark-arrow-down"></i> </ExportExcel>
       </div>
       <div className={orgHomeStyle["orgHomeOrgTable"]}>
       <div className={orgHomeStyle["dataModuleStyle"]}>

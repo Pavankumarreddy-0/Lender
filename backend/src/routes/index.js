@@ -6,6 +6,7 @@ import { updateRole } from "./roles/updateRole.js"
 import { createOrganization } from "./organization/createOrganization.js"
 import { fetchOrganization } from "./organization/fetchOrganization.js"
 import { getOrganization } from "./organization/getorganization.js"
+import { createIndividualInvestor } from "./individualInvestor/createIndividualInvestor.js"
 export const routes = [
     loginRoute,
     signUpRoute,
@@ -14,5 +15,6 @@ export const routes = [
     updateRole,
     createOrganization,
     fetchOrganization,
-    getOrganization
+    getOrganization,
+    createIndividualInvestor
 ]
