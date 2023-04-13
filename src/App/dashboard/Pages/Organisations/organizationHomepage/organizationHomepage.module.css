@@ -208,7 +208,7 @@
     overflow-y: auto;
 }
 .dataModuleFilterAreaForm{
-    height: calc( 100vh - 170px);
+    height: calc( 100vh - 175px);
     display: block;
     padding: 0px 10px;
 }

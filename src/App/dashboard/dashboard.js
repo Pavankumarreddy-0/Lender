@@ -33,7 +33,7 @@ export default function Dashboard() {
                 </div>
                 <div className={dashboardStyles['dashboardOutlet']}>
                     <div className={dashboardStyles['dashboardOutletInner']}>
-                        {
+                        {/* {
                             ( ! user.isEmailVerified ) &&
                             <>
                                 <DashboardNotification 
@@ -42,7 +42,7 @@ export default function Dashboard() {
                                     notiIcon="bi bi-envelope-exclamation"
                                 ></DashboardNotification>
                             </>
-                        }
+                        } */}
                         <Outlet></Outlet>
                     </div>
                 </div>

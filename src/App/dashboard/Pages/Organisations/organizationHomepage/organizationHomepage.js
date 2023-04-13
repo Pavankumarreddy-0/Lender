@@ -8,6 +8,7 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import CsvDownloadButton from 'react-json-to-csv'
 import ColumnResizer from "react-table-column-resizer";
+import ExportExcel from 'react-excel-exports'
 
 export default function OrganizationHomepage() {
 
@@ -175,6 +176,8 @@ export default function OrganizationHomepage() {
         // await ;
     }
 
+    
+
     useEffect(()=>{
         loadTableData(dataTable.currentPage)
     },[dataTable.loadData]);
@@ -217,7 +220,7 @@ export default function OrganizationHomepage() {
             className={orgHomeStyle["orgHomeFilterButton"]}
         ><i class="bi bi-layout-three-columns"></i> Columns</button>
         </div>
-        <CsvDownloadButton data={dataTable.table} filename='organizationList' delimiter="," className={orgHomeStyle["orgHomeExportButton"]}><i className="bi bi-file-earmark-arrow-down"></i> Export</CsvDownloadButton>
+        <ExportExcel data={dataTable.table} filename='organizationList' delimiter="," className={orgHomeStyle["orgHomeExportButton"]}><i className="bi bi-file-earmark-arrow-down"></i> Export</ExportExcel>
       </div>
       <div className={orgHomeStyle["orgHomeOrgTable"]}>
       <div className={orgHomeStyle["dataModuleStyle"]}>
@@ -431,7 +434,7 @@ export default function OrganizationHomepage() {
                                 </th><ColumnResizer className="columnResizer" > </ColumnResizer> </>}
                                 {(dataTable.columnFilter.kybStatus) && <><th className={orgHomeStyle["dataModuleTh"]}  >
                                     <div onClick={(e)=>{ sortTableDirection(e) }} data-sortColumn="kybStatus" data-sortDirection="none" className={orgHomeStyle["dataModuleThOverlay"]}></div>
-                                    <div data-sortDirection="none" className={orgHomeStyle["dataModuleThInner"]}><span>Kyb Status</span>  <span><i class="bi bi-arrow-up-short"></i><i class="bi bi-arrow-down-short"></i></span>
+                                    <div data-sortDirection="none" className={orgHomeStyle["dataModuleThInner"]}><span>KYB Status</span>  <span><i class="bi bi-arrow-up-short"></i><i class="bi bi-arrow-down-short"></i></span>
                                     </div>
                                 </th><ColumnResizer className="columnResizer" > </ColumnResizer> </>}
                                 {(dataTable.columnFilter.companyNumber) && <><th className={orgHomeStyle["dataModuleTh"]}  >

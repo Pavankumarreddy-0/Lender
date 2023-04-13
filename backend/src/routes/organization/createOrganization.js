@@ -29,6 +29,7 @@ export const createOrganization = {
                 // const result = await db.collection("roles").find({}).toArray();
                 const result = await db.collection('person').insertOne({
                     ...contactPoint,
+                    type: (organizationDetails.organizationInterest == "Investing") ? "Corporate Investor" : "Fundraiser",
                     kycStatus: "Draft",
                     createdBy: ObjectId(_id)
                 })
