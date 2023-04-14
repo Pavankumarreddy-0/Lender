@@ -7,14 +7,10 @@ import OrganisationDataSideBar from '../OrganizationSidebar/OrganisationDataSide
  function ViewPage() {
   return (
     <>
-        <div className={ViewPageStyles['Content_header']}>
-        <h6>Organisation Int Investing </h6>
-        </div>
         <section className={ViewPageStyles['orgFormViewSection']}>
         <OrganisationDataSideBar/>
         <Outlet></Outlet>
         </section>
-       
     </>
   )
 }
