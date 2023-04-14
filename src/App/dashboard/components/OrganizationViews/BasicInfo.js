@@ -54,8 +54,10 @@ export default function BasicInfo() {
 
     })
 
-        //? created a function to store the input tags values 
+    
+    //? created a function to store the input tags values 
     const addCustomTags = (e) =>{
+
         //? here we compared the tags array length with string length that we are directly setting it in input tag
         //? we dont want user to create more than 10 tags
 
@@ -71,6 +73,28 @@ export default function BasicInfo() {
         setOrgValues({...OrgValues, tagString: "",customTags:[
             ...new Set([...OrgValues.customTags,...OrgValues.tagString.trim().split(",")])
         ]})
+    }
+    
+    //? created a function to remove the tags 
+    const removeTag = (e) => {
+
+        //? we are storing the the index of the element using data attribute 
+        //? we made a empty array to store the new custom tags 
+
+        let _idx = +e.target.getAttribute("data-tagidx");
+        let newTags = [];
+
+        //? we use for in loop to get the property of array
+        //? then we pushed the new values to the array and set a new state to update our state
+
+        for(let id in OrgValues.customTags){
+            if(id != _idx){
+                newTags.push(OrgValues.customTags[id])
+            }
+        }
+
+        setOrgValues({...OrgValues, customTags: newTags})
+        
     }
 
     return (
@@ -149,8 +173,8 @@ export default function BasicInfo() {
                         <a href="javascript:void(0)" onClick={addCustomTags} className={BasicInfoStyle['addtagbtn']}>ADD</a>
                     </div>
                     <ul className={BasicInfoStyle['showcustomtags']}>
-                        {OrgValues.customTags.map((elem) =>{
-                            return <li className={BasicInfoStyle['Tagname']}><span>{elem}</span><i class="bi bi-x"></i></li>
+                        {OrgValues.customTags.map((elem,i) =>{
+                            return <li key ={elem} className={BasicInfoStyle['Tagname']}><span>{elem}</span><a href='javascript:void(0)' data-tagidx={i} onClick={(e)=>removeTag(e)}><i data-tagidx={i}  class="bi bi-x"></i></a></li>
                         })}
                     </ul>
                 </div>
