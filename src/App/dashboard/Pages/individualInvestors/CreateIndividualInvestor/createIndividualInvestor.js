@@ -96,7 +96,7 @@ export default function CreateIndividualInvestor() {
         <div className={corgStyle["createOrganisationHeaderContainerRegion"]}>
           <Link
             className={corgStyle["createOrganisationHeaderContainerLink"]}
-            to="/dashboard/community/organizations/"
+            to="/dashboard/community/individual-investor/"
           >
             <i className="bi bi-arrow-left"></i> Individual Investors
           </Link>

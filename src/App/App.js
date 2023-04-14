@@ -15,6 +15,7 @@ import RobotsTxt from './dashboard/Settings/seo/Robots_txt/RobotsTxt';
 import ViewPage from './dashboard/components/OrganizationViews/ViewPage/ViewPage';
 import BasicInfo from './dashboard/components/OrganizationViews/BasicInfo';
 import CreateIndividualInvestor from './dashboard/Pages/individualInvestors/CreateIndividualInvestor/createIndividualInvestor';
+import IndividualInvestorHomepage from './dashboard/Pages/individualInvestors/individualInvestorHomePage/individualInvestorHomepage';
 
 function App() {
   return (
@@ -39,7 +40,7 @@ function App() {
               </Route>
               <Route path="/dashboard/community/organizations/create" element={<CreateOrganisation/>} exact>
               </Route>
-              <Route path="/dashboard/community/individual-investor/" element={<OrganizationHomepage/>} exact>
+              <Route path="/dashboard/community/individual-investor/" element={<IndividualInvestorHomepage/>} exact>
               </Route>
               <Route path="/dashboard/community/individual-investor/create" element={<CreateIndividualInvestor/>} exact>
               </Route>
