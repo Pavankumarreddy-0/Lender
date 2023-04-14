@@ -6,7 +6,7 @@
 
 .orgFormViewSection{
     display: flex;
-    gap:10px;
+    /* gap:10px; */
     height:calc(100vh - 100px);
     align-items: stretch;
 }
