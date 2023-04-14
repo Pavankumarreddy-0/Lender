@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import orgHomeStyle from './organizationHomepage.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { orderBy, set } from 'lodash'
 import axios from 'axios';
 import { DateRangePicker } from 'react-date-range';
@@ -9,9 +9,10 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import CsvDownloadButton from 'react-json-to-csv'
 import ColumnResizer from "react-table-column-resizer";
 import ExportExcel from 'react-excel-exports'
+import { useHotkeys } from 'react-hotkeys-hook'
 
 export default function OrganizationHomepage() {
-
+    const navigate = useNavigate();
     const [dataTable, setDataTable] = useState({
         table: [],
         perPage: 10,
@@ -186,9 +187,26 @@ export default function OrganizationHomepage() {
 
     },[dateRange])
 
-    const selectAllOptions = () => {
+    //hotkeys
+    useHotkeys('ctrl+alt+f', (event) => {
+        event.preventDefault();
+        setDataTable({...dataTable, showFilter: !dataTable.showFilter, showColumn: false})
+    } );
 
-    }
+    useHotkeys('ctrl+alt+c', (event) => {
+        event.preventDefault();
+        setDataTable({...dataTable, showFilter: false, showColumn: !dataTable.showColumn})
+    } );
+
+    useHotkeys('ctrl+alt+n', (event) => {
+        event.preventDefault();
+        navigate('/dashboard/community/organizations/create/');
+    } );
+
+    useHotkeys('ctrl+alt+b', (event) => {
+        event.preventDefault();
+        navigate('/dashboard/community/');
+    } );
 
   return (
     <div className={orgHomeStyle["orgHomeModule"]}>

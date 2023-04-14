@@ -360,3 +360,7 @@
         transform: translate(0);
     }
   }
+
+.countryFlag{
+    width: 30px;
+}

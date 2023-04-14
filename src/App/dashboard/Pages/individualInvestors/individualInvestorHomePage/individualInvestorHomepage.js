@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import orgHomeStyle from './individualInvestorHomepage.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { orderBy, set } from 'lodash'
 import axios from 'axios';
 import { DateRangePicker } from 'react-date-range';
@@ -9,8 +9,11 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import CsvDownloadButton from 'react-json-to-csv'
 import ColumnResizer from "react-table-column-resizer";
 import ExportExcel from 'react-excel-exports'
+import Flag from 'react-world-flags'
+import { useHotkeys } from 'react-hotkeys-hook'
 
 export default function IndividualInvestorHomepage() {
+    const navigate = useNavigate();
 
     const [dataTable, setDataTable] = useState({
         table: [],
@@ -189,8 +192,6 @@ export default function IndividualInvestorHomepage() {
         // await ;
     }
 
-    
-
     useEffect(()=>{
         loadTableData(dataTable.currentPage)
     },[dataTable.loadData]);
@@ -198,6 +199,27 @@ export default function IndividualInvestorHomepage() {
     useEffect(()=>{
 
     },[dateRange])
+
+    //hotkeys
+    useHotkeys('ctrl+alt+f', (event) => {
+        event.preventDefault();
+        setDataTable({...dataTable, showFilter: !dataTable.showFilter, showColumn: false})
+    } );
+
+    useHotkeys('ctrl+alt+c', (event) => {
+        event.preventDefault();
+        setDataTable({...dataTable, showFilter: false, showColumn: !dataTable.showColumn})
+    } );
+
+    useHotkeys('ctrl+alt+n', (event) => {
+        event.preventDefault();
+        navigate('/dashboard/community/individual-investor/create/');
+    } );
+
+    useHotkeys('ctrl+alt+b', (event) => {
+        event.preventDefault();
+        navigate('/dashboard/community/');
+    } );
 
 
   return (
@@ -528,7 +550,7 @@ export default function IndividualInvestorHomepage() {
                                         {(dataTable.columnFilter.privateLaunchInvestor) && <><td className={orgHomeStyle["dataModuleTd"]}>{ e.privateLaunchInvestor }</td><td className="columnResizer" /></>}
                                         {(dataTable.columnFilter.dob) && <><td className={orgHomeStyle["dataModuleTd"]}>{ new Date(e.dob).toLocaleDateString() }</td><td className="columnResizer" /></>}
                                         {(dataTable.columnFilter.phoneNumber) && <><td className={orgHomeStyle["dataModuleTd"]}>{ e.phoneNumber }</td><td className="columnResizer" /></>}
-                                        {(dataTable.columnFilter.countryOfResidence) && <><td className={orgHomeStyle["dataModuleTd"]}>{ e.countryOfResidence }</td><td className="columnResizer" /></>}
+                                        {(dataTable.columnFilter.countryOfResidence) && <><td className={orgHomeStyle["dataModuleTd"]}> <Flag className={orgHomeStyle["countryFlag"]} code={ e.countryOfResidence } /> { e.countryOfResidence }</td><td className="columnResizer" /></>}
                                         {(dataTable.columnFilter.createdBy) && <><td className={orgHomeStyle["dataModuleTd"]}><Link to={"/dashboard/admin/view/" + e.createdBy}>{ e.creatorUsername }</Link></td><td className="columnResizer" /></>}
                                         <td className={orgHomeStyle["dataModuleTd"]}>
 

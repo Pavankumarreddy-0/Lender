@@ -23,10 +23,12 @@
     "react-dom": "^18.2.0",
     "react-excel-exports": "^1.1.6",
     "react-flags-select": "^2.2.3",
+    "react-hotkeys-hook": "^4.3.8",
     "react-json-to-csv": "^1.2.0",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "react-table-column-resizer": "^1.0.1",
+    "react-world-flags": "^1.5.1",
     "save": "^2.9.0",
     "web-vitals": "^2.1.4"
   },

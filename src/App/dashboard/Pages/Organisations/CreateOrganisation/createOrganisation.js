@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import corgStyle from './createOrganisation.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useUser } from '../../../../auth/useUser';
 import axios from 'axios';
+import { useHotkeys } from 'react-hotkeys-hook'
 
 export default function CreateOrganisation() {
 
     const user = useUser();
     const { id } = user;
+
+    const navigate = useNavigate();
 
     const [createOrg, setCreateOrg] = useState({
         currentStep: 1,
@@ -85,6 +88,11 @@ export default function CreateOrganisation() {
 
 
     }
+
+    useHotkeys('ctrl+alt+b', (event) => {
+      event.preventDefault();
+      navigate('/dashboard/community/organizations/');
+    });
  
 
   return (

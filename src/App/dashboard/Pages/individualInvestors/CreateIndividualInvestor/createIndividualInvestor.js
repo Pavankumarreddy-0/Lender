@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useUser } from '../../../../auth/useUser';
 import axios from 'axios';
 import corgStyle from './createIndividualInvestor.module.css'
 import ReactFlagsSelect from "react-flags-select";
 import { Calendar } from 'react-date-range';
+import { useHotkeys } from 'react-hotkeys-hook'
 
 export default function CreateIndividualInvestor() {
+
+    const navigate = useNavigate();
 
     const user = useUser();
     const { id } = user;
@@ -89,6 +92,11 @@ export default function CreateIndividualInvestor() {
     useEffect(()=>{
 
     },[createOrg.personalInfo.countryOfResidence])
+
+    useHotkeys('ctrl+alt+b', (event) => {
+      event.preventDefault();
+      navigate('/dashboard/community/individual-investor/');
+    });
 
   return (
     <div className={corgStyle["createOrganisationModule"]}>
