@@ -14,6 +14,8 @@ import OrganizationHomepage from './dashboard/Pages/Organisations/organizationHo
 import RobotsTxt from './dashboard/Settings/seo/Robots_txt/RobotsTxt';
 import ViewPage from './dashboard/components/OrganizationViews/ViewPage/ViewPage';
 import BasicInfo from './dashboard/components/OrganizationViews/BasicInfo';
+import CreateIndividualInvestor from './dashboard/Pages/individualInvestors/CreateIndividualInvestor/createIndividualInvestor';
+import IndividualInvestorHomepage from './dashboard/Pages/individualInvestors/individualInvestorHomePage/individualInvestorHomepage';
 
 function App() {
   return (
@@ -25,7 +27,7 @@ function App() {
           <Route path="/signup" element={<SignupPage />}></Route>
           <Route path="/dashboard" element={<PrivateRoute />}>
             <Route path="/dashboard" element={<Dashboard />} exact>
-            <Route path="/dashboard/" element={<DashboardHome />} exact></Route>
+              <Route path="/dashboard/" element={<DashboardHome />} exact></Route>
               <Route path="/dashboard/settings" element={<Settings />} exact>
               </Route>
               <Route path="/dashboard/platform" element={<h1>Platform</h1>} exact>
@@ -37,6 +39,10 @@ function App() {
               <Route path="/dashboard/community/organizations/" element={<OrganizationHomepage/>} exact>
               </Route>
               <Route path="/dashboard/community/organizations/create" element={<CreateOrganisation/>} exact>
+              </Route>
+              <Route path="/dashboard/community/individual-investor/" element={<IndividualInvestorHomepage/>} exact>
+              </Route>
+              <Route path="/dashboard/community/individual-investor/create" element={<CreateIndividualInvestor/>} exact>
               </Route>
               <Route path="/dashboard/community/organizations/view/:organizationId" element={<ViewPage/>} exact>
                 <Route path="/dashboard/community/organizations/view/:organizationId/" element={<BasicInfo/>} exact>
@@ -70,7 +76,6 @@ function App() {
                 </Route>
               <Route path="/dashboard/settings/create-role" element={<CreateRole />}>
               </Route>
-
               <Route path="/dashboard/settings/seo/robots-txt" element={<RobotsTxt />}>
               </Route>
             </Route>

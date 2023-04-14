@@ -35,7 +35,6 @@ export const getOrganization = {
                         {
                             _id: ObjectId(orgId)
                         }
-                        
                     },
                     {
                         $lookup:

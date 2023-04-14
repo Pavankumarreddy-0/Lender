@@ -3,14 +3,14 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { ObjectId } from 'mongodb';
 
-export const createOrganization = {
-    path: '/api/create-organization/',
+export const createIndividualInvestor = {
+    path: '/api/create-individual-investor/',
     method: 'put',
     handler: async (req, res) => {
 
         //get auth header from client
         const { authorization } = req.headers;
-        const { _id,contactPoint,organizationDetails } = req.body;
+        const { _id,contactPoint,personalInfo } = req.body;
 
         if (!authorization) {
             return res.status(401).json({ message: "No Authorization header sent." })
@@ -29,28 +29,17 @@ export const createOrganization = {
                 // const result = await db.collection("roles").find({}).toArray();
                 const result = await db.collection('person').insertOne({
                     ...contactPoint,
-                    type: (organizationDetails.organizationInterest == "Investing") ? "Corporate Investor" : "Fundraiser",
+                    ...personalInfo,
+                    dob: new Date(personalInfo.dob),
+                    type: "Individual Investor",
                     kycStatus: "Draft",
+                    membershipStatus: "Incomplete",
+                    privateLaunchInvestor: "Regular",
+                    createdAt: new Date(),
                     createdBy: ObjectId(_id)
                 })
 
-                const result2 = await db.collection('organization').insertOne({
-                    ...organizationDetails,
-                    kybStatus: "Draft",
-                    createdBy: ObjectId(_id),
-                    contactPoint: result.insertedId,
-                    createdAt: new Date()
-                })
-
-                const result3 = await db.collection("person").findOneAndUpdate(
-                    {
-                        "_id": ObjectId(result.insertedId)
-                    },
-                    { $set: { organization: result2.insertedId, createdAt: new Date() } },
-                    { returnOriginal: true }
-                );
-
-                res.status(200).json({ message: "Role Created", contactPoint: result3, organization: result2 })
+                res.status(200).json({ message: "Created", createdId: result.insertedId })
 
             }
         )

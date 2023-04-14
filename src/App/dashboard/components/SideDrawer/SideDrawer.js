@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import SideDrawerStyles from './SideDrawer.module.css'
 import { Link } from 'react-router-dom'
-
+import { useHotkeys } from 'react-hotkeys-hook';
 
 export default function SideDrawer(props) {
     const {webAppSettings,setWebSettings } = props
@@ -208,6 +208,12 @@ export default function SideDrawer(props) {
     useEffect(()=>{
 
     },[webAppSettings.enlargedMenu])
+
+    //hotkeys
+    useHotkeys('ctrl+m', (event) => {
+        event.preventDefault();
+        setWebSettings({...webAppSettings, enlargedMenu: !webAppSettings.enlargedMenu})
+    });
 
   return (
     <>
