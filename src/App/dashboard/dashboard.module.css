@@ -1,23 +1,26 @@
-
-.dashboard{
+.dashboard {
     position: relative;
-    background: var( --body-background);
+    background: var(--body-background);
     display: flex;
     flex-direction: column;
 }
-.dashboardHeader{
+
+.dashboardHeader {
     flex-shrink: 0;
     min-height: 40px;
 }
-.dashboardBody{
+
+.dashboardBody {
     flex-grow: 1;
     display: flex;
 }
-.dashboardSidebar{
+
+.dashboardSidebar {
     flex-shrink: 0;
     min-width: 68px;
 }
-.dashboardOutlet{
+
+.dashboardOutlet {
     flex-grow: 1;
     height: calc(100vh - 45px);
     overflow: auto;
@@ -27,10 +30,12 @@
     /* padding-top: 5px;
     padding-left: 5px; */
     background: #fff;
-    box-shadow: var(--shadow4,0 0 2px var(--colorNeutralShadowAmbient,rgba(0,0,0,.12)),0 2px 4px var(--colorNeutralShadowKey,rgba(0,0,0,.14)));
+    box-shadow: var(--shadow4, 0 0 2px var(--colorNeutralShadowAmbient, rgba(0, 0, 0, .12)), 0 2px 4px var(--colorNeutralShadowKey, rgba(0, 0, 0, .14)));
     position: relative;
 }
-.dashboardOutletInner{
+
+.dashboardOutletInner {
     background-color: #fff;
     width: 100%;
+    min-height: 500px;
 }

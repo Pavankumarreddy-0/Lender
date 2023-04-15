@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useUser } from '../auth/useUser'
 import { useToken } from '../auth/useToken'
 import axios from 'axios';
@@ -10,11 +10,13 @@ import Sidebar from './components/Sidebar/Sidebar';
 import DashboardNotification from './components/dashboardNotification/DashboardNotification';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { useNavigate } from 'react-router-dom';
+import { webAppContext } from '../contexts/contexts';
 
 export default function Dashboard() {
 
     const user = useUser();
     const [token,] = useToken();
+    const { __webAppSettings, __updateWebAppSettings } = useContext(webAppContext);
     const { id } = user;
 
     const navigate = useNavigate();
@@ -27,41 +29,52 @@ export default function Dashboard() {
         console.log(user);
     }, [])
 
+    useEffect(() => {
+
+    }, [__webAppSettings.keyboardShortcuts])
+
     //hotkeys for pages
-    useHotkeys('ctrl+shift+d', (event) => {
+
+    useHotkeys(__webAppSettings.keyboardShortcuts.dashboardPage, (event) => {
         event.preventDefault();
         navigate('/dashboard/');
     });
 
-    useHotkeys('ctrl+shift+c', (event) => {
+    useHotkeys(__webAppSettings.keyboardShortcuts.communityPage, (event) => {
         event.preventDefault();
         navigate('/dashboard/community');
     });
 
-    useHotkeys('ctrl+shift+p', (event) => {
+    useHotkeys(__webAppSettings.keyboardShortcuts.platformPage, (event) => {
         event.preventDefault();
         navigate('/dashboard/platform');
     });
 
-    useHotkeys('ctrl+shift+f', (event) => {
+    useHotkeys(__webAppSettings.keyboardShortcuts.crowdFundingPage, (event) => {
         event.preventDefault();
         navigate('/dashboard/crowdfunding');
     });
 
-    useHotkeys('ctrl+shift+e', (event) => {
+    useHotkeys(__webAppSettings.keyboardShortcuts.everythingPage, (event) => {
         event.preventDefault();
         navigate('/dashboard/everything');
     });
 
-    useHotkeys('ctrl+shift+i', (event) => {
+    useHotkeys(__webAppSettings.keyboardShortcuts.investmentPage, (event) => {
         event.preventDefault();
         navigate('/dashboard/investments');
     });
 
-    useHotkeys('ctrl+shift+s', (event) => {
+    useHotkeys(__webAppSettings.keyboardShortcuts.settingsPage, (event) => {
         event.preventDefault();
         navigate('/dashboard/settings');
     });
+
+    useHotkeys(__webAppSettings.keyboardShortcuts.searchWebApp, (event) => {
+        event.preventDefault();
+        __updateWebAppSettings({ ...__webAppSettings, searchMode: !__webAppSettings.searchMode })
+    });
+
 
     return (
         <div className={dashboardStyles['dashboard']}>
