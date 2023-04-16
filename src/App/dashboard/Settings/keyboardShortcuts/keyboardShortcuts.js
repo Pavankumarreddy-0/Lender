@@ -127,6 +127,9 @@ export default function KeyboardShortcuts() {
     if (e.keyCode == 16 || e.keyCode == 17 || e.keyCode == 18 || e.keyCode == 91 || e.keyCode == 8) {
       return
     }
+    if (combination.length < 1) {
+      return;
+    }
     let _upPath = "modKeys." + propKey;
     let newKeySetState = set({ ...keyboardSetting }, _upPath, combination + e.key)
     console.log(newKeySetState);
