@@ -8,6 +8,8 @@ import { fetchOrganization } from "./organization/fetchOrganization.js"
 import { getOrganization } from "./organization/getorganization.js"
 import { createIndividualInvestor } from "./individualInvestor/createIndividualInvestor.js"
 import { fetchIndividualInvestors } from "./individualInvestor/fetchIndividualInvestors.js"
+import { keyboardShortcutSave } from "./settings/keyboardShortcutSave.js"
+import { getKeyboardShortcuts } from "./settings/getKeyboardShortcuts.js"
 export const routes = [
     loginRoute,
     signUpRoute,
@@ -18,5 +20,7 @@ export const routes = [
     fetchOrganization,
     getOrganization,
     createIndividualInvestor,
-    fetchIndividualInvestors
+    fetchIndividualInvestors,
+    keyboardShortcutSave,
+    getKeyboardShortcuts
 ]

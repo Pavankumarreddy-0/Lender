@@ -25,8 +25,26 @@ export default function Dashboard() {
         documents: []
     })
 
+    const setUserKeyboardShortcuts = async () => {
+        await axios.post('/api/keyboard-shortcuts/', {}, {
+            headers: { authorization: `Bearer ${localStorage.getItem("token")}` }
+        }).then(response => {
+
+            const { result } = response.data;
+
+            if ("keyboardShortcuts" in result[0]) {
+                __updateWebAppSettings({ ...__webAppSettings, keyboardShortcuts: result[0].keyboardShortcuts })
+            }
+            // setKeyboardSetting({ ...keyboardSetting, modKeys: result.keyboardShortcuts, editMode: false, savingMode: false })
+
+        }).catch(error => {
+            setUserKeyboardShortcuts();
+        })
+    }
+
     useEffect(() => {
         console.log(user);
+        setUserKeyboardShortcuts();
     }, [])
 
     useEffect(() => {

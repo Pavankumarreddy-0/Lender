@@ -6,6 +6,7 @@ import { useState } from "react";
 import { set, get } from "lodash"
 import { useEffect } from "react";
 import { useHotkeys } from 'react-hotkeys-hook';
+import axios from 'axios';
 
 export default function KeyboardShortcuts() {
 
@@ -15,6 +16,7 @@ export default function KeyboardShortcuts() {
 
   const [keyboardSetting, setKeyboardSetting] = useState({
     editMode: false,
+    savingMode: false,
     pressedKeys: [],
     shortcuts: [
       {
@@ -103,17 +105,29 @@ export default function KeyboardShortcuts() {
     }
   })
 
-  const updateGlobalKeyShortcuts = () => {
-    __updateWebAppSettings({ ...__webAppSettings, keyboardShortcuts: { ...__webAppSettings.keyboardShortcuts, ...keyboardSetting.modKeys } })
-    setKeyboardSetting({ ...keyboardSetting, modKeys: { ...__webAppSettings.keyboardShortcuts }, editMode: false })
-  }
+  const updateGlobalKeyShortcuts = async () => {
 
-  const updateShortcut = (e) => {
-    let propKey = e.target.getAttribute("data-propkey");
-    let _upPath = "modKeys." + propKey;
-    let newKeySetState = set({ ...keyboardSetting }, _upPath, e.target.value)
-    console.log(newKeySetState);
-    setKeyboardSetting(newKeySetState);
+    setKeyboardSetting({ ...keyboardSetting, savingMode: true })
+
+    if (keyboardSetting.savingMode) {
+      alert("Please wait.. the update request is already being sent..")
+      return;
+    }
+
+    await axios.put('/api/save-keyboard-shortcut/', { keyboardShortcuts: { ...__webAppSettings.keyboardShortcuts, ...keyboardSetting.modKeys } }, {
+      headers: { authorization: `Bearer ${localStorage.getItem("token")}` }
+    }).then(response => {
+
+      const result = response.data;
+      __updateWebAppSettings({ ...__webAppSettings, keyboardShortcuts: result.keyboardShortcuts })
+      setKeyboardSetting({ ...keyboardSetting, modKeys: result.keyboardShortcuts, editMode: false, savingMode: false })
+
+    }).catch(error => {
+      alert("Unable to save the shortcuts, please try again.")
+      console.log(error, 'error')
+      setKeyboardSetting({ ...keyboardSetting, editMode: true, savingMode: false })
+    })
+
   }
 
   const generateKeyCombination = (e) => {
@@ -174,8 +188,10 @@ export default function KeyboardShortcuts() {
         </div>
         <div className={keyStyle['keyboardManageHeader']}>
           {(!keyboardSetting.editMode) && <a href="javascript:void(0)" className={keyStyle['editKeyshortcutButton']} onClick={() => { setKeyboardSetting({ ...keyboardSetting, editMode: true }) }}><i className="bi bi-pencil"></i>Edit</a>}
-          {(keyboardSetting.editMode) && <a href="javascript:void(0)" className={keyStyle['editKeyshortcutButton']} onClick={() => { updateGlobalKeyShortcuts() }}><i className="bi bi-save"></i>Save</a>}
-          {(keyboardSetting.editMode) && <a href="javascript:void(0)" className={keyStyle['editKeyshortcutButton']} onClick={() => { setKeyboardSetting({ ...keyboardSetting, editMode: false, modKeys: { ...__webAppSettings.keyboardShortcuts } }) }}><i className="bi bi-x-square"></i>Cancel</a>}
+          {(keyboardSetting.editMode) && <a href="javascript:void(0)" className={keyStyle['editKeyshortcutButton']} onClick={() => { updateGlobalKeyShortcuts() }}>
+            {(keyboardSetting.savingMode) ? <><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Saving..</> : <><i className="bi bi-save"></i>Save</>}
+          </a>}
+          {(keyboardSetting.editMode && !keyboardSetting.savingMode) && <a href="javascript:void(0)" className={keyStyle['editKeyshortcutButton']} onClick={() => { setKeyboardSetting({ ...keyboardSetting, editMode: false, modKeys: { ...__webAppSettings.keyboardShortcuts } }) }}><i className="bi bi-x-square"></i>Cancel</a>}
         </div>
       </div>
       <div className={keyStyle["keyboardBodyContainer"]}>
