@@ -16,6 +16,7 @@ import ViewPage from './dashboard/components/OrganizationViews/ViewPage/ViewPage
 import BasicInfo from './dashboard/components/OrganizationViews/BasicInfo';
 import CreateIndividualInvestor from './dashboard/Pages/individualInvestors/CreateIndividualInvestor/createIndividualInvestor';
 import IndividualInvestorHomepage from './dashboard/Pages/individualInvestors/individualInvestorHomePage/individualInvestorHomepage';
+import KeyboardShortcuts from './dashboard/Settings/keyboardShortcuts/keyboardShortcuts';
 
 function App() {
   return (
@@ -36,23 +37,23 @@ function App() {
               </Route>
               <Route path="/dashboard/community" element={<h1>community</h1>} exact>
               </Route>
-              <Route path="/dashboard/community/organizations/" element={<OrganizationHomepage/>} exact>
+              <Route path="/dashboard/community/organizations/" element={<OrganizationHomepage />} exact>
               </Route>
-              <Route path="/dashboard/community/organizations/create" element={<CreateOrganisation/>} exact>
+              <Route path="/dashboard/community/organizations/create" element={<CreateOrganisation />} exact>
               </Route>
-              <Route path="/dashboard/community/individual-investor/" element={<IndividualInvestorHomepage/>} exact>
+              <Route path="/dashboard/community/individual-investor/" element={<IndividualInvestorHomepage />} exact>
               </Route>
-              <Route path="/dashboard/community/individual-investor/create" element={<CreateIndividualInvestor/>} exact>
+              <Route path="/dashboard/community/individual-investor/create" element={<CreateIndividualInvestor />} exact>
               </Route>
-              <Route path="/dashboard/community/organizations/view/:organizationId" element={<ViewPage/>} exact>
-                <Route path="/dashboard/community/organizations/view/:organizationId/" element={<BasicInfo/>} exact>
-                </Route> 
-                <Route path="/dashboard/community/organizations/view/:organizationId/basic-info" element={<BasicInfo/>} exact>
-                </Route> 
+              <Route path="/dashboard/community/organizations/view/:organizationId" element={<ViewPage />} exact>
+                <Route path="/dashboard/community/organizations/view/:organizationId/" element={<BasicInfo />} exact>
+                </Route>
+                <Route path="/dashboard/community/organizations/view/:organizationId/basic-info" element={<BasicInfo />} exact>
+                </Route>
                 <Route path="/dashboard/community/organizations/view/:organizationId/details" element={<h1>Details</h1>} exact>
-                </Route> 
+                </Route>
                 <Route path="/dashboard/community/organizations/view/:organizationId/address" element={<h1>address</h1>} exact>
-                </Route> 
+                </Route>
                 <Route path="/dashboard/community/organizations/view/:organizationId/payments" element={<h1>payment</h1>} exact>
                 </Route>
                 <Route path="/dashboard/community/organizations/view/:organizationId/repayments" element={<h1>repayment</h1>} exact>
@@ -60,7 +61,7 @@ function App() {
                 <Route path="/dashboard/community/organizations/view/:organizationId/documents" element={<h1>docs</h1>} exact>
                 </Route>
                 <Route path="/dashboard/community/organizations/view/:organizationId/investments" element={<h1>Investment</h1>} exact>
-                </Route> 
+                </Route>
                 <Route path="/dashboard/community/organizations/view/:organizationId/deals" element={<h1>deals</h1>} exact>
                 </Route>
                 <Route path="/dashboard/community/organizations/view/:organizationId/customfeilds" element={<h1>customfeilds</h1>} exact>
@@ -73,7 +74,9 @@ function App() {
               <Route path="/dashboard/investments" element={<h1>investments</h1>} exact>
               </Route>
               <Route path="/dashboard/settings/roles" element={<RolesManagement />}>
-                </Route>
+              </Route>
+              <Route path="/dashboard/settings/keyboard-shortcuts/" element={<KeyboardShortcuts />}>
+              </Route>
               <Route path="/dashboard/settings/create-role" element={<CreateRole />}>
               </Route>
               <Route path="/dashboard/settings/seo/robots-txt" element={<RobotsTxt />}>

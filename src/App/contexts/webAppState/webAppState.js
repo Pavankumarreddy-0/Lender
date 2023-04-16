@@ -15,10 +15,13 @@ const WebAppState = (props) => {
             settingsPage: "ctrl+shift+s",
             filterShowAction: "ctrl+alt+f",
             columnShowAction: "ctrl+alt+c",
-            createNewObj: "ctrl+alt+n",
-            backButton: "ctrl+alt+b",
+            createNewObj: "shift+n",
+            backButton: "shift+b",
             showenlargedmenu: "ctrl+m",
-            searchWebApp: "ctrl+s"
+            searchWebApp: "ctrl+s",
+            saveSettings: "shift+s",
+            editSettings: "shift+e",
+            cancelSettings: "shift+w",
         }
     }
 
