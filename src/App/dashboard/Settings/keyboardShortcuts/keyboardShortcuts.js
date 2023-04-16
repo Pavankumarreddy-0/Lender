@@ -15,6 +15,7 @@ export default function KeyboardShortcuts() {
 
   const [keyboardSetting, setKeyboardSetting] = useState({
     editMode: false,
+    pressedKeys: [],
     shortcuts: [
       {
         keyName: "Navigate to Dashboard",
@@ -115,6 +116,23 @@ export default function KeyboardShortcuts() {
     setKeyboardSetting(newKeySetState);
   }
 
+  const generateKeyCombination = (e) => {
+    e.preventDefault();
+    let propKey = e.target.getAttribute("data-propkey");
+    let combination = (e.ctrlKey ? "Control +" : "") +
+      (e.shiftKey ? "Shift +" : "") +
+      (e.altKey ? "Alt +" : "") +
+      (e.metaKey ? "Meta +" : "");
+
+    if (e.keyCode == 16 || e.keyCode == 17 || e.keyCode == 18 || e.keyCode == 91 || e.keyCode == 8) {
+      return
+    }
+    let _upPath = "modKeys." + propKey;
+    let newKeySetState = set({ ...keyboardSetting }, _upPath, combination + e.key)
+    console.log(newKeySetState);
+    setKeyboardSetting(newKeySetState);
+  }
+
   useEffect(() => {
     setKeyboardSetting({ ...keyboardSetting, modKeys: { ...__webAppSettings.keyboardShortcuts }, editMode: false })
   }, [__webAppSettings.keyboardShortcuts])
@@ -175,7 +193,12 @@ export default function KeyboardShortcuts() {
                         }
                       </div>
                       :
-                      <input className={keyStyle["keyboardShortcutkeyInput"]} type="text" onChange={(e) => { updateShortcut(e) }} data-propkey={e.keyProp} value={keyboardSetting.modKeys[e.keyProp]}></input>
+                      <input className={keyStyle["keyboardShortcutkeyInput"]} type="text"
+                        onKeyDown={(e) => { generateKeyCombination(e) }}
+                        //  onChange={(e) => { updateShortcut(e) }} 
+                        data-propkey={e.keyProp}
+                        value={keyboardSetting.modKeys[e.keyProp]}
+                      ></input>
                   }
                 </div>
               </div>

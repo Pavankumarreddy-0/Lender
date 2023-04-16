@@ -1,27 +1,29 @@
 import { useState } from "react";
 import { webAppContext } from "../contexts";
 
+
+
 const WebAppState = (props) => {
     const InitialWebAppState = {
         enlargedMenu: false,
         searchMode: false,
         keyboardShortcuts: {
-            dashboardPage: "ctrl+shift+d",
-            communityPage: "ctrl+shift+c",
-            platformPage: "ctrl+shift+p",
-            crowdFundingPage: "ctrl+shift+f",
-            everythingPage: "ctrl+shift+e",
-            investmentPage: "ctrl+shift+i",
-            settingsPage: "ctrl+shift+s",
-            filterShowAction: "ctrl+alt+f",
-            columnShowAction: "ctrl+alt+c",
-            createNewObj: "shift+n",
-            backButton: "shift+b",
-            showenlargedmenu: "ctrl+m",
-            searchWebApp: "ctrl+s",
-            saveSettings: "shift+s",
-            editSettings: "shift+e",
-            cancelSettings: "shift+w",
+            dashboardPage: "Control +Shift +D",
+            communityPage: "Control +Shift +C",
+            platformPage: "Control +Shift +P",
+            crowdFundingPage: "Control +Shift +F",
+            everythingPage: "Control +Shift +E",
+            investmentPage: "Control +Shift +I",
+            settingsPage: "Control +Shift +S",
+            filterShowAction: "Control +Alt +f",
+            columnShowAction: "Control +Alt +c",
+            createNewObj: "Shift +N",
+            backButton: "Shift +B",
+            showenlargedmenu: "Control +m",
+            searchWebApp: "Control +s",
+            saveSettings: "Shift +S",
+            editSettings: "Shift +E",
+            cancelSettings: "Shift +W"
         }
     }
 
