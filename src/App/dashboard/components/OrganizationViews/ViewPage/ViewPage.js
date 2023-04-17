@@ -4,15 +4,15 @@ import { Outlet } from 'react-router-dom';
 import ViewPageStyles from './ViewPage.module.css'
 import OrganisationDataSideBar from '../OrganizationSidebar/OrganisationDataSideBar';
 
- function ViewPage() {
+function ViewPage() {
   return (
     <>
-        <section className={ViewPageStyles['orgFormViewSection']}>
-        <OrganisationDataSideBar/>
+      <section className={ViewPageStyles['orgFormViewSection']}>
+
         <Outlet></Outlet>
-        </section>
+      </section>
     </>
   )
 }
 
-export default  ViewPage;
+export default ViewPage;
