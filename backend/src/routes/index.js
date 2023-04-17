@@ -10,6 +10,7 @@ import { createIndividualInvestor } from "./individualInvestor/createIndividualI
 import { fetchIndividualInvestors } from "./individualInvestor/fetchIndividualInvestors.js"
 import { keyboardShortcutSave } from "./settings/keyboardShortcutSave.js"
 import { getKeyboardShortcuts } from "./settings/getKeyboardShortcuts.js"
+import { updateOrganization } from "./organization/updateOrganization.js"
 export const routes = [
     loginRoute,
     signUpRoute,
@@ -22,5 +23,6 @@ export const routes = [
     createIndividualInvestor,
     fetchIndividualInvestors,
     keyboardShortcutSave,
-    getKeyboardShortcuts
+    getKeyboardShortcuts,
+    updateOrganization
 ]
