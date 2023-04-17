@@ -154,6 +154,7 @@ export default function KeyboardShortcuts() {
     setKeyboardSetting({ ...keyboardSetting, modKeys: { ...__webAppSettings.keyboardShortcuts }, editMode: false })
   }, [__webAppSettings.keyboardShortcuts])
 
+
   //hotkeys
   useHotkeys(__webAppSettings.keyboardShortcuts.saveSettings, (event) => {
     event.preventDefault();

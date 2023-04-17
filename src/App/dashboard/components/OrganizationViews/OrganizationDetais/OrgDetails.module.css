@@ -1,0 +1,244 @@
+.card-Oinfo {
+    flex-grow: 1;
+}
+
+.BasicCardMain {
+    overflow-y: auto;
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+    height: calc(100vh - 120px);
+    justify-content: space-between;
+}
+
+.headingSection_info {
+    flex-grow: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-top: 5px;
+}
+
+.headingSection_info span {
+    font-size: 20px;
+}
+
+.orgDetails-inner {
+    max-width: 700px;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.orgDetails_inputs {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 10px 20px;
+}
+
+.basic-info_innerHeading {
+    margin-top: 10px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.basic-info_innerHeading span {
+    font-weight: 500;
+
+}
+
+.Inputs_basic-info {
+    width: 100%;
+    outline: none;
+    border: 2px solid #e7e7e7;
+    padding: 5px 10px;
+    font-size: 13px;
+}
+
+.Inputs_basic-info:focus {
+    border-color: var(--link-color);
+}
+
+
+.basic-info-btn {
+    border: 2px solid var(--btn-color);
+    padding: 4px 5px;
+    background: var(--btn-color);
+    color: white;
+}
+
+
+.basic-info-btn:is(:focus, :hover) {
+    background-color: var(--btn-color);
+}
+
+.basic_info-button {
+    display: flex;
+    justify-content: end;
+    gap: 13px
+}
+
+.saveResults {
+    border: 1px solid #ffcc00;
+    padding: 4px 5px;
+    background-color: #ffcc00;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.basicInfo-header {
+    background-color: #f7f7f7;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.OrgHeader {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.headerEditable {
+    border: 1px solid var(--btn-color);
+    background: var(--btn-color);
+    color: #fff;
+    padding: 5px 7px;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.headerEditable:hover {
+    background-color: #0859d1;
+    color: #fff;
+}
+
+.OrgHeader a {
+    font-size: 12px;
+    text-decoration: none;
+    display: flex;
+    gap: 5px;
+}
+
+.CardInner {
+    border-bottom: 1px solid #e7e7e7;
+    /* padding: 10px; */
+}
+
+.controlCard-body,
+.customcardBody {
+    padding: 10px;
+}
+
+.addcustomtagInput {
+    width: 80%;
+    outline: none;
+    border: 2px solid #e7e7e7;
+    padding: 5px 10px;
+    font-size: 13px;
+}
+
+.Cards {
+    max-width: 300px;
+    width: 500px;
+    border-left: 1px solid #e7e7e7;
+}
+
+.controlCard-header,
+.customCard-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    background: #f7f7f7;
+    border-bottom: 1px solid #e7e7e7;
+    font-size: 14px;
+}
+
+.controlCardText {
+    flex-grow: 1;
+}
+
+.controlCardIcons {
+    display: flex;
+    gap: 10px;
+}
+
+.addtagbtn {
+    border: 1px solid var(--btn-color);
+    background: var(--btn-color);
+    color: #fff;
+    padding: 5px 7px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.addtagbtn:hover {
+    background-color: #0859d1;
+    color: #fff;
+}
+
+.Tagname {
+    padding: 4px 5px;
+    display: flex;
+    gap: 7px;
+    padding: 3px;
+    margin: 2px;
+    border: 1px solid #f7f7f7;
+    background-color: #f7f7f7;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 3px;
+    color: #000;
+}
+
+.showcustomtags {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    padding: 0px 5px 10px 5px;
+}
+
+
+.LabelClass {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 3px;
+    font-size: 12px;
+}
+
+.controlCard-header i,
+.customCard-header i {
+    color: var(--link-color);
+}
+
+.BasicCardMain {
+    flex-grow: 1;
+}
+
+.basicCardFlexwrap {
+    display: flex;
+}
+
+.detailDescription{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.orgDetails_name{
+
+}
+.detailDesHeader{
+    border-bottom:1px solid #e7e7e7;
+    font-size:14px;
+    font-weight: 600;
+}
