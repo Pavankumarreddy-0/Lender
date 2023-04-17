@@ -56,16 +56,14 @@ export default function BasicInfo() {
 
     
     //? created a function to store the input tags values 
-    const addCustomTags = (e) =>{
+    const addCustomTags = () =>{
 
         //? here we compared the tags array length with string length that we are directly setting it in input tag
         //? we dont want user to create more than 10 tags
-
         if(OrgValues.tagString.trim().length < 1){
             alert("Please enter a tag name to create tag");
             return;
         }
-
         if(OrgValues.customTags.length + OrgValues.tagString.trim().split(",").length > 10){
             alert("Can not create more then 10 tags");
             return;
