@@ -7,6 +7,13 @@ const WebAppState = (props) => {
     const InitialWebAppState = {
         enlargedMenu: false,
         searchMode: false,
+        activeTheme: {
+            themeName: "classic",
+            themeType: "colorTheme",
+            themeColor: "#f0f0f0",
+            textColor: "#212529",
+            logoMode: "dark"
+        },
         keyboardShortcuts: {
             dashboardPage: "Control +Shift +D",
             communityPage: "Control +Shift +C",

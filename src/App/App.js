@@ -17,6 +17,7 @@ import BasicInfo from './dashboard/components/OrganizationViews/BasicInfo';
 import CreateIndividualInvestor from './dashboard/Pages/individualInvestors/CreateIndividualInvestor/createIndividualInvestor';
 import IndividualInvestorHomepage from './dashboard/Pages/individualInvestors/individualInvestorHomePage/individualInvestorHomepage';
 import KeyboardShortcuts from './dashboard/Settings/keyboardShortcuts/keyboardShortcuts';
+import ManageProfile from './dashboard/Pages/manageProfile/manageProfile';
 
 function App() {
   return (
@@ -74,6 +75,8 @@ function App() {
               <Route path="/dashboard/investments" element={<h1>investments</h1>} exact>
               </Route>
               <Route path="/dashboard/settings/roles" element={<RolesManagement />}>
+              </Route>
+              <Route path="/dashboard/settings/profile" element={<ManageProfile />}>
               </Route>
               <Route path="/dashboard/settings/keyboard-shortcuts/" element={<KeyboardShortcuts />}>
               </Route>

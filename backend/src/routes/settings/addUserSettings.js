@@ -3,14 +3,14 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { ObjectId } from 'mongodb';
 
-export const getKeyboardShortcuts = {
-    path: '/api/keyboard-shortcuts/',
-    method: 'post',
+export const updateUserSettings = {
+    path: '/api/update-user-settings/',
+    method: 'put',
     handler: async (req, res) => {
 
         //get auth header from client
         const { authorization } = req.headers;
-        // console.log(dateMatch, dateFilter.length, pageNum, perPage, matches, dateFilter)
+        const {  userSettings } = req.body;
 
         if (!authorization) {
             return res.status(401).json({ message: "No Authorization header sent." })
@@ -23,28 +23,19 @@ export const getKeyboardShortcuts = {
             token,
             process.env.JWT_SECRET,
             async (err, decoded) => {
+
                 if (err) return res.status(401).json({ message: "Unable to verify user" });
 
                 const db = getDbConnection(process.env.API_DB_NAME);
-
-
-                const result = await db.collection("users").aggregate([
+                const result = await db.collection("users").findOneAndUpdate(
                     {
-                        $match:
-                        {
-                            _id: ObjectId(decoded.id)
-                        }
+                        "_id": ObjectId(decoded.id)
                     },
-                    {
-                        $project:
-                        {
-                            keyboardShortcuts: 1
-                        }
+                    { $set: { ...userSettings } },
+                    { returnOriginal: false }
+                );
 
-                    }
-                ]).toArray();
-
-                res.status(200).json({ message: "Keyboard Shortcuts Fetched", result })
+                res.status(200).json({ message: "Settings Updated" })
 
             }
         )

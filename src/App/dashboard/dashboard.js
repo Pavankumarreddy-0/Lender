@@ -26,16 +26,26 @@ export default function Dashboard() {
     })
 
     const setUserKeyboardShortcuts = async () => {
-        await axios.post('/api/keyboard-shortcuts/', {}, {
+        await axios.post('/api/user-settings/', {}, {
             headers: { authorization: `Bearer ${localStorage.getItem("token")}` }
         }).then(response => {
 
             const { result } = response.data;
 
+            let settings_update = {};
+
+            console.log(result[0], "result0")
+
             if ("keyboardShortcuts" in result[0]) {
-                __updateWebAppSettings({ ...__webAppSettings, keyboardShortcuts: result[0].keyboardShortcuts })
+                settings_update = { ...settings_update, keyboardShortcuts: result[0].keyboardShortcuts }
+                // __updateWebAppSettings({ ...__webAppSettings, keyboardShortcuts: result[0].keyboardShortcuts })
             }
-            // setKeyboardSetting({ ...keyboardSetting, modKeys: result.keyboardShortcuts, editMode: false, savingMode: false })
+
+            if("theme" in result[0]){
+                settings_update = { ...settings_update, activeTheme: result[0].theme }
+                // __updateWebAppSettings({ ...__webAppSettings, activeThemeName: result[0].theme })
+            }
+            __updateWebAppSettings({ ...__webAppSettings, ...settings_update })
 
         }).catch(error => {
             setUserKeyboardShortcuts();
