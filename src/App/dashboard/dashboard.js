@@ -107,7 +107,7 @@ export default function Dashboard() {
     return (
         <div className={dashboardStyles['dashboard']}>
             <div className={dashboardStyles['dashboardHeader']}>
-                <Header></Header>
+                <Header user={user}></Header>
             </div>
             <div className={dashboardStyles['dashboardBody']}>
                 <div className={dashboardStyles['dashboardSidebar']}>

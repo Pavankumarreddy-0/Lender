@@ -7,7 +7,7 @@ import { webAppContext } from '../../../contexts/contexts';
 import { useEffect } from 'react';
 
 
-export default function Header() {
+export default function Header({user}) {
 
   const navigate = useNavigate();
   const {__webAppSettings, __updateWebAppSettings} = useContext(webAppContext);
@@ -75,7 +75,7 @@ export default function Header() {
                       </div>
                       <div className={headerStyles['headerSubProfileListRight']}>
                         <div className={headerStyles['headerSubProfileMeta']}>
-                            <p className={headerStyles['headerSubProfileMetaName']}>Abhishek</p>
+                            <p className={headerStyles['headerSubProfileMetaName']}>{ user.username }</p>
                         </div>
                         <div className={headerStyles['headerRightProfileSubItem']}>
                           <Link  className={headerStyles['headerRightProfileManageLink']} to="/dashboard/settings/profile">Manage Profile</Link>
