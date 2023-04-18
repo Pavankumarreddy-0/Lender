@@ -73,16 +73,15 @@
 .basic_info-button {
     display: flex;
     justify-content: end;
-    gap: 13px
+    gap: 3px;
 }
 
 .saveResults {
-    border: 1px solid #ffcc00;
     padding: 4px 5px;
-    background-color: #ffcc00;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    background-color: var(--link-color);
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
 }
 
 .basicInfo-header {
@@ -205,6 +204,12 @@
     padding: 0;
     flex-wrap: wrap;
     padding: 0px 5px 10px 5px;
+}
+
+.saveRes{
+    display:flex;
+    gap:4px;
+    align-items: center;
 }
 
 .tagMaincontainer {}

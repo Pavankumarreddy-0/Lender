@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import BasicInfoStyle from './BasicInfo.module.css'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router';
-import { async } from 'q';
 import axios from 'axios';
 import OrganisationDataSideBar from './OrganizationSidebar/OrganisationDataSideBar';
 
 
 export default function BasicInfo() {
     const { organizationId } = useParams();
-    
+
     //? this function is to fetch user details using axios
     const LoadOrgDetails = async () => {
         await axios.post('/api/organization', {
@@ -22,18 +21,49 @@ export default function BasicInfo() {
                 const { result } = response.data
                 console.log(result[0])
                 setNewOrgVal({ ...newOrgVal, basicState: result[0] });
+                setOrgValues({...OrgValues,basicState:result[0]});
             }).catch((err) => {
                 console.log(`Unable to fetch the data ${err}`)
             })
     }
+
+    const SaveOrgDetails = async () => {
+        setNewOrgVal({...newOrgVal,savingMode:true});
+
+        if(newOrgVal.savingMode){
+            alert("saving the data please wait");
+            return
+        }
+
+        let data = {...newOrgVal.basicState};
+        if("_id" in data)   delete data._id;
+        if("createdAt" in data)   delete data.createdAt;
+        if("createdBy" in data)   delete data.createdBy;
+        if("firstName" in data)   delete data.firstName;
+        if("lastName" in data)   delete data.lastName;
+        if("creatorUsername" in data)   delete data.creatorUsername;
+        if("contactPoint" in data)   delete data.contactPoint;
+
+        await axios.put('/api/update-organization/',{
+            _id:organizationId,
+            baicState: data
+        },
+        {
+            headers:{authorization:`Bearer ${localStorage.getItem('token')}`}
+        }).then(() => {
+           setOrgValues({...OrgValues, basicState: {...OrgValues.basicState, ...newOrgVal.basicState}});
+           setNewOrgVal({...newOrgVal,savingMode:false, editMode: false})
+        }).catch(err=>{
+            alert("Unable to save the data " + err + "")
+            setNewOrgVal({...newOrgVal,savingMode:false, editMode: true})
+        })
+    }
+
     useEffect(() => {
         LoadOrgDetails()
     }, [])
 
     const [OrgValues, setOrgValues] = useState({
-        editMode: false,
-        activeEditMode: false,
-        tagString: "",
         basicState: {
             "_id": "",
             "name": "",
@@ -49,17 +79,13 @@ export default function BasicInfo() {
             "firstName": "",
             "lastName": "",
             "creatorUsername": ""
-        },
-        control: "Control",
-        bookmarks: "Custom Tag",
-        controlCardStatus: "",
-        customTags: []
-
+        }
     })
 
     const [newOrgVal,setNewOrgVal] = useState({
         editMode: false,
         activeEditMode: false,
+        savingMode:false,
         tagString: "",
         basicState: {
             "_id": "",
@@ -125,9 +151,11 @@ export default function BasicInfo() {
         }
 
         setNewOrgVal({ ...newOrgVal, customTags: newTags })
-
     }
 
+    useEffect(()=>{
+
+    },[newOrgVal.basicState])
 
     return (
         <>
@@ -138,27 +166,30 @@ export default function BasicInfo() {
                             <i class="bi bi-arrow-left"></i>Organizations
                         </Link>
                         <div className={BasicInfoStyle['headingSection_info']}>
-                            <span>Basic Info - {newOrgVal.basicState.name} </span>
+                            <span>Basic Info - {OrgValues.basicState.name} </span>
                         </div>
                     </div>
+                    {/*  */}
                     <div className={BasicInfoStyle['basic_info-button']}>
-                        {(newOrgVal.activeEditMode) && <div className={BasicInfoStyle['saveResults']} onClick={() => setNewOrgVal({ ...newOrgVal, activeEditMode: false, editMode: false,})} ><i class="fa fa-floppy-o" aria-hidden="true"></i>SaveResults</div>}
-                        <a href="javascript:void(0)" className={BasicInfoStyle['headerEditable']} onClick={() => setNewOrgVal({ ...newOrgVal, activeEditMode: true, editMode: true })}><i class="bi bi-pencil-square"></i>Edit</a>
+                       {(!newOrgVal.editMode) && <a href="javascript:void(0)" className={BasicInfoStyle['headerEditable']} onClick={() => setNewOrgVal({ ...newOrgVal,editMode: true, })}><i class="bi bi-pencil-square"></i>Edit</a>}
+                        {(newOrgVal.editMode) && <a href="javascript:void(0)" className={BasicInfoStyle['headerEditable']} onClick={() => {SaveOrgDetails()}}>
+                            {(newOrgVal.savingMode) ? <><div class="spinner-border spinner-border-sm"></div><span>Saving...</span></> : <><div className={BasicInfoStyle['saveRes']}><i class="fa fa-floppy-o" aria-hidden="true"></i>Save Results</div></>}
+                        </a>}
+                        {(newOrgVal.editMode && !newOrgVal.savingMode) && <a href="javascript:void(0)" className={BasicInfoStyle['headerEditable']} onClick={() => setNewOrgVal({ ...newOrgVal, basicState:{...OrgValues.basicState},editMode: false, })}><i class="bi bi-x-circle"></i>Cancel</a> }
                     </div>
                 </div>
                 <div className={BasicInfoStyle["basicCardFlexwrap"]}>
                     <OrganisationDataSideBar />
                     <div className={BasicInfoStyle['BasicCardMain']}>
-                        {/* <div className={BasicInfoStyle['basic-info_innerHeading']}><span>Organisation Details</span></div> */}
                         <div className={BasicInfoStyle['basic_info-inner']}>
                             <div className={BasicInfoStyle['basic-info_inputs']}>
                                 <div className={BasicInfoStyle['basic-info_name']}>
                                     <label for="name" className={BasicInfoStyle['LabelClass']}>Name</label>
-                                    <input type="text" id="name" readOnly={(!newOrgVal.editMode) && "readonly"} defaultValue={newOrgVal.basicState.name} onChange={(e) => setNewOrgVal({ ...newOrgVal, basicState: { ...newOrgVal.basicState, name: e.target.value } })} className={BasicInfoStyle['Inputs_basic-info']} />
+                                    <input type="text" id="name" readOnly={(!newOrgVal.editMode) && "readonly"} value={newOrgVal.basicState.name} onChange={(e) => setNewOrgVal({ ...newOrgVal, basicState: { ...newOrgVal.basicState, name: e.target.value } })} className={BasicInfoStyle['Inputs_basic-info']} />
                                 </div>
                                 <div className={BasicInfoStyle['basic-info_companyName']}>
-                                    <label for="companyName" className={BasicInfoStyle['LabelClass']}>Company Name</label>
-                                    <input type="text" id="companyName" defaultValue={newOrgVal.basicState.creatorUsername} readOnly={(!newOrgVal.editMode) && "readonly"} onChange={(e) => setNewOrgVal({ ...newOrgVal, basicState: { ...newOrgVal.basicState, creatorUsername: e.target.value } })} className={BasicInfoStyle['Inputs_basic-info']} />
+                                    <label for="companyName" className={BasicInfoStyle['LabelClass']}>Company Number</label>
+                                    <input type="text" id="companyName" value={newOrgVal.basicState.companyNumber} readOnly={(!newOrgVal.editMode) && "readonly"} onChange={(e) => setNewOrgVal({ ...newOrgVal, basicState: { ...newOrgVal.basicState, companyNumber: e.target.value } })} className={BasicInfoStyle['Inputs_basic-info']} />
                                 </div>
                                 <div className={BasicInfoStyle['basic-info_OrganisationI']}>
                                     <label for="OrgIntrested" className={BasicInfoStyle['LabelClass']}>Organisation intrested in</label>
@@ -199,7 +230,7 @@ export default function BasicInfo() {
                             <div className={BasicInfoStyle['CardInner']}>
                                 <div className={BasicInfoStyle['customCard-header']}>
                                     <i class="bi bi-bookmark"></i>
-                                    <div className={BasicInfoStyle['']}>{newOrgVal.bookmarks}</div>
+                                    <div className={BasicInfoStyle['']}>Custom Tag</div>
                                 </div>
                                 <div className={BasicInfoStyle['customcardBody']}>
                                     <label for='addCustomtags' className={BasicInfoStyle['LabelClass']}>Add Tag</label>
