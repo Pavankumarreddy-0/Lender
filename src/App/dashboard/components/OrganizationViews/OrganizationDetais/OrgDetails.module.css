@@ -1,4 +1,4 @@
-.card-Binfo {
+.card-Oinfo {
     flex-grow: 1;
 }
 
@@ -22,15 +22,15 @@
     font-size: 20px;
 }
 
-.basic_info-inner {
+.orgDetails-inner {
     max-width: 700px;
     width: 100%;
     padding: 10px 20px;
 }
 
-.basic-info_inputs {
+.orgDetails_inputs {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
     gap: 10px 20px;
 }
 
@@ -73,15 +73,16 @@
 .basic_info-button {
     display: flex;
     justify-content: end;
-    gap: 3px;
+    gap: 13px
 }
 
 .saveResults {
+    border: 1px solid #ffcc00;
     padding: 4px 5px;
-    background-color: var(--link-color);
-    color: #fff;
-    text-decoration: none;
-    font-size: 13px;
+    background-color: #ffcc00;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .basicInfo-header {
@@ -206,36 +207,12 @@
     padding: 0px 5px 10px 5px;
 }
 
-.saveRes{
-    display:flex;
-    gap:4px;
-    align-items: center;
-}
-
-.tagMaincontainer {}
-
-.text-header {}
-
-
-
-.basic-info_name {}
-
-.basic-info_companyName {}
-
-.basic-info_OrganisationI {}
-
-
-.basic-info_OrganisationE {}
-
-.basic-info_OrganisationP {}
-
-.basic-info_OrganisationWeb {}
 
 .LabelClass {
     display: block;
     font-weight: 500;
     margin-bottom: 3px;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .controlCard-header i,
@@ -249,4 +226,19 @@
 
 .basicCardFlexwrap {
     display: flex;
+}
+
+.detailDescription{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.orgDetails_name{
+
+}
+.detailDesHeader{
+    border-bottom:1px solid #e7e7e7;
+    font-size:14px;
+    font-weight: 600;
 }

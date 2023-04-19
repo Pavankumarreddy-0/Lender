@@ -117,11 +117,10 @@ export default function KeyboardShortcuts() {
     await axios.put('/api/save-keyboard-shortcut/', { keyboardShortcuts: { ...__webAppSettings.keyboardShortcuts, ...keyboardSetting.modKeys } }, {
       headers: { authorization: `Bearer ${localStorage.getItem("token")}` }
     }).then(response => {
-
+      
       const result = response.data;
       __updateWebAppSettings({ ...__webAppSettings, keyboardShortcuts: result.keyboardShortcuts })
       setKeyboardSetting({ ...keyboardSetting, modKeys: result.keyboardShortcuts, editMode: false, savingMode: false })
-
     }).catch(error => {
       alert("Unable to save the shortcuts, please try again.")
       console.log(error, 'error')
@@ -153,6 +152,7 @@ export default function KeyboardShortcuts() {
   useEffect(() => {
     setKeyboardSetting({ ...keyboardSetting, modKeys: { ...__webAppSettings.keyboardShortcuts }, editMode: false })
   }, [__webAppSettings.keyboardShortcuts])
+
 
   //hotkeys
   useHotkeys(__webAppSettings.keyboardShortcuts.saveSettings, (event) => {

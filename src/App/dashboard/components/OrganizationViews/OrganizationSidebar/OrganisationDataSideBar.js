@@ -62,6 +62,7 @@ function OrganisationDataSideBar() {
             Surl:'history'
         }
     ]
+    
     const [OrgSideData,setOrgData] = useState(SidebarData);
 
     useEffect(()=>{
