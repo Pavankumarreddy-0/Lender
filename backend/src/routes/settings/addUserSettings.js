@@ -16,6 +16,14 @@ export const updateUserSettings = {
             return res.status(401).json({ message: "No Authorization header sent." })
         }
 
+        if( "email" in userSettings){
+            delete userSettings.email;
+        }
+
+        if( "passwordHash" in userSettings){
+            delete userSettings.passwordHash;
+        }
+
         // bearer [Token] <=== need this
         const token = authorization.split(" ")[1];
 

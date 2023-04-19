@@ -39,7 +39,11 @@ export const getUserSettings = {
                         $project:
                         {
                             keyboardShortcuts: 1,
-                            theme: 1
+                            theme: 1,
+                            username: 1,
+                            email: 1,
+                            phoneNumber: 1
+                            
                         }
 
                     }

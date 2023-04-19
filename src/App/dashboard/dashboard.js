@@ -45,6 +45,19 @@ export default function Dashboard() {
                 settings_update = { ...settings_update, activeTheme: result[0].theme }
                 // __updateWebAppSettings({ ...__webAppSettings, activeThemeName: result[0].theme })
             }
+
+            if("username" in result[0]){
+                settings_update = { ...settings_update, userProfile: { ...settings_update.userProfile, username: result[0].username} }
+                // __updateWebAppSettings({ ...__webAppSettings, activeThemeName: result[0].theme })
+            }
+            if("email" in result[0]){
+                settings_update = { ...settings_update, userProfile: { ...settings_update.userProfile, email: result[0].email} }
+                // __updateWebAppSettings({ ...__webAppSettings, activeThemeName: result[0].theme })
+            }
+            if("phoneNumber" in result[0]){
+                settings_update = { ...settings_update, userProfile: { ...settings_update.userProfile, phoneNumber: result[0].phoneNumber} }
+                // __updateWebAppSettings({ ...__webAppSettings, activeThemeName: result[0].theme })
+            }
             __updateWebAppSettings({ ...__webAppSettings, ...settings_update })
 
         }).catch(error => {
@@ -107,7 +120,7 @@ export default function Dashboard() {
     return (
         <div className={dashboardStyles['dashboard']}>
             <div className={dashboardStyles['dashboardHeader']}>
-                <Header user={user}></Header>
+                <Header></Header>
             </div>
             <div className={dashboardStyles['dashboardBody']}>
                 <div className={dashboardStyles['dashboardSidebar']}>

@@ -14,6 +14,11 @@ const WebAppState = (props) => {
             textColor: "#212529",
             logoMode: "dark"
         },
+        userProfile: {
+            email: "",
+            username: "", 
+            phoneNumber: ""
+        },
         keyboardShortcuts: {
             dashboardPage: "Control +Shift +D",
             communityPage: "Control +Shift +C",

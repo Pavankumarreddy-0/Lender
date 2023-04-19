@@ -35,12 +35,15 @@
 }
 .manageProfileSidebar{
     flex-shrink: 0;
-    min-width: 300px;
-    border-left: 1px solid #e7e7e7;
+    min-width: 250px;
+    border-right: 1px solid #e7e7e7;
     background-color: #f7f7f7;
+    padding: 10px 20px;
 }
 .manageProfileSidebarInner{
-
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 .manageProfilePersonalInner{
     padding:10px 15px;
@@ -76,7 +79,7 @@
     padding: 7px 0px;
 }
 .manageProfilePersonalTheme{
-    margin-top: 10px
+    /* margin-top: 10px */
 }
 .manageProfileThemeSection{
 
@@ -128,8 +131,55 @@
     box-shadow: -1px 1px 5px rgba(0,0,0,.1);
     border: none;
     margin-top: 5px;
+    margin-right: 5px;
 }
 .manageProfileSaveThemeButton:hover{
     color: #fff;
     background-color: #0859d1;
+}
+.panelLinks{
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+    color: #242424;
+    gap: 10px;
+    font-size: 14px;
+    padding: 5px 10px;
+    border: 1px solid rgba(0,0,0,0);
+    cursor: pointer;
+    border-radius: 2px;
+    -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  align-items: center;
+}
+.panelLinks:hover{
+    color: #242424;
+    border: 1px solid rgba(0,0,0,.1);
+    background-color: #e7e7e7;
+}
+.panelLinksActive{
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+    color: #242424;
+    gap: 10px;
+    font-size: 14px;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 2px;
+    box-shadow: 0px 0px 3px rgba(0,0,0,.1);
+    border: 1px solid rgba(0,0,0,0);
+    -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  align-items: center;
+}
+.panelLinksActive:hover{
+    color: #242424;
+    border: 1px solid rgba(0,0,0,0);
+}
+.panelLinks i, .panelLinksActive i{
+    color: var(--link-color);
+    font-size: 18px;
 }

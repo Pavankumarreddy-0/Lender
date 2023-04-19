@@ -29,6 +29,10 @@ export default function Header({user}) {
 
   },[__webAppSettings.activeTheme])
 
+  useEffect(()=>{
+
+  },[__webAppSettings.userProfile])
+
 
 // style={("accentBg" in __webAppSettings.activeTheme) ? {background: __webAppSettings.activeTheme.accentBg} : {}}
 
@@ -75,10 +79,10 @@ export default function Header({user}) {
                       </div>
                       <div className={headerStyles['headerSubProfileListRight']}>
                         <div className={headerStyles['headerSubProfileMeta']}>
-                            <p className={headerStyles['headerSubProfileMetaName']}>{ user.username }</p>
+                            <p className={headerStyles['headerSubProfileMetaName']}>{ __webAppSettings.userProfile.username }</p>
                         </div>
                         <div className={headerStyles['headerRightProfileSubItem']}>
-                          <Link  className={headerStyles['headerRightProfileManageLink']} to="/dashboard/settings/profile">Manage Profile</Link>
+                          <Link onClick={()=> setHeaderData({...headerData, profileDetailsMenu: false})} className={headerStyles['headerRightProfileManageLink']} to="/dashboard/settings/profile">Manage Profile</Link>
                         </div>
                         <div className={headerStyles['headerRightProfileSubItem']}>
                           <a onClick={()=>logoutUser()}  className={headerStyles['headerRightProfileManageLink']} >Logout</a>
