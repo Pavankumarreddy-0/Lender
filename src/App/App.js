@@ -18,6 +18,7 @@ import CreateIndividualInvestor from './dashboard/Pages/individualInvestors/Crea
 import IndividualInvestorHomepage from './dashboard/Pages/individualInvestors/individualInvestorHomePage/individualInvestorHomepage';
 import KeyboardShortcuts from './dashboard/Settings/keyboardShortcuts/keyboardShortcuts';
 import OrganizationDetails from './dashboard/components/OrganizationViews/OrganizationDetais/OrganizationDetails';
+import Address from './dashboard/components/OrganizationViews/Address/Address';
 
 function App() {
   return (
@@ -53,7 +54,7 @@ function App() {
                 </Route>
                 <Route path="/dashboard/community/organizations/view/:organizationId/details" element={<OrganizationDetails/>} exact>
                 </Route>
-                <Route path="/dashboard/community/organizations/view/:organizationId/address" element={<h1>address</h1>} exact>
+                <Route path="/dashboard/community/organizations/view/:organizationId/address" element={<Address/>} exact>
                 </Route>
                 <Route path="/dashboard/community/organizations/view/:organizationId/payments" element={<h1>payment</h1>} exact>
                 </Route>
