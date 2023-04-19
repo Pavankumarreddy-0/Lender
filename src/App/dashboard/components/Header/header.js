@@ -4,9 +4,10 @@ import { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import SideDrawer from '../SideDrawer/SideDrawer';
 import { webAppContext } from '../../../contexts/contexts';
+import { useEffect } from 'react';
 
 
-export default function Header() {
+export default function Header({user}) {
 
   const navigate = useNavigate();
   const {__webAppSettings, __updateWebAppSettings} = useContext(webAppContext);
@@ -22,15 +23,30 @@ export default function Header() {
     navigate('/');
   }
 
+  
+
+  useEffect(()=>{
+
+  },[__webAppSettings.activeTheme])
+
+  useEffect(()=>{
+
+  },[__webAppSettings.userProfile])
+
+
+// style={("accentBg" in __webAppSettings.activeTheme) ? {background: __webAppSettings.activeTheme.accentBg} : {}}
+
   return (
     <>
     <SideDrawer webAppSettings={__webAppSettings} setWebSettings={__updateWebAppSettings}/> 
-    <div className={headerStyles['headerOuter']}>
+    <div style={(__webAppSettings.activeTheme.themeType == "colorTheme") ? {background:__webAppSettings.activeTheme.themeColor } : {  background: `url( ${  __webAppSettings.activeTheme.themeImg })` }} className={headerStyles['headerOuter']}>
+        <div  style={("accentBg" in __webAppSettings.activeTheme) ? {background: __webAppSettings.activeTheme.accentBg} : {}} className={headerStyles['headerLeftSection']}>
         <div onClick={()=>__updateWebAppSettings({...__webAppSettings, enlargedMenu: true})} className={headerStyles['headerToggleMenu']}>
-          <i className="bi bi-grid-3x3-gap-fill"></i>
+          <i style={{ color: __webAppSettings.activeTheme.textColor}} className="bi bi-grid-3x3-gap-fill"></i>
         </div>
         <div className={headerStyles['headerIconRegion']}>
            <img className={headerStyles['headerLogoImage']} src='/assets/logo.gif'/>
+        </div>
         </div>
         <div className={headerStyles['headerSerachRegion']}>
           <div className={headerStyles['headerSearchRegionInner']}>
@@ -38,15 +54,15 @@ export default function Header() {
             <input className={headerStyles['headerSerachRegionInput']} type='text' value={headerData.headerSearchText} onChange={(e)=>{ setHeaderData({...headerData, headerSearchText: e.target.value}) }}></input>
           </div>
         </div>
-        <div className={headerStyles['headerRightRegion']}>
+        <div style={("accentBg" in __webAppSettings.activeTheme) ? {background: __webAppSettings.activeTheme.accentBg} : {}} className={headerStyles['headerRightRegion']}>
           <ul className={headerStyles['headerRightIconsList']}>
-            <li className={headerStyles['headerRightIconsItem']}>
-              <Link to="/dashboard/settings">
+            <li   className={headerStyles['headerRightIconsItem']}>
+              <Link style={{ color: __webAppSettings.activeTheme.textColor}} to="/dashboard/settings">
                 <i className="bi bi-gear"></i>
               </Link>
             </li>
-            <li className={headerStyles['headerRightIconsItem']}>
-              <Link to="/dashboard/faq">
+            <li   className={headerStyles['headerRightIconsItem']}>
+              <Link style={{ color: __webAppSettings.activeTheme.textColor}} to="/dashboard/faq">
                 <i className="bi bi-question"></i>
               </Link>
             </li>
@@ -63,10 +79,10 @@ export default function Header() {
                       </div>
                       <div className={headerStyles['headerSubProfileListRight']}>
                         <div className={headerStyles['headerSubProfileMeta']}>
-                            <p className={headerStyles['headerSubProfileMetaName']}>Abhishek</p>
+                            <p className={headerStyles['headerSubProfileMetaName']}>{ __webAppSettings.userProfile.username }</p>
                         </div>
                         <div className={headerStyles['headerRightProfileSubItem']}>
-                          <Link  className={headerStyles['headerRightProfileManageLink']} to="/dashboard/settings/profile">Manage Profile</Link>
+                          <Link onClick={()=> setHeaderData({...headerData, profileDetailsMenu: false})} className={headerStyles['headerRightProfileManageLink']} to="/dashboard/settings/profile">Manage Profile</Link>
                         </div>
                         <div className={headerStyles['headerRightProfileSubItem']}>
                           <a onClick={()=>logoutUser()}  className={headerStyles['headerRightProfileManageLink']} >Logout</a>
