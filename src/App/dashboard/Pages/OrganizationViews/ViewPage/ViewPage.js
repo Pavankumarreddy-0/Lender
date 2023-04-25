@@ -8,7 +8,6 @@ function ViewPage() {
   return (
     <>
       <section className={ViewPageStyles['orgFormViewSection']}>
-
         <Outlet></Outlet>
       </section>
     </>

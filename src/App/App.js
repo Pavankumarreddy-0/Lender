@@ -1,29 +1,36 @@
+import React,{lazy,Suspense, useContext} from 'react'
 import './App.css';
 import { PrivateRoute } from './auth/privateRoute';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import LoginPage from './auth/LoginPage/loginPage';
 import SignupPage from './auth/signupPage/signupPage';
 import Dashboard from './dashboard/dashboard';
 import Homepage from './homepage/homepage';
-import Settings from './dashboard/Settings/Settings';
-import RolesManagement from './dashboard/Settings/rolesManagement/RolesManagement';
-import DashboardHome from './dashboard/Pages/dashboardHome/DashboardHome';
-import CreateRole from './dashboard/Settings/createRole/createRole';
-import CreateOrganisation from './dashboard/Pages/Organisations/CreateOrganisation/createOrganisation';
-import OrganizationHomepage from './dashboard/Pages/Organisations/organizationHomepage/organizationHomepage';
-import RobotsTxt from './dashboard/Settings/seo/Robots_txt/RobotsTxt';
-import ViewPage from './dashboard/components/OrganizationViews/ViewPage/ViewPage';
-import BasicInfo from './dashboard/components/OrganizationViews/BasicInfo';
 import CreateIndividualInvestor from './dashboard/Pages/individualInvestors/CreateIndividualInvestor/createIndividualInvestor';
 import IndividualInvestorHomepage from './dashboard/Pages/individualInvestors/individualInvestorHomePage/individualInvestorHomepage';
 import KeyboardShortcuts from './dashboard/Settings/keyboardShortcuts/keyboardShortcuts';
-import OrganizationDetails from './dashboard/components/OrganizationViews/OrganizationDetais/OrganizationDetails';
-
-import Address from './dashboard/components/OrganizationViews/Address/Address';
 import ManageProfile from './dashboard/Pages/manageProfile/manageProfile';
+import Loader from './dashboard/components/PageLoader/Loader';
+import { webAppContext } from './contexts/contexts';
+import NoAccess from './dashboard/components/NoAccessComp/NoAccess';
+
+const DashboardHome = lazy(()=> import('./dashboard/Pages/dashboardHome/DashboardHome'));
+const OrganizationHomepage = lazy(() => import('./dashboard/Pages/Organisations/organizationHomepage/organizationHomepage'));
+const Settings = lazy(()=> import('./dashboard/Settings/Settings'));
+const CreateRole = lazy(() => import('./dashboard/Settings/createRole/createRole'));
+const RolesManagement = lazy(() => import('./dashboard/Settings/rolesManagement/RolesManagement'));
+const CreateOrganisation = lazy(() => import('./dashboard/Pages/Organisations/CreateOrganisation/createOrganisation'));
+const ViewPage = lazy(() => import('./dashboard/Pages/OrganizationViews/ViewPage/ViewPage'));
+const BasicInfo = lazy(() => import('./dashboard/Pages/OrganizationViews/BasicInfo'));
+const RobotsTxt = lazy(()=> import('./dashboard/Settings/seo/Robots_txt/RobotsTxt'));
+const OrganizationDetails = lazy(() => import('./dashboard/Pages/OrganizationViews/OrganizationDetais/OrganizationDetails'));
+const Address = lazy(()=> import('./dashboard/Pages/OrganizationViews/Address/Address'))
 
 
 function App() {
+
+  const {__webAppSettings, } = useContext(webAppContext);
+
   return (
     <div className="App">
       <Router>
@@ -33,31 +40,31 @@ function App() {
           <Route path="/signup" element={<SignupPage />}></Route>
           <Route path="/dashboard" element={<PrivateRoute />}>
             <Route path="/dashboard" element={<Dashboard />} exact>
-              <Route path="/dashboard/" element={<DashboardHome />} exact></Route>
-              <Route path="/dashboard/settings" element={<Settings />} exact>
+              <Route path="/dashboard/" element={(__webAppSettings.pageAccess.Dashboard) ? <Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><DashboardHome /></Suspense></Suspense> : <NoAccess/>} exact></Route>
+              <Route path="/dashboard/settings" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><Settings /></Suspense></Suspense>} exact>
               </Route>
-              <Route path="/dashboard/platform" element={<h1>Platform</h1>} exact>
+              <Route path="/dashboard/platform" element={(__webAppSettings.pageAccess.Platform) ? <h1>Platform</h1> : <NoAccess/>} exact>
               </Route>
-              <Route path="/dashboard/crowdfunding" element={<h1>crowdfunding</h1>} exact>
+              <Route path="/dashboard/crowdfunding" element={(__webAppSettings.pageAccess.CrowdFunding) ? <h1>crowdfunding</h1> : <NoAccess/>} exact>
               </Route>
-              <Route path="/dashboard/community" element={<h1>community</h1>} exact>
+              <Route path="/dashboard/community" element={(__webAppSettings.pageAccess.Community) ? <h1>community</h1> : <NoAccess/>} exact>
               </Route>
-              <Route path="/dashboard/community/organizations/" element={<OrganizationHomepage />} exact>
+              <Route path="/dashboard/community/organizations/" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><OrganizationHomepage /></Suspense></Suspense>} exact>
               </Route>
-              <Route path="/dashboard/community/organizations/create" element={<CreateOrganisation />} exact>
+              <Route path="/dashboard/community/organizations/create" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><CreateOrganisation /></Suspense></Suspense>} exact>
               </Route>
               <Route path="/dashboard/community/individual-investor/" element={<IndividualInvestorHomepage />} exact>
               </Route>
               <Route path="/dashboard/community/individual-investor/create" element={<CreateIndividualInvestor />} exact>
               </Route>
               <Route path="/dashboard/community/organizations/view/:organizationId" element={<ViewPage />} exact>
-                <Route path="/dashboard/community/organizations/view/:organizationId/" element={<BasicInfo />} exact>
+                <Route path="/dashboard/community/organizations/view/:organizationId/" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><BasicInfo /></Suspense></Suspense>} exact>
                 </Route>
-                <Route path="/dashboard/community/organizations/view/:organizationId/basic-info" element={<BasicInfo />} exact>
+                <Route path="/dashboard/community/organizations/view/:organizationId/basic-info" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><BasicInfo /></Suspense>  </Suspense>} exact>
                 </Route>
-                <Route path="/dashboard/community/organizations/view/:organizationId/details" element={<OrganizationDetails/>} exact>
+                <Route path="/dashboard/community/organizations/view/:organizationId/details" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><OrganizationDetails/></Suspense></Suspense>} exact>
                 </Route>
-                <Route path="/dashboard/community/organizations/view/:organizationId/address" element={<Address/>} exact>
+                <Route path="/dashboard/community/organizations/view/:organizationId/address" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><Address/></Suspense></Suspense>} exact>
                 </Route>
                 <Route path="/dashboard/community/organizations/view/:organizationId/payments" element={<h1>payment</h1>} exact>
                 </Route>
@@ -74,17 +81,17 @@ function App() {
                 <Route path="/dashboard/community/organizations/view/:organizationId/history" element={<h1>history</h1>} exact>
                 </Route>
               </Route>  {/** views page */}
-              <Route path="/dashboard/everything" element={<h1>everything</h1>} exact>
+              <Route path="/dashboard/everything" element={(__webAppSettings.pageAccess.everything) ? <h1>everything</h1> : <NoAccess/>} exact>
               </Route>
-              <Route path="/dashboard/investments" element={<h1>investments</h1>} exact>
-              </Route>
-              <Route path="/dashboard/settings/roles" element={<RolesManagement />}>
+             <Route path="/dashboard/investments" element={(__webAppSettings.pageAccess.Investment) ? <h1>investments</h1> :  <NoAccess/>} exact>
+              </Route> 
+              <Route path="/dashboard/settings/roles" element={<Suspense fallback={<Loader/>}><RolesManagement /></Suspense>}>
               </Route>
               <Route path="/dashboard/settings/profile" element={<ManageProfile />}>
               </Route>
               <Route path="/dashboard/settings/keyboard-shortcuts/" element={<KeyboardShortcuts />}>
               </Route>
-              <Route path="/dashboard/settings/create-role" element={<CreateRole />}>
+              <Route path="/dashboard/settings/create-role" element={<Suspense fallback={<Loader/>}><CreateRole /></Suspense>}>
               </Route>
               <Route path="/dashboard/settings/seo/robots-txt" element={<RobotsTxt />}>
               </Route>

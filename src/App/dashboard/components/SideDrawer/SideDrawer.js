@@ -9,6 +9,7 @@ export default function SideDrawer(props) {
         {
             menuName: "Platform",
             menuIcon: "bi bi-columns",
+            permissionName: "Platform",
             menuLink: "/",
             children: [
                 {
@@ -40,7 +41,8 @@ export default function SideDrawer(props) {
         },
         {
             menuName: "Crowd Funding",
-            menuIcon: "bi bi-stack",
+            menuIcon: "bi bi-stack",     
+            permissionName: "Platform",
             menuLink: "/",
             children: [
                 {
@@ -73,6 +75,7 @@ export default function SideDrawer(props) {
         {
             menuName: "Community",
             menuIcon: "bi bi-people",
+            permissionName: "Platform",
             menuLink: "",
             children: [
                 {
@@ -106,6 +109,7 @@ export default function SideDrawer(props) {
         {
             menuName: "Auto Invesments",
             menuIcon: "bi bi-cpu-fill",
+            permissionName: "Platform",
             menuLink: "",
             children: [
                 {
@@ -134,6 +138,7 @@ export default function SideDrawer(props) {
         {
             menuName: "Everything",
             menuIcon: "bi bi-cpu-fill",
+            permissionName: "Platform",
             menuLink: "/",
             children: [
                 {
@@ -187,6 +192,7 @@ export default function SideDrawer(props) {
 
             menuName: "GDPR",
             menuIcon: "bi bi-cpu-fill",
+            permissionName: "Platform",
             menuLink: "/",
             children: [
                 {
@@ -228,14 +234,14 @@ export default function SideDrawer(props) {
                             </div>
                             <div className={SideDrawerStyles["sideDrawerApps"]}>
                                 {SideDrawerTxt.map((e) => {
-                                    return <div className={SideDrawerStyles['SideDrawerAppHeader']}>
+                                    return (webAppSettings.pageAccess[e.permissionName]) && <div className={SideDrawerStyles['SideDrawerAppHeader']}>
                                         <Link className={SideDrawerStyles['sidetext']} to={e.menuLink}><div className={SideDrawerStyles["SideDrawerMenuName"]}><i className={e.menuIcon}></i> {e.menuName}</div> <div className={SideDrawerStyles["SideDrawerMenuForwardLink"]}><i className="bi bi-arrow-right"></i></div></Link>
                                         <div className={SideDrawerStyles['SideDrawerAppssection']}>
                                             {e.children.map((e) => {
                                                 return <Link to={e.menuLink} className={SideDrawerStyles["SideDrawerSubMenu"]}>{e.submenu}</Link>
                                             })}
                                         </div>
-                                    </div>
+                                    </div> 
                                 })}
                             </div>
                         </div>
