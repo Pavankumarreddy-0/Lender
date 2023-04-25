@@ -28,6 +28,7 @@ export const loginRoute = {
                     isEmailVerified,
                     email,
                     username,
+                    userType: "admin",
                     apiVersion
                 },
                 process.env.JWT_SECRET,

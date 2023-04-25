@@ -13,6 +13,8 @@ import ManageProfile from './dashboard/Pages/manageProfile/manageProfile';
 import Loader from './dashboard/components/PageLoader/Loader';
 import { webAppContext } from './contexts/contexts';
 import NoAccess from './dashboard/components/NoAccessComp/NoAccess';
+import UserLoginPage from './auth/userLoginPage/userLogin';
+import GeneratePassword from './auth/generatePassword/GeneratePassword';
 
 const DashboardHome = lazy(()=> import('./dashboard/Pages/dashboardHome/DashboardHome'));
 const OrganizationHomepage = lazy(() => import('./dashboard/Pages/Organisations/organizationHomepage/organizationHomepage'));
@@ -36,7 +38,9 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Homepage />} exact></Route>
-          <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/admin/login" element={<LoginPage />}></Route>
+          <Route path="/password/generate/:encryptedHash" element={<GeneratePassword />}></Route>
+          <Route path="/login" element={<UserLoginPage />}></Route>
           <Route path="/signup" element={<SignupPage />}></Route>
           <Route path="/dashboard" element={<PrivateRoute />}>
             <Route path="/dashboard" element={<Dashboard />} exact>
@@ -81,7 +85,7 @@ function App() {
                 <Route path="/dashboard/community/organizations/view/:organizationId/history" element={<h1>history</h1>} exact>
                 </Route>
               </Route>  {/** views page */}
-              <Route path="/dashboard/everything" element={(__webAppSettings.pageAccess.everything) ? <h1>everything</h1> : <NoAccess/>} exact>
+              <Route path="/dashboard/everything" element={(__webAppSettings.pageAccess.Everything) ? <h1>everything</h1> : <NoAccess/>} exact>
               </Route>
              <Route path="/dashboard/investments" element={(__webAppSettings.pageAccess.Investment) ? <h1>investments</h1> :  <NoAccess/>} exact>
               </Route> 
