@@ -36,6 +36,14 @@ const WebAppState = (props) => {
             saveSettings: "Shift +S",
             editSettings: "Shift +E",
             cancelSettings: "Shift +W"
+        },
+        pageAccess: {
+            "Dashboard": true,
+            "Platform": true,
+            "CrowdFunding": true,
+            "Community": true,
+            "Everything": true,
+            "Investment": true
         }
     }
 

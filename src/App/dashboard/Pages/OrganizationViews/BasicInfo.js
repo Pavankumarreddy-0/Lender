@@ -173,7 +173,7 @@ export default function BasicInfo() {
                     <div className={BasicInfoStyle['basic_info-button']}>
                        {(!newOrgVal.editMode) && <a href="javascript:void(0)" className={BasicInfoStyle['headerEditable']} onClick={() => setNewOrgVal({ ...newOrgVal,editMode: true, })}><i class="bi bi-pencil-square"></i>Edit</a>}
                         {(newOrgVal.editMode) && <a href="javascript:void(0)" className={BasicInfoStyle['headerEditable']} onClick={() => {SaveOrgDetails()}}>
-                            {(newOrgVal.savingMode) ? <><div class="spinner-border spinner-border-sm"></div><span>Saving...</span></> : <><div className={BasicInfoStyle['saveRes']}><i class="fa fa-floppy-o" aria-hidden="true"></i>Save Results</div></>}
+                            {(newOrgVal.savingMode) ? <><div class="spinner-border spinner-border-sm"></div><span>Saving...</span></> : <><div className={BasicInfoStyle['saveRes']}><i class="bi bi-save2"></i>Save Results</div></>}
                         </a>}
                         {(newOrgVal.editMode && !newOrgVal.savingMode) && <a href="javascript:void(0)" className={BasicInfoStyle['headerEditable']} onClick={() => setNewOrgVal({ ...newOrgVal, basicState:{...OrgValues.basicState},editMode: false, })}><i class="bi bi-x-circle"></i>Cancel</a> }
                     </div>

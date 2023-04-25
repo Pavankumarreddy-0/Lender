@@ -12,7 +12,7 @@ export default function CreateRole() {
     pages: {
       "Dashboard": true,
       "Platform": true,
-      "Crowd Funding": true,
+      "CrowdFunding": true,
       "Community": true,
       "Everything": true,
       "Investment": true,
@@ -1415,6 +1415,12 @@ export default function CreateRole() {
   };
 
   const crateNewRole = async () => {
+
+
+    if(!createRole.roleName.trim().length > 0){
+      alert("Please add the role name");
+      return;
+    }
 
     setCreateRole({...createRole, savingProgress: true, errors: []});
 
