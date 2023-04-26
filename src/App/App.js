@@ -81,7 +81,7 @@ function App() {
                 <Route path="/dashboard/community/organizations/view/:organizationId/history" element={<h1>history</h1>} exact>
                 </Route>
               </Route>  {/** views page */}
-              <Route path="/dashboard/everything" element={(__webAppSettings.pageAccess.everything) ? <h1>everything</h1> : <NoAccess/>} exact>
+              <Route path="/dashboard/everything" element={(__webAppSettings.pageAccess.Everything) ? <h1>everything</h1> : <NoAccess/>} exact>
               </Route>
              <Route path="/dashboard/investments" element={(__webAppSettings.pageAccess.Investment) ? <h1>investments</h1> :  <NoAccess/>} exact>
               </Route> 
