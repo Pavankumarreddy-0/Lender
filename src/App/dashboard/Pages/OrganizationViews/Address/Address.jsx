@@ -12,6 +12,9 @@ function Address() {
     console.log(organizationId)
     const [addressValues,setAddressvalues] = useState({
         tagString:"",
+        pageNum: 1,
+        perPage: 10,
+        currentPage: 1,
         control: "Control",
         bookmarks: "Custom Tag",
         readOnly:false,
@@ -76,6 +79,26 @@ function Address() {
         setAddressvalues({...addressValues,customTags:newTag})
     }
 
+    const fetchAddress = async () =>{
+        await axios.post('/api/address',{
+            orgID:organizationId,
+            pageNum: addressValues.pageNum,
+            perPage: addressValues.perPage
+        },{
+            headers: { authorization: `Bearer ${localStorage.getItem("token")}` }
+        }).then((response) => {
+           
+            console.log("address list",response);
+
+            setAddressvalues({...addressValues, addressCards: [ ...response.data.result[0].paginatedResults ]})
+
+        })
+    }
+
+    useEffect(()=>{
+        fetchAddress();
+    },[])
+
     const resetAddressInputs = ()=>{
         setAddressvalues({...addressValues, allAddress: {defaultAddress:"US",
         Country:"",
@@ -89,13 +112,18 @@ function Address() {
     }
 
     const updateAddressValues = async () => {
-        await axios.post('',{
-            _id:organizationId,
+        setAddressvalues({...addressValues,readOnly:true,AddressMode:false,defaultAdress:false});
+
+        await axios.put('/api/add-address',{
+            orgID:organizationId,
+            address:addressValues.allAddress,
+            isCurrent:addressValues.allAddress.currentAddress,
 
         },{
             headers: { authorization: `Bearer ${localStorage.getItem("token")}` }
         }).then((reponse) => {
             resetAddressInputs();
+            fetchAddress();
         })
     }
 
@@ -208,7 +236,7 @@ return (
                         </div>
                         <div className={AddressStyles['addressInputs']}>
                             <label htmlFor="" className={AddressStyles['LabelClass']}>Address Line-1</label>
-                            <input type="text" name="" id="" value={addressValues.allAddress.Address1} className={AddressStyles['Inputs_Address']} readOnly={(addressValues.readOnly) && "readonly"} onChange={(e) => setAddressvalues({...addressValues,addressCards:[{...addressValues.addressCards,Address1:e.target.value}]})}/>
+                            <input type="text" name="" id="" value={addressValues.allAddress.Address1} className={AddressStyles['Inputs_Address']} readOnly={(addressValues.readOnly) && "readonly"} onChange={(e) => setAddressvalues({...addressValues,allAddress:{...addressValues.allAddress,Address1:e.target.value}})}/>
                         </div>
                         <div className={AddressStyles['addressInputs']}>
                             <label htmlFor="" className={AddressStyles['LabelClass']}>Address Line-2</label>
@@ -238,7 +266,7 @@ return (
                             </select>
                         </div>
                         <div className={AddressStyles['saveAndEditableBtn']}>
-                        <a href="javascript:void(0)" className={AddressStyles['addAddressSavebtn']} onClick={() => setAddressvalues({...addressValues,readOnly:true,AddressMode:false,defaultAdress:false})}>
+                        <a href="javascript:void(0)" className={AddressStyles['addAddressSavebtn']} onClick={() => updateAddressValues()}>
                             <span className={AddressStyles['']}><i class="bi bi-save2"></i>Save</span>
                         </a>
                         <a href="javascript:void(0)" className={AddressStyles['addAddressSavebtn']} onClick={() => setAddressvalues({...addressValues,readOnly:false})}>

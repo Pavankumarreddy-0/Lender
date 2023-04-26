@@ -40,9 +40,9 @@ export const addNewAddress = {
                 })
 
                 if(! (isCurrent == "No")){
-                    const result2 = await db.collection("person").findOneAndUpdate(
+                    const result2 = await db.collection("organization").findOneAndUpdate(
                         {
-                            "_id": ObjectId(decoded.id)
+                            "_id": ObjectId(orgID)
                         },
                         { $set: { activeAddress: ObjectId(result.insertedId) } },
                         { returnOriginal: true }
