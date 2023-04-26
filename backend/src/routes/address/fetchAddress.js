@@ -32,7 +32,7 @@ export const fetchAddress = {
                 const db = getDbConnection(process.env.API_DB_NAME);
               
 
-                const result = await db.collection("organization").aggregate([
+                const result = await db.collection("addresses").aggregate([
                     {
                         $match: {
                             orgID: ObjectId(orgID)
@@ -41,8 +41,8 @@ export const fetchAddress = {
                     {
                         $lookup:
                         {
-                           from: "person",
-                           localField: "contactId",
+                           from: "organization",
+                           localField: "orgID",
                            foreignField: "_id",
                            as: "orgwithperson" 
                         }
@@ -53,17 +53,16 @@ export const fetchAddress = {
                     {
                         $project: 
                         {
-                            "Company number":1,
-                            "country": 1,
-                            "address":1,
-                            "address":2,
-                            "city":1,
+                            "CompanyNumber":1,
+                            "Country": 1,
+                            "Address1":1,
+                            "Address2":2,
+                            "City":1,
                             "zipCode":1,
                             "type":1,
-                            "is current":1,
-                            firstName: "$orgwithperson.firstName",
-                            lastName: "$orgwithperson.lastName",
-                            activeAddress: "$orgwithperson.activeAddress"
+                            "currentAddress":1,
+                            "activeAddress": "$orgwithperson.activeAddress"
+                            // activeAddress: "$orgwithperson.activeAddress"
                         }
                         
                     },
@@ -79,7 +78,7 @@ export const fetchAddress = {
                     }
                 ]).toArray();
 
-                res.status(200).json({ message: "Organization Fetched", currentPage: pageNum, result })
+                res.status(200).json({ message: "Addresses Fetched", currentPage: pageNum, result })
 
             }
         )
