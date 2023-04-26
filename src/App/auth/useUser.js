@@ -27,7 +27,7 @@ export const useUser = () => {
 
             if (Date.now() >= __userData.exp * 1000) {
                 localStorage.removeItem("token");
-                navigate('/dashboard');
+                navigate('/login');
                 return;
             }
 

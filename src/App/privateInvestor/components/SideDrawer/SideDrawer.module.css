@@ -1,0 +1,126 @@
+.SideDrawerContainer{
+    position: fixed;
+    z-index: 1028;
+    background-color: #fff;
+    max-width:320px;
+    width:300px;
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.22) 0px 25.6px 57.6px 0px, rgba(0, 0, 0, 0.18) 0px 4.8px 14.4px 0px;
+    overflow-y: auto;
+}
+
+.sideheaderIcon{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding:10px;
+}
+.SideDrawerLogo{
+    top: 15px;
+    width: 44px;
+    position: absolute;
+    right: 25px;
+}
+.sideheaderIcon i{
+    flex-grow:2;
+    font-size:15px;
+}
+.sideheaderIcon a{
+    flex:1;
+   
+}
+.threedots{
+    position: absolute;
+    left: 18px;
+    top: 7.7px;
+    padding: 3px 8px;
+    color: #000;
+}
+
+.threedots:hover{
+    background: #F3F2F1;
+    border-radius: 4px;
+    color: #000;
+}
+
+.threedots:hover{
+    color: #000;
+}
+
+.threedots i{
+    font-size: 16px;
+}
+
+.SideDrawerInner{
+    display: flex;
+    flex-direction: column;
+}
+
+.sideDrawerApps{
+
+}
+
+.SideDrawerAppHeader{
+
+}
+
+.SideDrawerAppssection{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 125px);
+    gap: 5px 2px;
+    padding: 10px;
+    justify-content: start;
+    align-items: center;
+}
+
+.SideDrawerSubMenu{
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 10px;
+    color: black;
+    text-decoration: none;
+}
+
+.SideDrawerSubMenu:hover{
+    background-color: #F3F2F1;
+    color: black;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+
+.sidetext{
+    font-weight: 600;
+    border-bottom: 1px solid #f1f1f1;
+    color: var(--link-color);
+    padding: 5px 15px;
+    display: block;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+}
+.SideDrawerMenuName{
+
+}
+
+.SideDrawerMenuForwardLink{
+    margin-right: 10px;
+    margin-left: 5px;
+    transition: .2s all ease-in-out;
+}
+
+.sidetext:hover .SideDrawerMenuForwardLink{
+    margin-right: 0px;
+    margin-left: 15px;
+    transition: .2s all ease-in-out;
+}
+.SideDrawerBackdrop{
+    position: fixed;
+    background: rgba(0,0,0,.1);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}

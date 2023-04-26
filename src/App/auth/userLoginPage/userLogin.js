@@ -3,10 +3,11 @@ import axios from 'axios';
 import { useToken } from '../useToken';
 import { useNavigate, Link } from 'react-router-dom';
 import { useEffect } from 'react';
-
+import { useUser } from '../useUser';
 export default function UserLoginPage() {
 
     const navigate = useNavigate();
+    const user = useUser();
 
     const [token, setToken] = useToken();
 
@@ -17,9 +18,24 @@ export default function UserLoginPage() {
     })
 
     useEffect(() => {
-        // if (token) {
-        //     navigate('/dashboard');
-        // }
+        if (token) {
+            if(user && "userType" in user){
+                switch(user.userType){
+                    case "admin":
+                        navigate('/dashboard');
+                    break;
+                    case "Individual Investor":
+                        navigate('/investor/dashboard');
+                    break;
+                    case "Corporate Investor":
+                        navigate('/investor/dashboard');
+                    break;
+                    case "Fundraiser":
+                        navigate('/fundraiser/dashboard');
+                    break;
+                }
+            }
+        }
     }, [])
 
     const onLoginClicked = async (e) => {

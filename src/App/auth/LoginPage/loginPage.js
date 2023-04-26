@@ -3,10 +3,12 @@ import axios from 'axios';
 import { useToken } from '../useToken';
 import { useNavigate, Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useUser } from '../useUser';
 
 export default function LoginPage() {
 
     const navigate = useNavigate();
+    const user = useUser();
 
     const [token, setToken] = useToken();
 
@@ -18,7 +20,22 @@ export default function LoginPage() {
 
     useEffect(() => {
         if (token) {
-            navigate('/dashboard');
+            if(user && "userType" in user){
+                switch(user.userType){
+                    case "admin":
+                        navigate('/dashboard');
+                    break;
+                    case "Individual Investor":
+                        navigate('/investor/dashboard');
+                    break;
+                    case "Corporate Investor":
+                        navigate('/investor/dashboard');
+                    break;
+                    case "Fundraiser":
+                        navigate('/fundraiser/dashboard');
+                    break;
+                }
+            }
         }
     }, [])
 
@@ -51,7 +68,7 @@ export default function LoginPage() {
         <div className='create_account_page'>
             <form onSubmit={onLoginClicked} method="post">
                 <div className="create_account_container">
-                    <h1>Login</h1>
+                    <h1>Admin Login</h1>
                     <p>Don't have an account? <Link to={"/signup"}>Sign Up</Link></p>
 
                     {(LoginDet.err.length > 0) && <div className='errorsPanel'>
