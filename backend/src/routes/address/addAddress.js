@@ -12,7 +12,7 @@ export const addNewAddress = {
 
         //get auth header from client
         const { authorization } = req.headers;
-        const { _id,address, isCurrent, orgID } = req.body;
+        const { address, isCurrent, orgID } = req.body;
 
         if (!authorization) {
             return res.status(401).json({ message: "No Authorization header sent." })
@@ -39,7 +39,7 @@ export const addNewAddress = {
                     contactId: ObjectId(decoded.id)
                 })
 
-                if(isCurrent){
+                if(! (isCurrent == "No")){
                     const result2 = await db.collection("person").findOneAndUpdate(
                         {
                             "_id": ObjectId(decoded.id)
