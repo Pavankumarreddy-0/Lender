@@ -12,6 +12,7 @@ export default function ManageProfile() {
         savingTheme: false,
         savingProfile: false,
         editProfile: false,
+        savingPassword: false,
         showMode: "profile",
         personalData:{
            ...__webAppSettings.userProfile
@@ -234,6 +235,16 @@ export default function ManageProfile() {
     }
 
     const updatePassword = async () => {
+
+        if(profileData.savingPassword){
+            alert("Updating request is already in progress please wait..")
+            return;
+        }
+
+        if(profileData.passwordChange.oldPass == profileData.passwordChange.newPass){
+            alert("New password can not be same as old password.")
+        }
+
         let passRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
         if(!passRegex.test(profileData.passwordChange.newPass)){
             alert("Password should be at least 8 characters long, should contain a number and a special character.")
@@ -244,6 +255,20 @@ export default function ManageProfile() {
             return;
         }
         //update the passwords
+
+        setProfileData({...profileData, savingPassword: true});
+
+        await axios.put('/api/update-password/', {  ...profileData.passwordChange }, {
+            headers: { authorization: `Bearer ${localStorage.getItem("token")}` }
+        }).then(response => {
+            setProfileData({...profileData, savingPassword: false, passwordChange: {oldPass: "", newPass: "", confNewPass: "" }});
+
+        }).catch(error => {
+            alert("Unable to update the password, please try again.")
+            console.log(error, 'error')
+            setProfileData({...profileData, savingPassword: false});
+
+        })
     }
 
     const resetProfileValues = () => {
@@ -309,12 +334,12 @@ export default function ManageProfile() {
                         </div>
                         <div className="col-md-6">
                             <div className={mfStyle["manageProfileInputGroup"]}>
-                            <label for="mfUsername" className={mfStyle["formLabel"]}>Email</label>
+                            <label for="mfEmail" className={mfStyle["formLabel"]}>Email</label>
                             <input type="text" 
                                 value={profileData.personalData.email} 
                                 required 
                                 disabled
-                                className={mfStyle["formInput"]} id="mfUsername" />
+                                className={mfStyle["formInput"]} id="mfEmail" />
                             <div class="invalid-feedback">
                                 Please provide a valid email
                             </div>
@@ -322,13 +347,13 @@ export default function ManageProfile() {
                         </div>
                         <div className="col-md-6">
                             <div className={mfStyle["manageProfileInputGroup"]}>
-                            <label for="mfUsername" className={mfStyle["formLabel"]}>Phone Number</label>
+                            <label for="mfPhone" className={mfStyle["formLabel"]}>Phone Number</label>
                             <input type="text" 
                                 value={profileData.personalData.phoneNumber} 
                                 required 
                                 readOnly={ (!profileData.editProfile) ? "readonly" : "" }
                                 onChange={(e) => setProfileData({ ...profileData, personalData: { ...profileData.personalData, phoneNumber: e.target.value } })} 
-                                className={mfStyle["formInput"]} id="mfUsername" />
+                                className={mfStyle["formInput"]} id="mfPhone" />
                             <div class="invalid-feedback">
                                 Please provide a valid email
                             </div>
@@ -381,12 +406,12 @@ export default function ManageProfile() {
                     <div className='row'>
                         <div className="col-md-6">
                             <div className={mfStyle["manageProfileInputGroup"]}>
-                            <label for="mfUsername" className={mfStyle["formLabel"]}>Old Password</label>
-                            <input type="text" 
+                            <label for="mfOldPass" className={mfStyle["formLabel"]}>Old Password</label>
+                            <input type="password" 
                                 value={profileData.passwordChange.oldPass} 
                                 required 
                                 onChange={(e) => setProfileData({ ...profileData, passwordChange: { ...profileData.passwordChange, oldPass: e.target.value } })}  
-                                className={mfStyle["formInput"]} id="mfUsername" />
+                                className={mfStyle["formInput"]} id="mfOldPass" />
                           
                         </div>
                         </div>
@@ -394,30 +419,30 @@ export default function ManageProfile() {
                         <div className="col-md-6"></div>
                         <div className="col-md-6">
                             <div className={mfStyle["manageProfileInputGroup"]}>
-                            <label for="mfUsername" className={mfStyle["formLabel"]}>New Password</label>
-                            <input type="text" 
+                            <label for="mfNewPass" className={mfStyle["formLabel"]}>New Password</label>
+                            <input type="password" 
                                 value={profileData.passwordChange.newPass} 
                                 required 
                                 onChange={(e) => setProfileData({ ...profileData, passwordChange: { ...profileData.passwordChange, newPass: e.target.value } })}  
-                                className={mfStyle["formInput"]} id="mfUsername" />
+                                className={mfStyle["formInput"]} id="mfNewPass" />
                             
                         </div>
                         </div>
                         <div className="col-md-6"></div>
                         <div className="col-md-6">
                             <div className={mfStyle["manageProfileInputGroup"]}>
-                            <label for="mfUsername" className={mfStyle["formLabel"]}>Confirm New Password</label>
-                            <input type="text" 
+                            <label for="mfCNewPass" className={mfStyle["formLabel"]}>Confirm New Password</label>
+                            <input type="password" 
                                 value={profileData.passwordChange.confNewPass} 
                                 required 
                                 onChange={(e) => setProfileData({ ...profileData, passwordChange: { ...profileData.passwordChange, confNewPass: e.target.value } })} 
-                                className={mfStyle["formInput"]} id="mfUsername" />
+                                className={mfStyle["formInput"]} id="mfCNewPass" />
                            
                         </div>
                         <div className='col-md-12'>
 
                             <a href='javascript:void(0)' className={mfStyle["manageProfileSaveThemeButton"]} onClick={updatePassword}>
-                                { (profileData.savingProfile ) ? <><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saving...</>: <><i class="bi bi-save"></i> Update Password</>}
+                                { (profileData.savingPassword ) ? <><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saving...</>: <><i class="bi bi-save"></i> Update Password</>}
                             </a>
                             
                         </div>

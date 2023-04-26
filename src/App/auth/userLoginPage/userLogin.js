@@ -4,8 +4,7 @@ import { useToken } from '../useToken';
 import { useNavigate, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useUser } from '../useUser';
-
-export default function LoginPage() {
+export default function UserLoginPage() {
 
     const navigate = useNavigate();
     const user = useUser();
@@ -44,14 +43,22 @@ export default function LoginPage() {
 
         let _errs = [];
 
-        await axios.post('/api/login', {
+        await axios.post('/api/user/login', {
             email: LoginDet.email,
             password: LoginDet.password
         }).then(response => {
 
-            const { token } = response.data;
-            setToken(token);
-            navigate('/dashboard');
+            if( "token" in response.data){
+                const { token, userType } = response.data;
+                setToken(token);
+                if(userType.indexOf("Investor") != -1){
+                    navigate('/investor/dashboard');
+                }else{
+                    navigate('/fundraiser/dashboard');
+                }
+            } 
+
+            
 
         }).catch(error => {
             console.error(error);
@@ -68,9 +75,7 @@ export default function LoginPage() {
         <div className='create_account_page'>
             <form onSubmit={onLoginClicked} method="post">
                 <div className="create_account_container">
-                    <h1>Admin Login</h1>
-                    <p>Don't have an account? <Link to={"/signup"}>Sign Up</Link></p>
-
+                    <h1>Login</h1>
                     {(LoginDet.err.length > 0) && <div className='errorsPanel'>
                         <ul>
                             {

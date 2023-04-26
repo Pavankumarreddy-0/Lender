@@ -13,6 +13,12 @@ import ManageProfile from './dashboard/Pages/manageProfile/manageProfile';
 import Loader from './dashboard/components/PageLoader/Loader';
 import { webAppContext } from './contexts/contexts';
 import NoAccess from './dashboard/components/NoAccessComp/NoAccess';
+import UserLoginPage from './auth/userLoginPage/userLogin';
+import GeneratePassword from './auth/generatePassword/GeneratePassword';
+import { PrivateInvestorRoute } from './auth/privateInvestorRoute';
+import PrivateInvestorDashboard from './privateInvestor/dashboard/privateInvestorDashboard';
+import PrivateDashboard from './privateInvestor/privateDashboard';
+import InvestorKeyboardShortcuts from './privateInvestor/Settings/keyboardShortcuts/InvestorKeyboardShortcuts';
 
 const DashboardHome = lazy(()=> import('./dashboard/Pages/dashboardHome/DashboardHome'));
 const OrganizationHomepage = lazy(() => import('./dashboard/Pages/Organisations/organizationHomepage/organizationHomepage'));
@@ -25,7 +31,7 @@ const BasicInfo = lazy(() => import('./dashboard/Pages/OrganizationViews/BasicIn
 const RobotsTxt = lazy(()=> import('./dashboard/Settings/seo/Robots_txt/RobotsTxt'));
 const OrganizationDetails = lazy(() => import('./dashboard/Pages/OrganizationViews/OrganizationDetais/OrganizationDetails'));
 const Address = lazy(()=> import('./dashboard/Pages/OrganizationViews/Address/Address'))
-
+const InvestorSettings = lazy(()=> import('./privateInvestor/Settings/investorSettings'))
 
 function App() {
 
@@ -36,8 +42,26 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Homepage />} exact></Route>
-          <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/admin/login" element={<LoginPage />}></Route>
+          <Route path="/password/generate/:encryptedHash" element={<GeneratePassword />}></Route>
+          <Route path="/login" element={<UserLoginPage />}></Route>
           <Route path="/signup" element={<SignupPage />}></Route>
+          <Route path="/investor" element={<PrivateInvestorRoute/> }>
+            <Route path="/investor" element={<PrivateDashboard />} exact>
+            <Route path="/investor/" element={<PrivateInvestorDashboard/>} exact></Route>
+            <Route path="/investor/dashboard" element={<PrivateInvestorDashboard/>} exact></Route>
+            <Route path="/investor/wallet" element={<h1>Wallet</h1>} exact></Route>
+            <Route path="/investor/investments" element={<h1>Investment</h1>} exact></Route>
+            <Route path="/investor/interest" element={<h1>Interest</h1>} exact></Route>
+            <Route path="/investor/transactions" element={<h1>Transaction</h1>} exact></Route>
+            <Route path="/investor/auto-investment" element={<h1>Auto Invest</h1>} exact></Route>
+            <Route path="/investor/aggrements" element={<h1>Aggrements</h1>} exact></Route>
+            <Route path="/investor/notifications" element={<h1>Nottification</h1>} exact></Route>
+            <Route path="/investor/settings" element={<InvestorSettings></InvestorSettings>} exact></Route>
+            <Route path="/investor/settings/keyboard-shortcuts/" element={<InvestorKeyboardShortcuts />}>
+              </Route>
+            </Route>
+          </Route>
           <Route path="/dashboard" element={<PrivateRoute />}>
             <Route path="/dashboard" element={<Dashboard />} exact>
               <Route path="/dashboard/" element={(__webAppSettings.pageAccess.Dashboard) ? <Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><DashboardHome /></Suspense></Suspense> : <NoAccess/>} exact></Route>
