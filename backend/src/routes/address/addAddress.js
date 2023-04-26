@@ -35,7 +35,7 @@ export const addNewAddress = {
                 const result = await db.collection('addresses').insertOne({
                     ...address,
                     createdAt: new Date(),
-                    orgID,
+                    orgID: ObjectId(orgID),
                     contactId: ObjectId(decoded.id)
                 })
 
