@@ -391,6 +391,11 @@
 
 }
 
+.saveAndEditableBtn{
+    display:flex;
+    gap:10px;
+}
+
 @keyframes Address_setAddressMainWrapper__9SsQb {
     0%{
         opacity: 0;

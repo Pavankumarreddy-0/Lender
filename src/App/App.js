@@ -13,6 +13,12 @@ import ManageProfile from './dashboard/Pages/manageProfile/manageProfile';
 import Loader from './dashboard/components/PageLoader/Loader';
 import { webAppContext } from './contexts/contexts';
 import NoAccess from './dashboard/components/NoAccessComp/NoAccess';
+import UserLoginPage from './auth/userLoginPage/userLogin';
+import GeneratePassword from './auth/generatePassword/GeneratePassword';
+import { PrivateInvestorRoute } from './auth/privateInvestorRoute';
+import PrivateInvestorDashboard from './privateInvestor/dashboard/privateInvestorDashboard';
+import PrivateDashboard from './privateInvestor/privateDashboard';
+import InvestorKeyboardShortcuts from './privateInvestor/Settings/keyboardShortcuts/InvestorKeyboardShortcuts';
 
 
 const DashboardHome = lazy(()=> import('./dashboard/Pages/dashboardHome/DashboardHome'));
@@ -28,6 +34,8 @@ const OrganizationDetails = lazy(() => import('./dashboard/Pages/OrganizationVie
 const Address = lazy(()=> import('./dashboard/Pages/OrganizationViews/Address/Address'))
 const IndViewPage=lazy(()=> import('./dashboard/Pages/individualInvestorViews/ViewPage/IndViewPage'))
 const InvBasicInfo =lazy(()=> import('./dashboard/Pages/individualInvestorViews/InvBasicInfo'))
+const InvestorSettings = lazy(()=> import('./privateInvestor/Settings/investorSettings'))
+
 function App() {
 
   const {__webAppSettings, } = useContext(webAppContext);
@@ -37,8 +45,26 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Homepage />} exact></Route>
-          <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/admin/login" element={<LoginPage />}></Route>
+          <Route path="/password/generate/:encryptedHash" element={<GeneratePassword />}></Route>
+          <Route path="/login" element={<UserLoginPage />}></Route>
           <Route path="/signup" element={<SignupPage />}></Route>
+          <Route path="/investor" element={<PrivateInvestorRoute/> }>
+            <Route path="/investor" element={<PrivateDashboard />} exact>
+            <Route path="/investor/" element={<PrivateInvestorDashboard/>} exact></Route>
+            <Route path="/investor/dashboard" element={<PrivateInvestorDashboard/>} exact></Route>
+            <Route path="/investor/wallet" element={<h1>Wallet</h1>} exact></Route>
+            <Route path="/investor/investments" element={<h1>Investment</h1>} exact></Route>
+            <Route path="/investor/interest" element={<h1>Interest</h1>} exact></Route>
+            <Route path="/investor/transactions" element={<h1>Transaction</h1>} exact></Route>
+            <Route path="/investor/auto-investment" element={<h1>Auto Invest</h1>} exact></Route>
+            <Route path="/investor/aggrements" element={<h1>Aggrements</h1>} exact></Route>
+            <Route path="/investor/notifications" element={<h1>Nottification</h1>} exact></Route>
+            <Route path="/investor/settings" element={<InvestorSettings></InvestorSettings>} exact></Route>
+            <Route path="/investor/settings/keyboard-shortcuts/" element={<InvestorKeyboardShortcuts />}>
+              </Route>
+            </Route>
+          </Route>
           <Route path="/dashboard" element={<PrivateRoute />}>
             <Route path="/dashboard" element={<Dashboard />} exact>
               <Route path="/dashboard/" element={(__webAppSettings.pageAccess.Dashboard) ? <Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><DashboardHome /></Suspense></Suspense> : <NoAccess/>} exact></Route>
@@ -107,7 +133,7 @@ function App() {
                 <Route path="/dashboard/community/organizations/view/:organizationId/history" element={<h1>history</h1>} exact>
                 </Route>
               </Route>  {/** views page */}
-              <Route path="/dashboard/everything" element={(__webAppSettings.pageAccess.everything) ? <h1>everything</h1> : <NoAccess/>} exact>
+              <Route path="/dashboard/everything" element={(__webAppSettings.pageAccess.Everything) ? <h1>everything</h1> : <NoAccess/>} exact>
               </Route>
              <Route path="/dashboard/investments" element={(__webAppSettings.pageAccess.Investment) ? <h1>investments</h1> :  <NoAccess/>} exact>
               </Route> 

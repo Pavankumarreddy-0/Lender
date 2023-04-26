@@ -546,7 +546,7 @@ export default function IndividualInvestorHomepage() {
 
                                                         {(dataTable.columnFilter.id) && <><td className={orgHomeStyle["dataModuleTd"]}>{e._id}</td><td className="columnResizer" /></>}
                                                         {(dataTable.columnFilter.createdAt) && <><td className={orgHomeStyle["dataModuleTd"]}>{new Date(e.createdAt).toLocaleString()}</td><td className="columnResizer" /></>}
-                                                        {(dataTable.columnFilter.firstName) && <><td className={orgHomeStyle["dataModuleTd"]}><Link to={"/dashboard/community/organizations/view/" + e._id}>{e.title + e.firstName + " " + e.lastName}</Link></td><td className="columnResizer" /></>}
+                                                        {(dataTable.columnFilter.firstName) && <><td className={orgHomeStyle["dataModuleTd"]}><Link to={"/dashboard/community/individual-investor/view/" + e._id}>{e.title + e.firstName + " " + e.lastName}</Link></td><td className="columnResizer" /></>}
                                                         {(dataTable.columnFilter.email) && <><td className={orgHomeStyle["dataModuleTd"]}>{e.email}</td><td className="columnResizer" /></>}
                                                         {(dataTable.columnFilter.investorType) && <><td className={orgHomeStyle["dataModuleTd"]}>{e.investorType}</td><td className="columnResizer" /></>}
                                                         {(dataTable.columnFilter.membershipStatus) && <><td className={orgHomeStyle["dataModuleTd"]}>{e.membershipStatus}</td><td className="columnResizer" /></>}

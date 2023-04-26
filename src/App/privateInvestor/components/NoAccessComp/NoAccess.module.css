@@ -1,0 +1,10 @@
+.noAccessInnerWrapper{
+    height: 500px;
+    min-height: 670px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size:18px;
+    font-weight: 500;
+}

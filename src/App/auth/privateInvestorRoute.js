@@ -2,7 +2,7 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useUser } from './useUser';
 import { useEffect } from 'react';
 
-export const PrivateRoute = () => {
+export const PrivateInvestorRoute = () => {
     const user = useUser();
     const location = useLocation();
 
@@ -10,6 +10,6 @@ export const PrivateRoute = () => {
         console.log(location);
     },[location])
 
-    return (user && user.userType == "admin") ? <Outlet /> : <Navigate to="/admin/login" />
+    return (user && (user.userType == "Individual Investor" || user.userType == "Corporate Investor")) ? <Outlet /> : <Navigate to="/login" />
   
 }

@@ -17,7 +17,8 @@ const WebAppState = (props) => {
         userProfile: {
             email: "",
             username: "", 
-            phoneNumber: ""
+            phoneNumber: "",
+            firstName: ""
         },
         keyboardShortcuts: {
             dashboardPage: "Control +Shift +D",
@@ -35,7 +36,15 @@ const WebAppState = (props) => {
             searchWebApp: "Control +s",
             saveSettings: "Shift +S",
             editSettings: "Shift +E",
-            cancelSettings: "Shift +W"
+            cancelSettings: "Shift +W",
+            pVIWallet: "Control +Shift +K",
+            pVIInvestment: "Control +Shift +I",
+            pVIIndInt: "Control +Shift +L",
+            pVITrans: "Control +Shift +T",
+            pVIAutoInv: "Control +Shift +A",
+            pVIAgree: "Control +Shift +M",
+            pVINoti: "Control +Shift +O",
+
         },
         pageAccess: {
             "Dashboard": true,
