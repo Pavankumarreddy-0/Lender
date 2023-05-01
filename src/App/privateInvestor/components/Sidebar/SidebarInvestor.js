@@ -6,7 +6,7 @@ export default function SidebarInvestor() {
   const sbItems ={
     menuitems:[
       {
-        url: "/investor",
+        url: "/investor/dashboard",
         icon:"bi bi-speedometer2",
         name: "Dashboard"
       },

@@ -1,0 +1,316 @@
+.dashHomeInvestmentCards{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    justify-content: space-evenly;
+    gap: 10px 0px;
+    background: linear-gradient(to bottom, var(--dashtint), transparent);
+    margin-bottom: 20px;
+}
+.dashHomeInvestmentChart{
+    position: relative;
+}
+.dashHomeInvestmentCardSingle{
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.1), -2px -2px 4px rgba(0,0,0,.1);
+    background-color: #fff;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    min-height: 100px;
+}
+.dashHomeCardTitle{
+    font-weight: 600;
+    font-size: 15px;
+}
+.dashHomeCardValue{
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--link-color);
+}
+.dashHomeCardIcon{
+    flex-shrink: 0;
+    min-width: 30px;
+    display: flex;
+    align-items: center;
+}
+.dashHomeCardIcon i{
+    font-size: 27px;
+}
+.dashHomeCardMeta{
+    flex-grow: 1;
+}
+.refreshDataButton{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: var(--link-color);
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    box-shadow: var(--shadow4);
+    z-index: 50;
+    cursor: pointer;
+}
+.dashHomeDoubleChartSection{
+    display: flex;
+    flex-direction: column;
+    padding: 15px 15px;
+    /* background: #e7e6e6; */
+    gap: 15px;
+    /* box-shadow: inset 0px 5px 3px rgba(0,0,0,.1); */
+    box-sizing: border-box;
+    align-items: stretch;
+    background: #f7f7f7;
+}
+
+
+.dashHomeInvestorByCategory{
+    flex-shrink:0;
+    max-width: 400px;
+    min-width: 280px;;
+    width: 40%;
+    padding: 0px 0px;
+    padding-left: 0px;
+    position: relative;
+    z-index: 5;
+}
+.dashHomeInvestorRegistration{
+    flex-grow: 1;   
+    background: #fff;
+    border-radius: 5px;
+}
+.dashHomeInvestorByCategory > div{
+    border-radius: 5px;
+    background-color: #FFF;
+    display: flex;
+    align-items: center;
+}
+.dashHomeInvestAmountGreen{
+    position: absolute;
+    top: 40px;
+    left: 21px;
+    font-weight: 800;
+    font-size: 20px;
+    color: #0cbb4d;
+}
+.dashHomeCustomerStats{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    align-items: stretch;
+}
+.dashHomeCustomerStats > div, .dashHomeDoubleOfferingChartSection > div, .dashHomeDoubleInvestmentSection > div{
+    flex: 1;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.dashHomeInvestmentChartZoomOutButton{
+    position: absolute;
+    top: 10px;
+    right: 100px;
+    border: none;
+    background: var(--link-color);
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    box-shadow: var(--shadow4);
+    z-index: 99;
+    cursor: pointer;
+}
+
+.dashHomeDoubleOfferingChartSection{
+    display: flex;
+    padding: 15px 20px;
+    padding-top: 0px;
+    background: #fff;
+    gap: 20px;
+    /* box-shadow: inset 0px 5px 3px rgba(0,0,0,.1); */
+    box-sizing: border-box;
+    align-items: stretch;
+}
+
+.dashHomeDoubleOfferingChartSection > .dashHomeOfferingByStatusPerformance{
+    flex: 2
+}
+
+.dashHomeDoubleOfferingChartSection > .dashHomOfferingByStaus{
+    flex: 2
+}
+
+.dashHomeDoubleInvestmentSection{
+    display: flex;
+    padding: 15px 20px;
+    padding-top: 0px;
+    background: #fff;
+    gap: 20px;
+    /* box-shadow: inset 0px 5px 3px rgba(0,0,0,.1); */
+    box-sizing: border-box;
+    align-items: stretch;
+}
+
+.dashHomeDoubleOfferingChartSection > .dashHomeAvgInvestment{
+    flex: 2
+}
+
+.dashHomeDoubleOfferingChartSection > .dashHomNumInvestment{
+    flex: 2
+}
+.invest_deal{
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #e7e7e7;
+}
+.invest_deal:hover{
+    box-shadow: 2px 2px 5px rgba(0,0,0,.1),
+    -2px -2px 5px rgba(0,0,0,.1);
+}
+.invest_prev{
+    position: relative;
+    flex-shrink: 0;
+    max-width: 250px;
+}
+.invest_img{
+    width: 50%;
+    min-width: 250px;
+    max-width: 300px;
+}
+.invest_deal_label{
+    background: #fff;
+    margin: 3px 5px;
+    font-size:12px;
+    padding: 3px 10px;
+    font-weight:500;
+    text-transform: uppercase;
+    text-align: center;
+}
+.invest_deal_labels{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.invest_meta{
+    padding: 10px 40px;
+    flex-grow: 1;
+}
+.invest_meta_header_top{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.invest_meta_deal_name_title{
+    font-size: 22px;
+    margin-bottom: 0px;
+    font-weight:700;
+}
+.invest_meta_deal_type{
+    font-size: 11px;
+    border: 1px solid #e7e7e7;
+    padding: 3px 5px;
+    border-radius: 3px;
+}
+.invest_meta_deal_addr{
+    padding: 5px 0px;
+    font-size: 13px;
+    margin-bottom:5px;
+}
+.invest_meta_progress{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: end;
+}
+.invest_meta_deal_percentage{
+    color: var(--link-color);
+    font-weight:600;
+}
+.invest_meta_deal_title{
+    font-size: 12px;
+    font-weight: 600;
+}
+.goal_progress{
+    background: #f7f7f7;
+    border-radius: 5px;
+    border: 1px solid #e7e7e7;
+    margin:5px 0px;
+}
+.goal_prgrs{
+    display:block;
+    height: 10px;
+    background: var(--link-color);
+    border-radius: 5px;
+}
+.invest_meta_flex_wrap{
+    display:flex;
+    gap: 10px;
+    justify-content: space-between;
+    border-bottom: 1px solid #e7e7e7;
+    margin-bottom: 5px;
+}
+.invest_meta_item{
+    display: flex;
+    gap: 10px;
+    align-items: center
+}
+.invest_meta_key, .invest_meta_value{
+    font-weight:500;
+    font-size: 12px;
+}
+.invest_meta_items{
+    padding: 10px 0px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,300px)
+}
+.invest_docs_list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,200px);
+    gap: 5px 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-top: 1px solid #e7e7e7;
+    padding: 10px 0px;
+}
+.invest_doc{
+    border: 1px solid #e7e7e7;
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 5px;
+}
+.invest_doc:hover{
+    background: #f7f7f7;
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+.invest_doc_title{
+    font-size: 11px;
+}
+.invest_doc_name{
+    display:flex;
+    gap:5px;
+    align-items: center
+}
+.invest_meta-footer{
+    border-top: 1px solid #e7e7e7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0px;
+}
+.investDate{
+    font-size: 16px;
+    font-weight: 600;
+}
+.investAmount{
+    color: var(--link-color);
+    font-size: 20px;
+    font-weight:600;
+}
+.invest_meta_right_grp{
+    width: 250px;
+}

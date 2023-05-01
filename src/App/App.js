@@ -16,9 +16,11 @@ import NoAccess from './dashboard/components/NoAccessComp/NoAccess';
 import UserLoginPage from './auth/userLoginPage/userLogin';
 import GeneratePassword from './auth/generatePassword/GeneratePassword';
 import { PrivateInvestorRoute } from './auth/privateInvestorRoute';
-import PrivateInvestorDashboard from './privateInvestor/dashboard/privateInvestorDashboard';
 import PrivateDashboard from './privateInvestor/privateDashboard';
 import InvestorKeyboardShortcuts from './privateInvestor/Settings/keyboardShortcuts/InvestorKeyboardShortcuts';
+import ManageInvestorProfile from './privateInvestor/Pages/manageProfile/manageInvestorProfile';
+import InvestorDashboardHome from './privateInvestor/Pages/dashboardHome/investorDashboardHome';
+
 
 const DashboardHome = lazy(()=> import('./dashboard/Pages/dashboardHome/DashboardHome'));
 const OrganizationHomepage = lazy(() => import('./dashboard/Pages/Organisations/organizationHomepage/organizationHomepage'));
@@ -31,6 +33,8 @@ const BasicInfo = lazy(() => import('./dashboard/Pages/OrganizationViews/BasicIn
 const RobotsTxt = lazy(()=> import('./dashboard/Settings/seo/Robots_txt/RobotsTxt'));
 const OrganizationDetails = lazy(() => import('./dashboard/Pages/OrganizationViews/OrganizationDetais/OrganizationDetails'));
 const Address = lazy(()=> import('./dashboard/Pages/OrganizationViews/Address/Address'))
+const IndViewPage=lazy(()=> import('./dashboard/Pages/individualInvestorViews/ViewPage/IndViewPage'))
+const InvBasicInfo =lazy(()=> import('./dashboard/Pages/individualInvestorViews/InvBasicInfo'))
 const InvestorSettings = lazy(()=> import('./privateInvestor/Settings/investorSettings'))
 const DividentPayments = lazy(() => import('./dashboard/Pages/OrganizationViews/DividentPayments/DividentPayments'));
 const Repayments = lazy(()=> import('./dashboard/Pages/OrganizationViews/RepaymentSchedule/RepaymentSchedule'))
@@ -50,8 +54,8 @@ function App() {
           <Route path="/signup" element={<SignupPage />}></Route>
           <Route path="/investor" element={<PrivateInvestorRoute/> }>
             <Route path="/investor" element={<PrivateDashboard />} exact>
-            <Route path="/investor/" element={<PrivateInvestorDashboard/>} exact></Route>
-            <Route path="/investor/dashboard" element={<PrivateInvestorDashboard/>} exact></Route>
+            <Route path="/investor/" element={<InvestorDashboardHome/>} exact></Route>
+            <Route path="/investor/dashboard" element={<InvestorDashboardHome/>} exact></Route>
             <Route path="/investor/wallet" element={<h1>Wallet</h1>} exact></Route>
             <Route path="/investor/investments" element={<h1>Investment</h1>} exact></Route>
             <Route path="/investor/interest" element={<h1>Interest</h1>} exact></Route>
@@ -62,6 +66,7 @@ function App() {
             <Route path="/investor/settings" element={<InvestorSettings></InvestorSettings>} exact></Route>
             <Route path="/investor/settings/keyboard-shortcuts/" element={<InvestorKeyboardShortcuts />}>
               </Route>
+            <Route path="/investor/settings/profile/" element={ <ManageInvestorProfile /> }></Route>
             </Route>
           </Route>
           <Route path="/dashboard" element={<PrivateRoute />}>
@@ -81,6 +86,31 @@ function App() {
               </Route>
               <Route path="/dashboard/community/individual-investor/" element={<IndividualInvestorHomepage />} exact>
               </Route>
+                <Route path="/dashboard/community/individual-investor/view/:investorId/" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><IndViewPage /></Suspense></Suspense>} exact>
+                
+                <Route path="/dashboard/community/individual-investor/view/:investorId/" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><InvBasicInfo/></Suspense>  </Suspense>} exact>
+                </Route>
+                <Route path="/dashboard/community/individual-investor/view/:investorId/basic-info" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><InvBasicInfo/></Suspense>  </Suspense>} exact>
+                </Route>
+                <Route path="/dashboard/community/individual-investor/view/:investorId/details" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><OrganizationDetails/></Suspense></Suspense>} exact>
+                </Route>
+                <Route path="/dashboard/community/individual-investor/view/:investorId/address" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><Address/></Suspense></Suspense>} exact>
+                </Route>
+                <Route path="/dashboard/community/individual-investor/view/:investorId/payments" element={<h1>payment</h1>} exact>
+                </Route>
+                <Route path="/dashboard/community/individual-investor/view/:investorId/repayments" element={<h1>repayment</h1>} exact>
+                </Route>
+                <Route path="/dashboard/community/individual-investor/view/:investorId/documents" element={<h1>docs</h1>} exact>
+                </Route>
+                <Route path="/dashboard/community/individual-investor/view/:investorId/investments" element={<h1>Investment</h1>} exact>
+                </Route>
+                <Route path="/dashboard/community/individual-investor/view/:investorId/deals" element={<h1>deals</h1>} exact>
+                </Route>
+                <Route path="/dashboard/community/individual-investor/view/:investorId/customfeilds" element={<h1>customfeilds</h1>} exact>
+                </Route>
+                <Route path="/dashboard/community/individual-investor/view/:investorId/history" element={<h1>history</h1>} exact>
+                </Route>
+                </Route> 
               <Route path="/dashboard/community/individual-investor/create" element={<CreateIndividualInvestor />} exact>
               </Route>
               <Route path="/dashboard/community/organizations/view/:organizationId" element={<ViewPage />} exact>
