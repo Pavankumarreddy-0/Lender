@@ -18,6 +18,9 @@ import { generatePasswordRoute } from "./auth/generatePassword.js"
 import { getInvestorSettings } from "./individualInvestor/investor-settings.js"
 import { addNewAddress } from "./address/addAddress.js"
 import { fetchAddress } from "./address/fetchAddress.js"
+import { IndInvShortcutSave } from "./settings/indInvKeyboardShortcutSave.js"
+import { IndIvUpdateUserSettings } from "./settings/indInvAddUserSettings.js"
+import { indInvUpdatePassword } from "./settings/indInvUpdatePassword.js"
 export const routes = [
     loginRoute,
     signUpRoute,
@@ -38,5 +41,8 @@ export const routes = [
     generatePasswordRoute,
     getInvestorSettings,
     addNewAddress,
-    fetchAddress
+    fetchAddress,
+    IndInvShortcutSave,
+    IndIvUpdateUserSettings,
+    indInvUpdatePassword
 ]

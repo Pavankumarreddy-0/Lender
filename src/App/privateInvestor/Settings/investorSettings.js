@@ -35,7 +35,7 @@ export default function InvestorSettings() {
       <div className='settingsContainer'>
         <div className={SettingsStyles['settingsHeaderContainer']}>
           <div className={SettingsStyles['settingsTitleRegion']}>
-            <Link className={SettingsStyles['settingsBackLink']} to="/dashboard"><i className="bi bi-arrow-left"></i> Home</Link>
+            <Link className={SettingsStyles['settingsBackLink']} to="/investor"><i className="bi bi-arrow-left"></i> Home</Link>
             <p className={SettingsStyles['settingsTitleName']}>Settings</p>
           </div>
           <div className={SettingsStyles['searchHeader']}>

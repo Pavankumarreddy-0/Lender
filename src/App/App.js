@@ -16,9 +16,10 @@ import NoAccess from './dashboard/components/NoAccessComp/NoAccess';
 import UserLoginPage from './auth/userLoginPage/userLogin';
 import GeneratePassword from './auth/generatePassword/GeneratePassword';
 import { PrivateInvestorRoute } from './auth/privateInvestorRoute';
-import PrivateInvestorDashboard from './privateInvestor/dashboard/privateInvestorDashboard';
 import PrivateDashboard from './privateInvestor/privateDashboard';
 import InvestorKeyboardShortcuts from './privateInvestor/Settings/keyboardShortcuts/InvestorKeyboardShortcuts';
+import ManageInvestorProfile from './privateInvestor/Pages/manageProfile/manageInvestorProfile';
+import InvestorDashboardHome from './privateInvestor/Pages/dashboardHome/investorDashboardHome';
 
 const DashboardHome = lazy(()=> import('./dashboard/Pages/dashboardHome/DashboardHome'));
 const OrganizationHomepage = lazy(() => import('./dashboard/Pages/Organisations/organizationHomepage/organizationHomepage'));
@@ -48,8 +49,8 @@ function App() {
           <Route path="/signup" element={<SignupPage />}></Route>
           <Route path="/investor" element={<PrivateInvestorRoute/> }>
             <Route path="/investor" element={<PrivateDashboard />} exact>
-            <Route path="/investor/" element={<PrivateInvestorDashboard/>} exact></Route>
-            <Route path="/investor/dashboard" element={<PrivateInvestorDashboard/>} exact></Route>
+            <Route path="/investor/" element={<InvestorDashboardHome/>} exact></Route>
+            <Route path="/investor/dashboard" element={<InvestorDashboardHome/>} exact></Route>
             <Route path="/investor/wallet" element={<h1>Wallet</h1>} exact></Route>
             <Route path="/investor/investments" element={<h1>Investment</h1>} exact></Route>
             <Route path="/investor/interest" element={<h1>Interest</h1>} exact></Route>
@@ -60,6 +61,7 @@ function App() {
             <Route path="/investor/settings" element={<InvestorSettings></InvestorSettings>} exact></Route>
             <Route path="/investor/settings/keyboard-shortcuts/" element={<InvestorKeyboardShortcuts />}>
               </Route>
+            <Route path="/investor/settings/profile/" element={ <ManageInvestorProfile /> }></Route>
             </Route>
           </Route>
           <Route path="/dashboard" element={<PrivateRoute />}>

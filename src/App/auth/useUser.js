@@ -35,5 +35,21 @@ export const useUser = () => {
         }
     }, [token]);
 
+    useEffect(() => {
+        if (!token) {
+            setUser(null)
+        } else {
+            let __userData = getPayloadFromToken(token);
+
+            if (Date.now() >= __userData.exp * 1000) {
+                localStorage.removeItem("token");
+                navigate('/login');
+                return;
+            }
+
+            setUser(__userData);
+        }
+    }, []);
+
     return user;
 }
