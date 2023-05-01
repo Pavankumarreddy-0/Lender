@@ -1,9 +1,9 @@
 import React, {useEffect, useState } from 'react'
-import OrgDataSidebarStyles from './OrganisationDataSidebar.module.css'
+import IndDataSidebarStyles from './IndividualDataSidebar.module.css'
 import { Link,useParams } from 'react-router-dom'
 
 
-function OrganisationDataSideBar() {
+function IndividualDataSidebar() {
     const { organizationId } = useParams()
 
     const SidebarData = [
@@ -13,7 +13,7 @@ function OrganisationDataSideBar() {
             Surl:'basic-info'
         },
         {
-            Orgtext:"Organization Details",
+            Orgtext:"Organization Detail",
             OrgIcon:"bi bi-book",
             Surl:'details'
         },
@@ -65,14 +65,14 @@ function OrganisationDataSideBar() {
 
     },[OrgSideData])
     return (
-    <div className={OrgDataSidebarStyles['orgSideBarMain']}>
-        <div className={OrgDataSidebarStyles['orgSideBarInner']}>
+    <div className={IndDataSidebarStyles['orgSideBarMain']}>
+        <div className={IndDataSidebarStyles['orgSideBarInner']}>
         {OrgSideData.map((e) => {
             return (
-                <Link className={ (window.location.href.indexOf(   organizationId + "/" + e.Surl) != -1 ) ? OrgDataSidebarStyles['orgsideContentLinkActive'] : OrgDataSidebarStyles['orgsideContentLink']} to={`/dashboard/community/organizations/view/${organizationId}/${e.Surl}/`}>
-                <div className={OrgDataSidebarStyles['orgsideContent']}>
-                    <div className={OrgDataSidebarStyles['orgIcons']}><i className={e.OrgIcon}></i></div>
-                    <div className={OrgDataSidebarStyles['orgText']}>{e.Orgtext}</div>
+                <Link className={ (window.location.href.indexOf(   organizationId + "/" + e.Surl) != -1 ) ? IndDataSidebarStyles['orgsideContentLinkActive'] : IndDataSidebarStyles['orgsideContentLink']} to={`/dashboard/community/individual-investor/view/${organizationId}/${e.Surl}/`}>
+                <div className={IndDataSidebarStyles['orgsideContent']}>
+                    <div className={IndDataSidebarStyles['orgIcons']}><i className={e.OrgIcon}></i></div>
+                    <div className={IndDataSidebarStyles['orgText']}> {e.Orgtext}</div>
                 </div>
                 </Link>
             )
@@ -82,4 +82,4 @@ function OrganisationDataSideBar() {
     )
 }
 
-export default OrganisationDataSideBar
+export default IndividualDataSidebar;
