@@ -32,6 +32,8 @@ const RobotsTxt = lazy(()=> import('./dashboard/Settings/seo/Robots_txt/RobotsTx
 const OrganizationDetails = lazy(() => import('./dashboard/Pages/OrganizationViews/OrganizationDetais/OrganizationDetails'));
 const Address = lazy(()=> import('./dashboard/Pages/OrganizationViews/Address/Address'))
 const InvestorSettings = lazy(()=> import('./privateInvestor/Settings/investorSettings'))
+const DividentPayments = lazy(() => import('./dashboard/Pages/OrganizationViews/DividentPayments/DividentPayments'));
+const Repayments = lazy(()=> import('./dashboard/Pages/OrganizationViews/RepaymentSchedule/RepaymentSchedule'))
 
 function App() {
 
@@ -90,9 +92,9 @@ function App() {
                 </Route>
                 <Route path="/dashboard/community/organizations/view/:organizationId/address" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><Address/></Suspense></Suspense>} exact>
                 </Route>
-                <Route path="/dashboard/community/organizations/view/:organizationId/payments" element={<h1>payment</h1>} exact>
+                <Route path="/dashboard/community/organizations/view/:organizationId/payments" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><DividentPayments/></Suspense></Suspense>} exact>
                 </Route>
-                <Route path="/dashboard/community/organizations/view/:organizationId/repayments" element={<h1>repayment</h1>} exact>
+                <Route path="/dashboard/community/organizations/view/:organizationId/repayments" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><Repayments/></Suspense></Suspense>} exact>
                 </Route>
                 <Route path="/dashboard/community/organizations/view/:organizationId/documents" element={<h1>docs</h1>} exact>
                 </Route>
