@@ -47,7 +47,6 @@ export default function UserLoginPage() {
             email: LoginDet.email,
             password: LoginDet.password
         }).then(response => {
-
             if( "token" in response.data){
                 const { token, userType } = response.data;
                 setToken(token);

@@ -22,6 +22,7 @@ import ManageInvestorProfile from './privateInvestor/Pages/manageProfile/manageI
 import InvestorDashboardHome from './privateInvestor/Pages/dashboardHome/investorDashboardHome';
 
 
+
 const DashboardHome = lazy(()=> import('./dashboard/Pages/dashboardHome/DashboardHome'));
 const OrganizationHomepage = lazy(() => import('./dashboard/Pages/Organisations/organizationHomepage/organizationHomepage'));
 const Settings = lazy(()=> import('./dashboard/Settings/Settings'));
@@ -36,6 +37,9 @@ const Address = lazy(()=> import('./dashboard/Pages/OrganizationViews/Address/Ad
 const IndViewPage=lazy(()=> import('./dashboard/Pages/individualInvestorViews/ViewPage/IndViewPage'))
 const InvBasicInfo =lazy(()=> import('./dashboard/Pages/individualInvestorViews/InvBasicInfo'))
 const InvestorSettings = lazy(()=> import('./privateInvestor/Settings/investorSettings'))
+const DividentPayments = lazy(() => import('./dashboard/Pages/OrganizationViews/DividentPayments/DividentPayments'));
+const Repayments = lazy(()=> import('./dashboard/Pages/OrganizationViews/RepaymentSchedule/RepaymentSchedule'));
+const OrgDocuments = lazy(() => import('./dashboard/Pages/OrganizationViews/OrgDocuments/Documents'));
 
 function App() {
 
@@ -78,7 +82,7 @@ function App() {
               </Route>
               <Route path="/dashboard/community" element={(__webAppSettings.pageAccess.Community) ? <h1>community</h1> : <NoAccess/>} exact>
               </Route>
-              <Route path="/dashboard/community/organizations/" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><OrganizationHomepage /></Suspense></Suspense>} exact>
+              <Route path="/dashboard/community/organizations/" element={<Suspense><Suspense fallback={<Loader/>}><OrganizationHomepage /></Suspense></Suspense>} exact>
               </Route>
               <Route path="/dashboard/community/organizations/create" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><CreateOrganisation /></Suspense></Suspense>} exact>
               </Route>
@@ -120,11 +124,11 @@ function App() {
                 </Route>
                 <Route path="/dashboard/community/organizations/view/:organizationId/address" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><Address/></Suspense></Suspense>} exact>
                 </Route>
-                <Route path="/dashboard/community/organizations/view/:organizationId/payments" element={<h1>payment</h1>} exact>
+                <Route path="/dashboard/community/organizations/view/:organizationId/payments" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><DividentPayments/></Suspense></Suspense>} exact>
                 </Route>
-                <Route path="/dashboard/community/organizations/view/:organizationId/repayments" element={<h1>repayment</h1>} exact>
+                <Route path="/dashboard/community/organizations/view/:organizationId/repayments" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><Repayments/></Suspense></Suspense>} exact>
                 </Route>
-                <Route path="/dashboard/community/organizations/view/:organizationId/documents" element={<h1>docs</h1>} exact>
+                <Route path="/dashboard/community/organizations/view/:organizationId/documents" element={<Suspense fallback={<Loader/>}><Suspense fallback={<Loader/>}><OrgDocuments/></Suspense></Suspense>} exact>
                 </Route>
                 <Route path="/dashboard/community/organizations/view/:organizationId/investments" element={<h1>Investment</h1>} exact>
                 </Route>

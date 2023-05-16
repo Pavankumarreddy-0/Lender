@@ -8,8 +8,7 @@ import axios from 'axios';
 
 
 function Address() {
-    const {organizationId} = useParams()
-    console.log(organizationId)
+    const {organizationId} = useParams();
     const [addressValues,setAddressvalues] = useState({
         tagString:"",
         pageNum: 1,
@@ -24,7 +23,7 @@ function Address() {
         activeAddId: "",
         allAddress:
         {
-            defaultAddress:"US",
+            defaultAddress:"",
             Country:"",
             companyNumber:"",
             Address1:"",
@@ -37,7 +36,7 @@ function Address() {
         addressCards: [
             {
                 id: "",
-                defaultAddress:"US",
+                defaultAddress:"",
                 Country:"",
                 companyNumber:"",
                 Address1:"",
@@ -67,7 +66,6 @@ function Address() {
             ...new Set([...addressValues.customTags,...addressValues.tagString.trim().split(",")])
         ]})
     }
-
     const removeTag = (e) => {
         let _idx = e.target.getAttribute("data-tagidx");
         let newTag = [];
@@ -87,17 +85,19 @@ function Address() {
         },{
             headers: { authorization: `Bearer ${localStorage.getItem("token")}` }
         }).then((response) => {
-           
             console.log("address list",response);
-
-            setAddressvalues({...addressValues, addressCards: [ ...response.data.result[0].paginatedResults ]})
-
+            setAddressvalues({...addressValues, addressCards: [ ...response.data.result[0].paginatedResults ],AddressMode:false})
+            
         })
     }
 
     useEffect(()=>{
         fetchAddress();
     },[])
+
+    useEffect(()=>{
+
+    },[addressValues.addressCards])
 
     const resetAddressInputs = ()=>{
         setAddressvalues({...addressValues, allAddress: {defaultAddress:"US",
@@ -112,23 +112,46 @@ function Address() {
     }
 
     const updateAddressValues = async () => {
-        setAddressvalues({...addressValues,readOnly:true,AddressMode:false,defaultAdress:false});
+        setAddressvalues({...addressValues,AddressMode:false,});
 
-        await axios.put('/api/add-address',{
-            orgID:organizationId,
-            address:addressValues.allAddress,
-            isCurrent:addressValues.allAddress.currentAddress,
+            let __obj = Object.values(addressValues.allAddress);
+            for(let val of __obj){
+            console.log(val)
+            if(val == ""){
+                return alert("cant add the data")
+                }
+            }
+            await axios.put('/api/add-address',{
+                orgID:organizationId,
+                address:addressValues.allAddress,
+                isCurrent:addressValues.allAddress.currentAddress,
+            },{
+                headers: { authorization: `Bearer ${localStorage.getItem("token")}` }
+            }).then((reponse) => {
+                resetAddressInputs();
+                fetchAddress();
+            });
+        
+    }
 
-        },{
-            headers: { authorization: `Bearer ${localStorage.getItem("token")}` }
-        }).then((reponse) => {
-            resetAddressInputs();
-            fetchAddress();
-        })
+    const  newResetValues = () => {
+        setAddressvalues({...addressValues,AddressMode:true, allAddress:
+            {
+                defaultAddress:"US",
+                Country:"",
+                companyNumber:"",
+                Address1:"",
+                Address2:"",
+                zipCode:"",
+                type:"",
+                City:"",
+                currentAddress:"",
+            }});
+
     }
 
 return (
-    <>
+<>
     <div className={AddressStyles['card-Binfo']}>
         <div className={AddressStyles['basicInfo-header']}>
             <div className={AddressStyles['OrgHeader']}>
@@ -140,13 +163,15 @@ return (
                 </div>
             </div>
             <div className={AddressStyles['basic_info-button']}>
-            <a href="javascript:void(0)" className={AddressStyles['addAddressbtn']} onClick={() => setAddressvalues({...addressValues,AddressMode:"AddAddress"})}><i class="bi bi-plus-square"></i> Add Address</a>
+            {
+                !((addressValues.addressCards.length > 0)) ? "" : <a href="javascript:void(0)" className={AddressStyles['addAddressbtn']} onClick={() => newResetValues()}><i class="bi bi-plus-square"></i> Add Address</a>
+            }
             </div>
         </div>
         <div className={AddressStyles["AddressCardFlexwrap"]}>
             <OrganisationDataSideBar />
             <div className={AddressStyles['AddressCardMain']}>
-            {(addressValues.defaultAdress) && <div className={AddressStyles['addressCardInner']}>
+            {!((addressValues.addressCards.length > 0)) ? <div className={AddressStyles['addressCardInner']}>
                 <div className={AddressStyles['addressCardHeader']}>
                     Address
                 </div>
@@ -156,17 +181,54 @@ return (
                         <div className={AddressStyles['']}>No data yet.</div>
                         <div className={AddressStyles['']}>Once Added the data will appear here</div>
                     </div>
-                    <a href="javascript:void(0)" className={AddressStyles['addAddressbtn']} onClick={() => setAddressvalues({...addressValues,AddressMode:"AddAddress"})}><i class="bi bi-plus-square"></i> Add Address</a>
+                    <a href="javascript:void(0)" className={AddressStyles['addAddressbtn']} onClick={() => setAddressvalues({...addressValues,AddressMode:true})}><i class="bi bi-plus-square"></i> Add Address</a>
                     </div>
                 </div>
-            </div>}
-            {!(addressValues.defaultAdress) && <div className={AddressStyles['da']}>
-                    {addressValues.addressCards.map((e) => {
-                        return  <div className='ds'>
-                            <h1>{e.Address1}</h1> 
+            </div> :
+            <div className={AddressStyles['AddressDataCards']}>
+                {(addressValues.addressCards.map((e)=>{
+                return <div className={AddressStyles['AddressCardWrapper']}>
+                            <div className={AddressStyles['AddressCardHeader']}>
+                                <div className={AddressStyles['headerText']}>
+                                    Address 
+                                </div>
+                                {
+                                (e.currentAddress) === "Yes" ? <div className={AddressStyles['activeAddress']}><span>Active</span></div> : ""
+                            }
+                            </div>
+                            <div className={AddressStyles['AddressCardIcon']}>
+                                <div className={AddressStyles['']}>
+                                <i class="bi bi-map"></i>
+                                </div>
+                            </div>
+                            <div className={AddressStyles['AddressCardInnerBody']}>
+                            <div className={AddressStyles['AddressCard-type']}>
+                                    <span className={AddressStyles['']}>Company Number :</span>
+                                    <span className={AddressStyles['']}>{e.companyNumber}</span>
+                                </div>
+                                <div className={AddressStyles['AddressCard-Add1']}>
+                                    <span className={AddressStyles['']}>Address-1 :</span>
+                                    <span className={AddressStyles['']}>{e.Address1}</span>
+                                </div>
+                                <div className={AddressStyles['AddressCard-Add2']}>
+                                    <span className={AddressStyles['']}>Address-2</span>
+                                    <span className={AddressStyles['']}>{e.Address2}</span>
+                                </div>
+                                <div className={AddressStyles['AddressCard-city']}>
+                                    <span className={AddressStyles['']}>City :</span>
+                                    <span className={AddressStyles['']}>{e.City}</span>
+                                </div>
+                                <div className={AddressStyles['AddressCard-type']}>
+                                    <span className={AddressStyles['']}>Type :</span>
+                                    <span className={AddressStyles['']}>{e.type}</span>
+                                </div>
+                                <div className={AddressStyles['AddressCard-ZipCode']}>
+                                    <span className={AddressStyles['']}>Zip-Code :</span>
+                                    <span className={AddressStyles['']}>{e.zipCode}</span>
+                                </div>
+                            </div>
                         </div>
-                    })}    
-            </div>}
+            }))}</div>}
             <div className={AddressStyles['Cards']}>
                             <div className={AddressStyles['CardInner']}>
                                 <div className={AddressStyles['controlCard-header']}>
@@ -203,12 +265,12 @@ return (
             </div>
         </div>
     </div>
-    {(addressValues.AddressMode == 'AddAddress') && <>
-                <div className={AddressStyles['setAddressBackdrop']} onClick={() => setAddressvalues({...addressValues,AddressMode:""})}></div>
+    {(addressValues.AddressMode) && <>
+                <div className={AddressStyles['setAddressBackdrop']} onClick={() => setAddressvalues({...addressValues,AddressMode:false})}></div>
                 <div className={AddressStyles['setAddressMainWrapper']}>
                     <div className={AddressStyles['setAddressheader']}>
                         <span>Add Address</span>
-                        <a href="javascript:void(0)" className={AddressStyles['cancel-btn']}     onClick={() => setAddressvalues({...addressValues,AddressMode:true})}>
+                        <a href="javascript:void(0)" className={AddressStyles['cancel-btn']} onClick={() => setAddressvalues({...addressValues,AddressMode:false})}>
                         <i class="bi bi-x-circle"></i>cancel
                         </a>
                     </div>
@@ -236,7 +298,7 @@ return (
                         </div>
                         <div className={AddressStyles['addressInputs']}>
                             <label htmlFor="" className={AddressStyles['LabelClass']}>Address Line-1</label>
-                            <input type="text" name="" id="" value={addressValues.allAddress.Address1} className={AddressStyles['Inputs_Address']} readOnly={(addressValues.readOnly) && "readonly"} onChange={(e) => setAddressvalues({...addressValues,allAddress:{...addressValues.allAddress,Address1:e.target.value}})}/>
+                            <input type="text" name="" id="" value={addressValues.allAddress.Address1} className={AddressStyles['Inputs_Address']} data-ipx="1" readOnly={(addressValues.readOnly) && "readonly"} onChange={(e) => setAddressvalues({...addressValues,allAddress:{...addressValues.allAddress,Address1:e.target.value}})}/>
                         </div>
                         <div className={AddressStyles['addressInputs']}>
                             <label htmlFor="" className={AddressStyles['LabelClass']}>Address Line-2</label>
@@ -265,19 +327,14 @@ return (
                                 <option>No</option>
                             </select>
                         </div>
-                        <div className={AddressStyles['saveAndEditableBtn']}>
                         <a href="javascript:void(0)" className={AddressStyles['addAddressSavebtn']} onClick={() => updateAddressValues()}>
                             <span className={AddressStyles['']}><i class="bi bi-save2"></i>Save</span>
                         </a>
-                        <a href="javascript:void(0)" className={AddressStyles['addAddressSavebtn']} onClick={() => setAddressvalues({...addressValues,readOnly:false})}>
-                            <span className={AddressStyles['']}><i class="bi bi-pencil-square"></i>Edit</span>
-                        </a>
-                        </div>
                     </div>
                 </div>
     </>}
 </>
-  )
+)
 }
 
-export default Address
+export default Address;

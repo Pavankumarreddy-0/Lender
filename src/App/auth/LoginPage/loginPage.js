@@ -16,7 +16,7 @@ export default function LoginPage() {
         email: "",
         password: "",
         err: []
-    })
+    });
 
     useEffect(() => {
         if (token) {
@@ -34,21 +34,20 @@ export default function LoginPage() {
                     case "Fundraiser":
                         navigate('/fundraiser/dashboard');
                     break;
+                    default:
+                        navigate('/login');
                 }
             }
         }
-    }, [])
+    }, [token]);
 
     const onLoginClicked = async (e) => {
         e.preventDefault();
-
         let _errs = [];
-
         await axios.post('/api/login', {
             email: LoginDet.email,
             password: LoginDet.password
         }).then(response => {
-
             const { token } = response.data;
             setToken(token);
             navigate('/dashboard');
@@ -70,7 +69,6 @@ export default function LoginPage() {
                 <div className="create_account_container">
                     <h1>Admin Login</h1>
                     <p>Don't have an account? <Link to={"/signup"}>Sign Up</Link></p>
-
                     {(LoginDet.err.length > 0) && <div className='errorsPanel'>
                         <ul>
                             {
