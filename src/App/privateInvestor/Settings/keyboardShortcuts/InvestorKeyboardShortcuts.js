@@ -26,37 +26,37 @@ export default function InvestorKeyboardShortcuts() {
       },
       {
         keyName: "Navigate to Wallet",
-        keyProp: "communityPage",
+        keyProp: "pVIWallet",
         keyDesc: ""
       },
       {
         keyName: "Navigate to Investments",
-        keyProp: "platformPage",
+        keyProp: "pVIInvestment",
         keyDesc: ""
       },
       {
         keyName: "Navigate to Crowd Indicated Interest",
-        keyProp: "crowdFundingPage",
+        keyProp: "pVIIndInt",
         keyDesc: ""
       },
       {
         keyName: "Navigate to Transaction History",
-        keyProp: "everythingPage",
+        keyProp: "pVITrans",
         keyDesc: ""
       },
       {
         keyName: "Navigate to Auto Investment",
-        keyProp: "investmentPage",
+        keyProp: "pVIAutoInv",
         keyDesc: ""
       },
       {
         keyName: "Navigate to Aggrements",
-        keyProp: "settingsPage",
+        keyProp: "pVIAgree",
         keyDesc: ""
       },
       {
         keyName: "Navigate to Notifications",
-        keyProp: "filterShowAction",
+        keyProp: "pVINoti",
         keyDesc: ""
       },
       {
@@ -66,7 +66,7 @@ export default function InvestorKeyboardShortcuts() {
       },
       {
         keyName: "Invest",
-        keyProp: "createNewObj",
+        keyProp: "pVIInvst",
         keyDesc: ""
       },
       {
@@ -104,7 +104,7 @@ export default function InvestorKeyboardShortcuts() {
       return;
     }
 
-    await axios.put('/api/save-keyboard-shortcut/', { keyboardShortcuts: { ...__webAppSettings.keyboardShortcuts, ...keyboardSetting.modKeys } }, {
+    await axios.put('/api/investor-save-keyboard-shortcut/', { keyboardShortcuts: { ...__webAppSettings.keyboardShortcuts, ...keyboardSetting.modKeys } }, {
       headers: { authorization: `Bearer ${localStorage.getItem("token")}` }
     }).then(response => {
       

@@ -44,6 +44,7 @@ const WebAppState = (props) => {
             pVIAutoInv: "Control +Shift +A",
             pVIAgree: "Control +Shift +M",
             pVINoti: "Control +Shift +O",
+            pVIInvst: "Shift +I"
 
         },
         pageAccess: {
