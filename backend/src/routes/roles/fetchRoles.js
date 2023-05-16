@@ -25,8 +25,7 @@ export const fetchRoles = {
 
                 const db = getDbConnection(process.env.API_DB_NAME);
                 const result = await db.collection("roles").find({}).toArray();
-
-                res.status(200).json({ message: "Roles Fetched", result })
+                res.status(200).json({ message: "Roles Fetched", result });
 
             }
         )

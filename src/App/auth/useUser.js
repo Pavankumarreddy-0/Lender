@@ -12,7 +12,6 @@ export const useUser = () => {
         return JSON.parse(atob(encodedPayload));
     }
 
-
     const [user, setUser] = useState(() => {
         if (!token) return null;
 
@@ -53,3 +52,4 @@ export const useUser = () => {
 
     return user;
 }
+

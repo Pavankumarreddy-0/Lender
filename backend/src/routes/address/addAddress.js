@@ -8,8 +8,6 @@ export const addNewAddress = {
     method: 'put',
     handler: async (req, res) => {
 
-        
-
         //get auth header from client
         const { authorization } = req.headers;
         const { address, isCurrent, orgID } = req.body;
@@ -30,7 +28,7 @@ export const addNewAddress = {
 
                 const db = getDbConnection(process.env.API_DB_NAME);
                 // const result = await db.collection("roles").find({}).toArray();
-
+                
               
                 const result = await db.collection('addresses').insertOne({
                     ...address,
@@ -39,7 +37,8 @@ export const addNewAddress = {
                     contactId: ObjectId(decoded.id)
                 })
 
-                if(! (isCurrent == "No")){
+
+                if(! (isCurrent === "No")){
                     const result2 = await db.collection("organization").findOneAndUpdate(
                         {
                             "_id": ObjectId(orgID)

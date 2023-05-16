@@ -32,7 +32,6 @@ export default function GeneratePassword() {
         }
 
         setGeneratePassword({...generatePassword, generatingPassword: true});
-
         await axios.put('/api/generate-password/', {  ...generatePassword, encryptedHash }, {
             
         }).then(response => {
@@ -42,12 +41,12 @@ export default function GeneratePassword() {
             alert("Unable to generate the password, please try again or contact the admin.")
             setGeneratePassword({...generatePassword, generatingPassword: false});
         })
-
+        
     }
 
-  return (
+return (
     <div>
-      <div className='create_account_page'>
+    <div className='create_account_page'>
             <form onSubmit={genNewPassword} method="post">
                 <div className="create_account_container">
                     <h1>Generate Password</h1>
@@ -65,5 +64,5 @@ export default function GeneratePassword() {
             </form>
         </div>
     </div>
-  )
+)
 }
