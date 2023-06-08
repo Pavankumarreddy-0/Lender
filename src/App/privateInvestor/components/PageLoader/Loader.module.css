@@ -1,0 +1,11 @@
+.LoaderMainWrapper{
+    transform: translate(-50px, -50px);
+    position: absolute;
+    left: 45%;
+    top: 45%;
+    z-index: 999999;
+}
+
+.LoaderMainWrapper img {
+    width:150px;
+}

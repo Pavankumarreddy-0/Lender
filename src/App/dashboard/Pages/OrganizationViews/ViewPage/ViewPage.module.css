@@ -1,0 +1,11 @@
+.Content_header{
+    height:54px;
+    padding:10px 11px;
+    background-color:#e7e7e7e7;
+}
+
+.orgFormViewSection{
+    display: flex;
+    /* gap:10px; */
+    align-items: stretch;
+}

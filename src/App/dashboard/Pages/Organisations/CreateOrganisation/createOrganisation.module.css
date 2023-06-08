@@ -1,0 +1,269 @@
+.createOrganisationModule{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+    height: 100%;
+}
+.createOrganisationHeaderContainer{
+    background: #f7f7f7;
+    padding: 10px 20px;
+    display: flex;
+    border-bottom: 1px solid #e7e7e7;
+}
+.createOrganisationHeaderContainerRegion{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    flex-grow: 1;
+}
+.createOrganisationHeaderContainerLink{
+    font-size: 12px;
+    text-decoration: none;
+}
+.createOrganisationHeaderContainerName{
+    margin: 0px;
+    font-size: 20px;
+}
+.createOrganisationFormModule{
+    display: flex;
+    align-items: stretch;
+    flex-grow: 1;
+}
+.createOrganisationFormProgress{
+    flex-shrink: 0;
+    min-width: 220px;
+    background: #f7f7f7;
+    border-right: 1px solid #e7e7e7;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+.createOrganisationFormBody{
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progressFormList {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  .progressFormList li .thumb{
+    background: #ccc;
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    z-index: 9;
+  }
+  
+  .progressFormList li .thumb:before{
+    content: "";
+    display: block;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: rgb(248,248,248);
+    width: 12px;
+    height: 12px;
+    position: absolute;
+  }
+  
+  
+  .progressFormList li .thumb:after{
+    content: "";
+    display: block;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: #ccc;
+    width: 6px;
+    height: 6px;
+    position: absolute;
+  }
+  
+  .progressFormList li.stageActive .thumb{
+    background: #0b4a99;
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .progressFormList li.stageActive .thumb:before{
+    content: "";
+    display: block;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: #fff;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+  }
+  
+  .progressFormList li:first-child:before{
+    display: none;
+  }
+  .stageName{
+    margin-left: 30px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .progressFormList li{
+    position:relative;
+  }
+  .progressFormList li:before{
+    content: "";
+    display: block;
+    height: 30px;
+    background: #ccc;
+    width:4px;
+    position: absolute;
+    transform: translateY(-100%);
+    left: 8px;
+  }
+  
+  .progressFormList li.stageActive .thumb:after{
+    content: "";
+    display: block;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: #0b4a99;
+    width: 6px;
+    height: 6px;
+    position: absolute;
+  }
+  
+  .progressFormList li{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+
+.progressFormList li.semiActive .thumb:after{
+    content: "";
+    display: block;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: #0b4a99;
+    width: 6px;
+    height: 6px;
+    position: absolute;
+  }
+  .progressFormList li.semiActive:before, .progressFormList li.stageActive:before{
+    background: #0b4a99;
+  }
+  .progressFormListStepLink{
+    text-decoration: none;
+    color: #000;
+  }
+  .stageActive{
+
+  }
+  .semiActive{
+
+  }
+  .formModuleSectionTitle{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 10px 0px;
+  }
+  .formModuleBody{
+
+  }
+  .createOrganisationFormFirstStep{
+
+  }
+  .formLabel{
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .formInput{
+    display: block;
+    width: 100%;
+    margin: 5px 0px;
+    border: 2px solid #ccc;
+    padding: 5px 10px;
+    outline: none;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .formInput:focus{
+    border-color: var(--link-color);
+  }
+  .formModuleBody{
+    max-width: 600px;
+    width: 100%;
+    min-width: 600px;
+  }
+
+  .formModuleFooter{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 10px 0px;
+  }
+
+  .formModuleFooter button, .formModuleFooterSpaceApart button{
+    border: none;
+    background: var(--link-color);
+    color: #fff;
+    padding: 8px 15px;
+    font-size: 14px;
+    box-shadow: var(--shadow4);
+    z-index: 50;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .formModuleFooterSpaceApart{
+    display: flex;
+    align-items: center;
+    justify-content:end;
+    padding: 10px 0px;
+  }
+  .formModuleCheckDescription{
+    font-size: 12px;
+    font-weight: 400;
+    color: #666;
+  }
+  .formModuleCheckLabel{
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .createIndCheck{
+    transform: scale(.7);
+}
+.createIndCheckMessage{
+    text-align: center;
+    margin: 5px 0px;
+    font-weight: 600;
+}
+.createIndCheckOptions{
+    display: flex;
+    padding: 10px;
+}
+.createIndCheckOptionsBtn{
+    text-decoration: none;
+    display: flex;
+    gap: 5px;
+    background: var(--link-color);
+    color: #fff;
+    padding: 8px 10px;
+    font-size: 12px;
+    box-shadow: -1px 1px 5px rgba(0,0,0,.1);
+    margin: 0px 5px;
+}
+.createIndCheckOptionsBtn:hover{
+    color: #fff;
+    background-color: #0859d1;
+}

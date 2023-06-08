@@ -1,0 +1,50 @@
+
+.rolesHeaderContainer{
+    background: #f7f7f7;
+    padding: 10px 20px;
+    display: flex;
+    border-bottom: 1px solid #e7e7e7;
+}
+.rolesTitleRegion{    
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    flex-grow: 1;
+}
+.rolesBackLink{
+    font-size: 12px;
+    text-decoration: none;
+}
+.rolesTitleName{    
+    margin: 0px;
+    font-size: 20px;
+}
+.roleManageHeader{
+    flex-shrink: 0;
+    min-width: 150px;
+    display: flex;
+    align-items: center;
+}
+.createNewRoleButton{
+    text-decoration: none;
+    display: flex;
+    gap: 5px;
+    background: var(--link-color);
+    color: #fff;
+    padding: 5px 7px;
+    font-size: 12px;
+    box-shadow: -1px 1px 5px rgba(0,0,0,.1);
+}
+.createNewRoleButton:hover{
+    color: #fff;
+    background-color: #0859d1;
+}
+
+.roleManagementListInner button.accordion-button{
+    color: var(--link-color);
+    background: var(--accordBg);
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}

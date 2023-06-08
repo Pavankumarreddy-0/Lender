@@ -1,0 +1,16 @@
+#node modules
+node_modules
+
+# Env files
+.env
+
+#build
+/docuflowfrontend/build
+
+#image personal data
+/backend/img/*.jpg
+
+#extension key
+/private
+
+.rar

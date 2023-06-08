@@ -1,0 +1,467 @@
+.card-Binfo {
+    flex-grow: 1;
+}
+
+.AddressCardMain {
+    overflow-y: auto;
+    display: flex;
+    align-items: stretch;
+    /* height: calc(100vh - 120px); */
+    justify-content: space-between;
+}
+
+.headingSection_address {
+    flex-grow: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-top: 5px;
+}
+
+.headingSection_address span {
+    font-size: 20px;
+}
+
+.addressCardInner {
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.basic-info_inputs {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px 20px;
+}
+
+.basic-info_innerHeading {
+    margin-top: 10px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.basic-info_innerHeading span {
+    font-weight: 500;
+
+}
+
+.Inputs_Address{
+    width: 100%;
+    outline: none;
+    border: 2px solid #e7e7e7;
+    padding: 5px 10px;
+    font-size: 13px;
+}
+
+.Inputs_basic-info:focus {
+    border-color: var(--link-color);
+}
+
+
+.basic-info-btn {
+    border: 2px solid var(--btn-color);
+    padding: 4px 5px;
+    background: var(--btn-color);
+    color: white;
+}
+
+
+
+
+.basic_info-button {
+    display: flex;
+    justify-content: end;
+    gap: 3px;
+}
+
+.saveResults {
+    padding: 4px 5px;
+    background-color: var(--link-color);
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.basicInfo-header {
+    background-color: #f7f7f7;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.OrgHeader {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.headerEditable {
+    border: 1px solid var(--btn-color);
+    background: var(--btn-color);
+    color: #fff;
+    padding: 5px 7px;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.addAddressbtn:hover {
+    background-color: #0859d1;
+    color: #fff;
+}
+
+.OrgHeader a {
+    font-size: 12px;
+    text-decoration: none;
+    display: flex;
+    gap: 5px;
+}
+
+.CardInner {
+    border-bottom: 1px solid #e7e7e7;
+    /* padding: 10px; */
+}
+
+.controlCard-body,
+.customcardBody {
+    padding: 10px;
+}
+
+.addcustomtagInput {
+    width: 80%;
+    outline: none;
+    border: 2px solid #e7e7e7;
+    padding: 5px 10px;
+    font-size: 13px;
+}
+
+.Cards {
+    max-width: 300px;
+    width: 500px;
+    border-left: 1px solid #e7e7e7;
+}
+
+.controlCard-header,
+.customCard-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    background: #f7f7f7;
+    border-bottom: 1px solid #e7e7e7;
+    font-size: 14px;
+}
+
+.controlCardText {
+    flex-grow: 1;
+}
+
+.controlCardIcons {
+    display: flex;
+    gap: 10px;
+}
+
+.addtagbtn {
+    border: 1px solid var(--btn-color);
+    background: var(--btn-color);
+    color: #fff;
+    padding: 5px 7px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.addtagbtn:hover {
+    background-color: #0859d1;
+    color: #fff;
+}
+
+.Tagname {
+    padding: 4px 5px;
+    display: flex;
+    gap: 7px;
+    padding: 3px;
+    margin: 2px;
+    border: 1px solid #f7f7f7;
+    background-color: #f7f7f7;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 3px;
+    color: #000;
+}
+
+.showcustomtags {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    padding: 0px 5px 10px 5px;
+}
+
+.saveRes{
+    display:flex;
+    gap:4px;
+    align-items: center;
+}
+
+
+.LabelClass {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 3px;
+    font-size: 14px;
+}
+
+.controlCard-header i,
+.customCard-header i {
+    color: var(--link-color);
+}
+
+.AddressCardMain {
+    flex-grow: 1;
+}
+
+.AddressCardFlexwrap {
+    display: flex;
+}
+
+.AddressCardContent{
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.AddressCardbody{
+    border: 3px dashed #f7f7f7;
+    height: 300px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+}
+
+.addAddressbtn{
+    background: var(--link-color);
+    color: #fff;
+    padding: 5px 9px;
+    text-decoration: none;
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+}
+.cancel-btn{
+    color: #c2c2c2;
+    padding: 5px 9px;
+    text-decoration: none;
+    display: flex;
+    gap: 4px;
+    font-size: 11px;
+}
+
+
+.setAddressheader{
+    border-bottom:1px solid #e7e7e7;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 5px;
+}
+
+.setAddressMainWrapper{
+    border-left: 1px solid #e7e7e7;
+    padding: 10px 11px;
+    max-width: 484px;
+    z-index: 27;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #ffff;
+    height: calc(100vh - 45px);
+    animation: Address_setAddressMainWrapper__9SsQb;
+    animation-duration:.22s;
+    animation-fill-mode: forwards;
+}
+.setAddressBackdrop{
+    width: 100%;
+    position: fixed;
+    background: rgba(0,0,0,.1);
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.addressInputs{
+
+}
+
+.formInputCountry{
+    display: block;
+    width: 100%;
+    margin: 4.5px 0px 0px 0px !important;
+    border: 2px solid #ccc;
+    padding: 2px 10px 0px 10px !important;
+    outline: none;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.formInputCountry button{
+    padding: 0px;
+    border: none;
+    font-size: 13px !important;
+}
+
+.formInputCountry button > span {
+    padding-left: 0px;
+}
+
+.formInputCountry ul{
+    padding: 0px;
+    margin: 2px 0px;
+    border-radius: 0px;
+    border: none;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.3), -2px 0px 5px rgba(0,0,0,.3);
+}
+
+.formInputCountry ul > div{
+    padding-top: 0px;
+}
+
+.formInputCountry li{
+    border-bottom: 1px solid #e7e7e7;
+    font-size: 12px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background: #f7f7f7;
+    padding: 8px 10px;
+    font-weight: 500;
+}
+
+.formInputCountry li:hover{
+    background-color: #fff;
+}
+
+.formInputCountry svg{
+    width: 36px;
+    height: 21px;
+}
+
+.formInputCountry input{
+    margin: 0px !important;
+    border: none;
+    border-bottom: 1px solid #e7e7e7;
+    width: 100% !important;
+    font-size: 13px;
+    padding: 7px 10px !important;
+    box-shadow: 0px 2px 5px rgba(0,0,0,.1);
+}
+.setAddressInputs{
+    overflow-y: auto;
+    padding: 7px 2px;
+    display:flex;
+    flex-direction:column;
+}
+.AddressCardMainBody{
+    padding:10px;
+    border:1px solid #e7e7e7;
+}
+
+.addAddressSavebtn{
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
+}
+
+.addAddressSavebtn span{
+    background: var(--link-color);
+    color: #fff;
+    padding: 5px 9px;
+    text-decoration: none;
+    font-size: 12px;
+    display: flex;
+    gap: 4px;
+    padding: 5px 7px;
+    align-items: center;
+
+}
+
+.saveAndEditableBtn{
+    display:flex;
+    gap:10px;
+}
+.AddressDataCards{
+    display: grid;
+    grid-template-columns: repeat(3,295px);
+    gap: 12px;
+    width: 100%;
+    min-width: 616px;
+    padding:4px;
+   
+}
+
+.AddressCardWrapper{
+    border:1px solid #c7c7c7;
+    box-shadow: 0px 1px 4px 1px rgba(0,0,0,.1);
+    height: 300px;
+    max-height: 400px;
+    font-weight: 500;
+}
+
+.AddressCards{
+    padding:11px 3px;
+}
+
+.AddressCardHeader{
+    border-bottom:1px solid #c2c2c2;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.AddressCardIcon{
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size:55px;
+}
+
+.AddressCardInnerBody{
+    display:flex;
+    flex-direction: column;
+    padding:7px 7px;
+}
+
+.AddressCard-type{
+
+}
+
+.headerText{
+    padding:6px 5px;
+}
+
+@keyframes Address_setAddressMainWrapper__9SsQb {
+    0%{
+        opacity: 0;
+        transform: translate(80px);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0px);
+    }
+}
+.activeAddress{
+    border:1px solid #097969;
+    background-color: #097969;
+    color:#fff;
+    padding:2px 10px;
+}
+.activeAddress span{
+    font-size:12px
+}

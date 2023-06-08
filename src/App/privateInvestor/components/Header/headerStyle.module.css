@@ -1,0 +1,196 @@
+.headerOuter{
+    min-height: 45px;
+    display: flex;
+    align-items: stretch;
+    background-size: cover !important;
+    background-position: center center !important;
+}
+.headerToggleMenu{
+    flex-shrink: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 68px;
+}
+.headerToggleMenu:hover{
+    cursor: pointer;
+    background-color: #FAFAFA;
+    color: #242424;
+}
+.headerToggleMenu:hover i{
+    color: #242424 !important;
+}
+.headerSerachRegion{
+    flex-grow: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.headerRightRegion{
+    flex-shrink: 0;
+    min-width: 160px;
+   display: flex;
+    justify-content: end;
+    align-items: stretch;
+}
+.headerRightIconsList{
+    list-style-type: none;
+    margin: 0;
+    padding: 0px 0px;
+    display: flex;
+    align-items: stretch;
+    justify-content: end;
+}
+.headerRightUserImage{
+    max-width: 30px;
+    border-radius: 100%;
+    background: #fff;
+
+}
+.headerLeftSection{
+    display: flex;
+}
+.headerRightSubList{
+    position: absolute;
+    top: 100%;
+    right: 0px;
+    list-style: none;
+    margin: 0px;
+    background: #fff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.1), -2px -2px 5px rgba(0,0,0,.1);
+    padding: 10px 15px;
+    min-width: 180px;
+    z-index: 999;
+}
+.headerRightProfileItem{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.headerSerachRegionInput{
+    border: none;
+    box-shadow: 0 1px 2px rgba(0,0,0,.14), 0 0 2px rgba(0,0,0,.12);
+    padding: 5px 20px;
+    border-radius: 4px;
+    padding-left: 30px;
+    width: 100%;
+    font-weight: 400;
+    color: #585858;
+    font-size: 13px;
+}
+.headerSerachRegionInput:focus{
+    outline: none;
+}
+.headerSearchRegionInner{
+    min-width: 200px;
+    width: 40%;
+    margin: 0 auto;
+    position: relative;
+}
+.headerSearchRegionInner i{
+    position: absolute;
+    top: 3px;
+    left: 10px;
+}
+.headerRightIconsItem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 15px;
+}
+.headerRightProfileItem{
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+.headerRightProfileItem a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 15px;
+}
+.headerRightIconsItem:hover, .headerRightProfileItem > a:hover{
+    background-color: #FAFAFA;
+    cursor: pointer;
+    color: #242424;
+}
+.headerRightIconsItem:hover a{
+    color: black !important;
+}
+.headerLogoImage{
+    max-width: 60px;
+    margin: 0px 10px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.headerIconRegion{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.headerSubProfileSection{
+
+}
+.headerSubProfileSectionHeader{
+    text-align: right;
+}
+.headerRightProfileLogoutLink{
+
+}
+.headerSubProfileSectionBody{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
+.headerSubProfileImage{
+    padding: 7px 4px;
+}
+.headerSubProfileImageLarge{
+    max-width: 60px;
+    border-radius: 100%;
+    background: #f7f7f7;
+}
+.headerSubProfileListRight{
+    flex-shrink: 0;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.headerSubProfileMeta{
+
+}
+.headerSubProfileMetaName{
+    margin: 0px;
+    font-weight: 600;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.headerRightProfileSubItem{
+
+}
+.headerRightProfileManageLink{
+    padding: 0px !important;
+    margin: 0px;
+    display: block !important;
+    text-decoration: none;
+    font-size: 13px;
+    color: #242424;
+}
+.headerSubProfileLogoutLink{
+    display: inline-block !important;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 0px !important;
+    color: #242424;
+    font-weight: 500;
+}
+.headerRightProfileManageLink:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    color: #000;
+}
