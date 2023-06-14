@@ -93,6 +93,8 @@ export default function UserLoginPage() {
 
                     <div className="clearfix">
                         <button type="submit" className="signupbtn">Login</button>
+                        <p className='border-bottom-0 mb-0 pb-1'>Don't have an Account? <Link to="/register/general-info">Sign Up</Link></p>
+                        <p className='border-bottom-0'>Forgotten your password? <Link to="/register/general-info">Click here</Link></p>
                     </div>
                 </div>
             </form>
