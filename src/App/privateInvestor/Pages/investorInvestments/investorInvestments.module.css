@@ -1,0 +1,242 @@
+.main-class {
+  padding-left: 30px;
+  margin-top: 30px;
+  margin-right: 25px;
+}
+
+.main-head {
+  margin-bottom: 26px;
+  font-family: "Didact Gothic", "Helvetica Neue", "Helvetica";
+}
+.wallet-card {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+}
+.wallet-total-card {
+  width: 50%;
+  background-color: #312c75;
+  padding-left: 50px;
+  padding-top: 23px;
+  margin-right: 25px;
+}
+.wallet-free-card {
+  width: 50%;
+  background-color: #312c75;
+  padding-left: 50px;
+  padding-top: 23px;
+  padding-right: 50px;
+  margin-left: 25px;
+}
+.wallet-number {
+  min-height: 72px;
+  font-size: 38px;
+  color: #ffffff;
+  font-weight: 700;
+  font-family: "PTRootUI", "Helvetica Neue", "Helvetica", sans-serif;
+}
+.wallet-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: "PTRootUI", "Helvetica Neue", "Helvetica", sans-serif;
+}
+
+/*refers to investment card*/
+
+.invest_deal {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  margin-bottom: 20px;
+}
+.invest_deal:hover {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1), -2px -2px 5px rgba(0, 0, 0, 0.1);
+}
+.invest_prev {
+  position: relative;
+  flex-shrink: 0;
+  max-width: 250px;
+}
+.invest_img {
+  width: 50%;
+  min-width: 250px;
+  max-width: 300px;
+}
+.invest_deal_label {
+  background: #fff;
+  margin: 3px 5px;
+  font-size: 12px;
+  padding: 3px 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+}
+.invest_deal_labels {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.invest_meta {
+  padding: 10px 40px;
+  flex-grow: 1;
+}
+.invest_meta_header_top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.invest_meta_deal_name_title {
+  font-size: 22px;
+  margin-bottom: 0px;
+  font-weight: 700;
+}
+.invest_meta_deal_type {
+  font-size: 11px;
+  border: 1px solid #e7e7e7;
+  padding: 3px 5px;
+  border-radius: 3px;
+}
+.invest_meta_deal_addr {
+  padding: 5px 0px;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+.invest_meta_progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: end;
+}
+.invest_meta_deal_percentage {
+  color: var(--link-color);
+  font-weight: 600;
+}
+.invest_meta_deal_title {
+  font-size: 12px;
+  font-weight: 600;
+}
+.goal_progress {
+  background: #f7f7f7;
+  border-radius: 5px;
+  border: 1px solid #e7e7e7;
+  margin: 5px 0px;
+}
+.goal_prgrs {
+  display: block;
+  height: 10px;
+  background: var(--link-color);
+  border-radius: 5px;
+}
+.invest_meta_flex_wrap {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  border-bottom: 1px solid #e7e7e7;
+  margin-bottom: 5px;
+}
+.invest_meta_item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.invest_meta_key,
+.invest_meta_value {
+  font-weight: 500;
+  font-size: 12px;
+}
+.invest_meta_items {
+  padding: 10px 0px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+}
+.invest_docs_list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  gap: 5px 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-top: 1px solid #e7e7e7;
+  padding: 10px 0px;
+}
+.invest_doc {
+  border: 1px solid #e7e7e7;
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 5px;
+}
+.invest_doc:hover {
+  background: #f7f7f7;
+  cursor: pointer;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+.invest_doc_title {
+  font-size: 11px;
+}
+.invest_doc_name {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.invest_meta-footer {
+  border-top: 1px solid #e7e7e7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0px;
+}
+.investDate {
+  font-size: 16px;
+  font-weight: 600;
+}
+.investAmount {
+  color: var(--link-color);
+  font-size: 20px;
+  font-weight: 600;
+}
+.invest_meta_right_grp {
+  width: 250px;
+}
+
+/*refers to types */
+.Inputs_basic-info {
+  width: 100%;
+  outline: none;
+  border: 2px solid #e7e7e7;
+  padding: 5px 10px;
+  font-size: 13px;
+}
+.LabelClass {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 3px;
+  font-size: 14px;
+}
+.Inputs_basic-info:hover {
+  cursor: pointer;
+}
+
+.plain-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  font-size: 24px;
+  border: 2px solid green;
+  color: black;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: "PTRootUI", "Helvetica Neue", "Helvetica", sans-serif;
+}
