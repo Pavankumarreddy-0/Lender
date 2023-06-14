@@ -8,7 +8,7 @@ export default function Homepage() {
             Homepage
             <div className="HomepageInnerWrapper">
             <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link to="/register/general-info">Register</Link>
             </div>
         </div >
     )
