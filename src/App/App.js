@@ -20,6 +20,9 @@ import PrivateDashboard from './privateInvestor/privateDashboard';
 import InvestorKeyboardShortcuts from './privateInvestor/Settings/keyboardShortcuts/InvestorKeyboardShortcuts';
 import ManageInvestorProfile from './privateInvestor/Pages/manageProfile/manageInvestorProfile';
 import InvestorDashboardHome from './privateInvestor/Pages/dashboardHome/investorDashboardHome';
+import InvestorInvestments from './privateInvestor/Pages/investorInvestments/investorInvestments';
+import InvestorWallet from './privateInvestor/Pages/investorWallet/investorWallet'
+import InvestorTransaction from './privateInvestor/Pages/investorTransaction/investorTransaction';
 
 
 
@@ -58,10 +61,10 @@ function App() {
             <Route path="/investor" element={<PrivateDashboard />} exact>
             <Route path="/investor/" element={<InvestorDashboardHome/>} exact></Route>
             <Route path="/investor/dashboard" element={<InvestorDashboardHome/>} exact></Route>
-            <Route path="/investor/wallet" element={<h1>Wallet</h1>} exact></Route>
-            <Route path="/investor/investments" element={<h1>Investment</h1>} exact></Route>
+            <Route path="/investor/wallet" element={<InvestorWallet />} exact></Route>
+            <Route path="/investor/investments" element={<InvestorInvestments />} exact></Route>
             <Route path="/investor/interest" element={<h1>Interest</h1>} exact></Route>
-            <Route path="/investor/transactions" element={<h1>Transaction</h1>} exact></Route>
+            <Route path="/investor/transactions" element={<InvestorTransaction />} exact></Route>
             <Route path="/investor/auto-investment" element={<h1>Auto Invest</h1>} exact></Route>
             <Route path="/investor/aggrements" element={<h1>Aggrements</h1>} exact></Route>
             <Route path="/investor/notifications" element={<h1>Nottification</h1>} exact></Route>
