@@ -82,7 +82,7 @@ function App() {
               <Route path="/investor/dashboard" element={<InvestorDashboardHome />} exact></Route>
               <Route path="/investor/wallet" element={<InvestorWallet />} exact></Route>
               <Route path="/investor/investments" element={<InvestorInvestments />} exact></Route>
-              <Route path="/investor/interest" element={<h1>Interest</h1>} exact></Route>
+              <Route path="/investor/interest" element={<IndecatedInterest/>} exact></Route>
               <Route path="/investor/transactions" element={<InvestorTransaction />} exact></Route>
               <Route path="/investor/auto-investment" element={<AutoInvestments/>} exact></Route>
               <Route path="/investor/aggrements" element={<InvestorAgreements />} exact></Route>
