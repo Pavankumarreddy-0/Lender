@@ -76,12 +76,25 @@
   color: #fa9c23;
 }
 
-.next_step a {
+.next_step{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.next_step p {
   text-decoration: none !important;
-  color: white;
-  background-color: #0a63d0;
-  padding: 8px 30px;
   font-size: 13px;
+}
+
+.next_step a{
+  text-decoration: none;
+  font-weight: 700;
+  color: #0a63d0;
+}
+
+.next_step a:hover{
+  text-decoration: underline;
 }
 
 .next_step button {
@@ -98,10 +111,10 @@
   box-shadow: 1px 5px 5px 1px gray;
 }
 
-.next_step a:hover {
+/* .next_step a:hover {
   background-color: #0b4a99;
   box-shadow: 1px 5px 5px 1px gray;
-}
+} */
 
 .details label {
   font-size: 13px;
@@ -285,3 +298,5 @@
     display: block;
 }
 /* file upload css ends */
+
+

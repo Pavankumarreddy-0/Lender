@@ -1,0 +1,30 @@
+.indecated_interest{
+    color: black;
+    margin: 70px;
+}
+
+.no_interests_yet{
+    margin: 70px 0px;
+    border: 2px dashed #0a63d0;
+    text-align: center;
+    padding: 100px 0px;
+}
+
+.no_interests_yet h3{
+    font-weight: bolder;
+    margin-bottom: 25px;
+}
+
+.no_interests_yet a{
+    text-decoration: none;
+    color: white;
+    background-color: #0a63d0;
+    padding: 12px 25px;
+    letter-spacing: 1px;
+    font-weight: 900;
+}
+
+.no_interests_yet a:hover{
+    background-color: #0b4a99;
+    box-shadow: 1px 5px 5px 1px gray;
+}

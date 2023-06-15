@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './register.css'
 import { useNavigate, useOutletContext } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const General = () => {
     const [stepperFuns] = useOutletContext();
@@ -56,8 +57,13 @@ const General = () => {
                         <label className='mb-2'>E-Mail Address</label>
                         <input type='email' value={generalData.email} onChange={(e) => setGeneralData({ ...generalData, email: e.target.value })} placeholder='Email' className='me-5 px-2 py-2 d-block w-100' required />
                     </div>
-                    <div className='text-end my-5 next_step'>
-                        <button className='form_button'>Next step</button>
+                    <div className='my-5 next_step'>
+                        <div>
+                            <p>Already have an account? <Link to="/login">Log in</Link></p>
+                        </div>
+                        <div>
+                            <button className='form_button'>Next step</button>
+                        </div>
                     </div>
                 </form>
             </div>

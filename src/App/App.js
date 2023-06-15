@@ -30,6 +30,8 @@ import PersonalDetails from './auth/userSignupPage/PersonalDetails';
 import Documents from './auth/userSignupPage/Documents';
 import Success from './auth/userSignupPage/Success'
 import CompanyDetails from './auth/userSignupPage/CompanyDetails';
+import IndecatedInterest from './privateInvestor/Pages/indecatedInterest/indecatedInterest';
+import AutoInvestments from './privateInvestor/Pages/autoInvestments/autoInvestments';
 
 
 
@@ -78,9 +80,9 @@ function App() {
               <Route path="/investor/dashboard" element={<InvestorDashboardHome />} exact></Route>
               <Route path="/investor/wallet" element={<InvestorWallet />} exact></Route>
               <Route path="/investor/investments" element={<InvestorInvestments />} exact></Route>
-              <Route path="/investor/interest" element={<h1>Interest</h1>} exact></Route>
+              <Route path="/investor/interest" element={<IndecatedInterest/>} exact></Route>
               <Route path="/investor/transactions" element={<h1>Transaction</h1>} exact></Route>
-              <Route path="/investor/auto-investment" element={<h1>Auto Invest</h1>} exact></Route>
+              <Route path="/investor/auto-investment" element={<AutoInvestments/>} exact></Route>
               <Route path="/investor/aggrements" element={<h1>Aggrements</h1>} exact></Route>
               <Route path="/investor/notifications" element={<h1>Nottification</h1>} exact></Route>
               <Route path="/investor/settings" element={<InvestorSettings></InvestorSettings>} exact></Route>
