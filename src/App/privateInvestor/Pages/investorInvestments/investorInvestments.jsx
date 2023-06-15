@@ -77,7 +77,7 @@ function InvestorInvestments() {
       </div>
       <div className={investStyle["wallet-card"]}>
         <div className={investStyle["main-class"]}>
-          <label for="statusCard" className={investStyle["LabelClass"]}>
+          <label htmlFor="statusCard" className={investStyle["LabelClass"]}>
             Funding Status
           </label>
           <select
@@ -99,7 +99,7 @@ function InvestorInvestments() {
           </select>
         </div>
         <div className={investStyle["main-class"]}>
-          <label for="statusCard" className={investStyle["LabelClass"]}>
+          <label htmlFor="statusCard" className={investStyle["LabelClass"]}>
             Offering Type
           </label>
           <select
@@ -121,9 +121,9 @@ function InvestorInvestments() {
       </div>
       <div className={investStyle["main-class"]}>
         {investmentCardState.deals.length > 0 ? (
-          investmentCardState.deals.map((e) => {
+          investmentCardState.deals.map((e, id) => {
             return (
-              <div className={investStyle["invest_deal"]}>
+              <div key={id} className={investStyle["invest_deal"]}>
                 <div className={investStyle["invest_prev"]}>
                   <img
                     className={investStyle["invest_img"]}

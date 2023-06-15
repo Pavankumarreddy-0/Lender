@@ -1,0 +1,14 @@
+
+.main-div{
+    padding-left: 60px;
+    padding-top: 30px;
+    padding-right: 40px;
+    padding-bottom: 50px;
+}
+.top-head{
+    color:brown;
+    margin-bottom: 26px;
+    font-weight: 600;
+    /* box-sizing: inherit; */
+   
+}

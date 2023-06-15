@@ -32,6 +32,8 @@ import Success from './auth/userSignupPage/Success'
 import CompanyDetails from './auth/userSignupPage/CompanyDetails';
 import IndecatedInterest from './privateInvestor/Pages/indecatedInterest/indecatedInterest';
 import AutoInvestments from './privateInvestor/Pages/autoInvestments/autoInvestments';
+import InvestorAgreements from './privateInvestor/Pages/InvestorAgreements/InvestorAgreements';
+import InvestorNotifications from './privateInvestor/Pages/InvestorNotifications/InvestorNotifications';
 
 
 
@@ -80,11 +82,11 @@ function App() {
               <Route path="/investor/dashboard" element={<InvestorDashboardHome />} exact></Route>
               <Route path="/investor/wallet" element={<InvestorWallet />} exact></Route>
               <Route path="/investor/investments" element={<InvestorInvestments />} exact></Route>
-              <Route path="/investor/interest" element={<IndecatedInterest/>} exact></Route>
-              <Route path="/investor/transactions" element={<h1>Transaction</h1>} exact></Route>
+              <Route path="/investor/interest" element={<h1>Interest</h1>} exact></Route>
+              <Route path="/investor/transactions" element={<InvestorTransaction />} exact></Route>
               <Route path="/investor/auto-investment" element={<AutoInvestments/>} exact></Route>
-              <Route path="/investor/aggrements" element={<h1>Aggrements</h1>} exact></Route>
-              <Route path="/investor/notifications" element={<h1>Nottification</h1>} exact></Route>
+              <Route path="/investor/aggrements" element={<InvestorAgreements />} exact></Route>
+              <Route path="/investor/notifications" element={<InvestorNotifications />} exact></Route>
               <Route path="/investor/settings" element={<InvestorSettings></InvestorSettings>} exact></Route>
               <Route path="/investor/settings/keyboard-shortcuts/" element={<InvestorKeyboardShortcuts />}>
               </Route>

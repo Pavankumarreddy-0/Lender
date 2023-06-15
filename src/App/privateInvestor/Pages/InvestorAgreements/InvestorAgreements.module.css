@@ -1,0 +1,54 @@
+.container-class {
+  padding-left: 30px;
+  margin-top: 30px;
+  margin-right: 25px;
+}
+
+.main-head {
+  font-family: "Didact Gothic", "Helvetica Neue", "Helvetica", sans-serif;
+  font-weight: 600;
+}
+
+/*table styles */
+.table-div {
+  overflow-x: auto;
+  margin-bottom: 41px;
+  padding-bottom: 31px;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  background-color: #fbfbfb;
+}
+th {
+  text-align: left;
+  padding: 18px;
+  border-bottom: 2px solid #dadada;
+  font-weight: 400;
+}
+td {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: left;
+  padding: 18px;
+  border-bottom: 2px solid #dadada;
+}
+.status-bg-color {
+  color: #ffffff;
+  border-radius: 3px;
+  text-align: center;
+  margin-left: 2px;
+  padding: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  background-color: #39d020;
+}
+
+.icon-class {
+  font-size: 28px;
+  padding: 4px;
+  border: none;
+  background-color: none;
+}

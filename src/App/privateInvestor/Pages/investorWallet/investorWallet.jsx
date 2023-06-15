@@ -98,11 +98,10 @@ function InvestorWallet() {
             </h4>
             <div>
               {investorAccounts.data.length > 0 ? (
-                investorAccounts.data.map((value) => {
-                  console.log("value", value.attributes.is_default);
+                investorAccounts.data.map((value, index) => {
                   return (
                     <>
-                      <div className={walletStyles["payment_list"]}>
+                      <div key={index} className={walletStyles["payment_list"]}>
                         <div className={walletStyles["payment_item"]}>
                           {value.attributes.is_default === false && (
                             <div className={walletStyles["payment_status-new"]}>
@@ -154,7 +153,7 @@ function InvestorWallet() {
                           {value.attributes.is_default === false && (
                             <div className={walletStyles["icon"]}>
                               <button className={walletStyles["close_icon"]}>
-                                <i class="bi bi-x"></i>
+                                <i className="bi bi-x"></i>
                               </button>
                             </div>
                           )}
