@@ -31,6 +31,7 @@ import Documents from './auth/userSignupPage/Documents';
 import Success from './auth/userSignupPage/Success'
 import CompanyDetails from './auth/userSignupPage/CompanyDetails';
 import InvestorAgreements from './privateInvestor/Pages/InvestorAgreements/InvestorAgreements';
+import InvestorNotifications from './privateInvestor/Pages/InvestorNotifications/InvestorNotifications';
 
 
 
@@ -83,7 +84,7 @@ function App() {
               <Route path="/investor/transactions" element={<InvestorTransaction />} exact></Route>
               <Route path="/investor/auto-investment" element={<h1>Auto Invest</h1>} exact></Route>
               <Route path="/investor/aggrements" element={<InvestorAgreements />} exact></Route>
-              <Route path="/investor/notifications" element={<h1>Nottification</h1>} exact></Route>
+              <Route path="/investor/notifications" element={<InvestorNotifications />} exact></Route>
               <Route path="/investor/settings" element={<InvestorSettings></InvestorSettings>} exact></Route>
               <Route path="/investor/settings/keyboard-shortcuts/" element={<InvestorKeyboardShortcuts />}>
               </Route>
