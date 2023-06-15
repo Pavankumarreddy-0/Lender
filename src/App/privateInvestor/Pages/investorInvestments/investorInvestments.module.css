@@ -4,6 +4,10 @@
   margin-right: 25px;
 }
 
+.auto_investment_main_class{
+  margin-top: 70px;
+}
+
 .main-head {
   margin-bottom: 26px;
   font-family: "Didact Gothic", "Helvetica Neue", "Helvetica";
@@ -54,8 +58,9 @@
   align-items: center;
   background: #fff;
   border: 1px solid #e7e7e7;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
+
 .invest_deal:hover {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1), -2px -2px 5px rgba(0, 0, 0, 0.1);
 }

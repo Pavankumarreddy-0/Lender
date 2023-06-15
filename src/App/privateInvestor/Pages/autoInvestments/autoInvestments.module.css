@@ -1,0 +1,178 @@
+.auto_investments {
+    margin: 70px;
+}
+
+.auto_investments_Creation {
+    padding-bottom: 70px;
+}
+
+.configure {
+    border: 2px dashed #0a63d0;
+    margin-top: 30px;
+    padding: 150px 0px;
+}
+
+.configure_inner_div {
+    width: 600px;
+    text-align: center;
+    margin: 0px auto;
+}
+
+.configure_inner_div p {
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.configure_inner_div button {
+    border: none;
+    font-weight: bold;
+    background-color: #0a63d0;
+    color: white;
+    padding: 13px 38px;
+}
+
+.configure_inner_div button:hover{
+    background-color: #0b4a99;
+    box-shadow: 1px 5px 5px 1px gray;
+}
+.available_balance {
+    background-color: #312C75;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    margin-top: 30px;
+}
+
+.available_balance h4 {
+    font-weight: bold;
+}
+
+.filters {
+    margin-top: 50px;
+}
+
+.filters label {
+    font-size: 13px;
+    font-weight: 600;
+    display: block;
+}
+
+.range_div input {
+    width: 100%;
+}
+
+.range_div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.range_div div p {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.range_div_left {
+    width: 80%;
+}
+
+.filter_btn {
+    text-align: end;
+    padding-top: 40px;
+}
+
+.filter_btn button {
+    color: white;
+    background-color: #0a63d0;
+    padding: 10px 55px;
+    border: none;
+
+}
+.filter_btn button:hover{
+    background-color: #0b4a99;
+    box-shadow: 1px 5px 5px 1px gray;
+}
+
+.auto_invest_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.auto_invest_title button {
+    border: none;
+    padding: 8px 35px;
+    color: white;
+    background-color: #0a63d0;
+    font-size: 12px;
+}
+
+.auto_invest_title button:hover {
+    background-color: #0b4a99;
+    box-shadow: 1px 5px 5px 1px gray;
+}
+
+.custome_input_filed input {
+    width: 30%;
+    margin: 5px 55px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid black;
+}
+
+.custome_input_filed input:focus {
+    outline: none;
+    border: 1px solid #0a63d0;
+}
+
+.filter_result {
+    border: 2px dashed #0a63d0;
+    padding: 25px 180px;
+    margin-top: 70px;
+}
+
+.filter_result p {
+    font-size: 15px;
+}
+
+.check_box_div input {
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+.check_box_div label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btn_group {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0px 0px 0px;
+}
+
+.btn_group_btn {
+    border: none;
+    font-size: 14px;
+    background-color: #0a63d0;
+    color: white;
+    padding: 8px 35px;
+}
+
+.btn_group_con{
+    border: none;
+    font-size: 14px;
+    background-color: #b5b6b8;
+    color: white;
+    padding: 8px 35px;
+}
+
+.btn_group_btn:hover {
+    background-color: #0b4a99;
+    box-shadow: 1px 5px 5px 1px gray;
+}
