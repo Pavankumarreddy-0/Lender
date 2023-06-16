@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import walletStyles from "./investorWallet.module.css";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 const data = [
   {
@@ -52,6 +54,14 @@ function InvestorWallet() {
   const [investorAccounts, setInvestorAccounts] = useState({
     data,
   });
+
+  const [show, setShow] = useState(false);
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const handleCancel = () => setOpen(false);
+  const openPopUp = () => setOpen(true);
+
   return (
     <>
       <div className={walletStyles["main-class"]}>
@@ -107,6 +117,7 @@ function InvestorWallet() {
                             <div className={walletStyles["payment_status-new"]}>
                               <button
                                 className={walletStyles["slide-button-new"]}
+                                onClick={openPopUp}
                               >
                                 <span
                                   style={{ color: "black" }}
@@ -152,7 +163,10 @@ function InvestorWallet() {
                           </div>
                           {value.attributes.is_default === false && (
                             <div className={walletStyles["icon"]}>
-                              <button className={walletStyles["close_icon"]}>
+                              <button
+                                className={walletStyles["close_icon"]}
+                                onClick={handleShow}
+                              >
                                 <i className="bi bi-x"></i>
                               </button>
                             </div>
@@ -168,7 +182,7 @@ function InvestorWallet() {
                 </div>
               )}
               <div className={walletStyles["add-account-container"]}>
-                <button className={walletStyles["slide-button"]}>
+                <button className={walletStyles["slide-button"]} >
                   <span
                     style={{ color: "black" }}
                     className={walletStyles["button-text"]}
@@ -186,6 +200,37 @@ function InvestorWallet() {
             </div>
           </div>
         </div>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Conformation</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Please confirm deleting the bank account.</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Cancel
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Confirm
+            </Button>
+          </Modal.Footer>
+        </Modal>
+
+        <Modal show={open} onHide={handleCancel}>
+          <Modal.Header closeButton>
+            <Modal.Title>Conformation</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Please confirm the update of the bank account.
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCancel}>
+              Cancel
+            </Button>
+            <Button variant="primary" onClick={handleCancel}>
+              Confirm
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     </>
   );
